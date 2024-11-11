@@ -1,0 +1,16 @@
+﻿1. Thay đổi dòng họ của người phụ nữ
+- Người con gái khi chưa lấy chồng thì dongho_id chính là họ của bố mẹ
+- Khi người con gái lấy chồng thì dongho_id chính là họ nhà chồng, họ của bố mẹ người đó sẽ chuyển vào hongoai_id
+- Xử lý dữ liệu
+    + Trường hợp người phụ nữ được thêm vào họ nhà chồng trước thì dongho_id lúc đó đang là dòng họ nhà chồng, 
+      sau này khi người phụ nữ thêm bố mẹ đẻ của mình thì họ của bố mẹ đẻ sẽ được ghi vào hongoai_id
+    + Trường hợp người phụ nữ được thêm vào họ của bố mẹ mình trước, lúc đó dongho_id = dòng họ của bố mẹ đẻ,
+      Sau này khi người phụ nữ lấy chồng (thêm chồng) thì cần thay đổi lại dongho_id = họ chồng, hongoai_id = họ bố mẹ
+
+
+2. Nguyên tắc
+- Chồng đứng cạnh vợ (nếu có nhiều vợ chồng đứng giữa và căn tọa độ vào giữa 2 người)
+- Mẹ đứng giữa các con
+===========================
+-> Trục ngang chính là đời có nhiều thành viên nhất (trục này vẫn có thể bị giãn ra tiếp tùy theo cây phía sau)
+-> trục dọc là chính giữa của đời có nhiều thành viên nhất trước khi bị giãn

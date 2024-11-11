@@ -1,0 +1,42 @@
+{
+  "name": "WEB",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@balkangraph/familytree.js": "^1.9.40",
+    "@nuxtjs/axios": "^5.13.6",
+    "@vueup/vue-quill": "^1.2.0",
+    "body-parser": "^1.19.0",
+    "chart.js": "^3.8.0",
+    "core-js": "^3.25.3",
+    "element-ui": "^2.15.10",
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "googleapis": "^109.0.1",
+    "html-pdf": "^3.0.1",
+    "moment": "^2.29.1",
+    "nanoid": "2.1.11",
+    "nuxt": "^2.15.8",
+    "phantom-html-to-pdf": "^0.7.0",
+    "quill": "^2.0.2",
+    "sharp": "^0.28.0",
+    "shelljs": "^0.8.4",
+    "text-mask-addons": "^3.8.0",
+    "vue": "^2.7.10",
+    "vue-chartjs": "^4.1.1",
+    "vue-quill": "^1.5.1",
+    "vue-server-renderer": "^2.7.10",
+    "vue-template-compiler": "^2.7.10",
+    "vue-text-mask": "^6.1.2"
+  },
+  "devDependencies": {
+    "node-sass": "^8.0.0",
+    "sass-loader": "^10.1.0"
+  }
+}

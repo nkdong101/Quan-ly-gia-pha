@@ -1,0 +1,32 @@
+C:\Users\gnodo\OneDrive\Desktop\Giapha\MongoDBAccess\obj\Debug\MongoDBAccess.csproj.AssemblyReference.cache
+C:\Users\gnodo\OneDrive\Desktop\Giapha\MongoDBAccess\obj\Debug\MongoDBAccess.csproj.CoreCompileInputs.cache
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\obj\Debug\MongoDBAccess.csproj.AssemblyReference.cache
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\obj\Debug\MongoDBAccess.csproj.CoreCompileInputs.cache
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\mongocrypt.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\snappy32.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\snappy64.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\libzstd.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDBAccess.dll.config
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDBAccess.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDBAccess.pdb
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDBAccess.xml
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\DnsClient.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDB.Bson.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDB.Driver.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDB.Libmongocrypt.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\SharpCompress.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\System.Buffers.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\System.Net.Http.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\Utility.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\Utility.pdb
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\DnsClient.xml
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDB.Bson.xml
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDB.Driver.xml
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\System.Buffers.xml
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\Newtonsoft.Json.xml
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\obj\Debug\MongoDBAccess.csproj.CopyComplete
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\obj\Debug\MongoDBAccess.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\obj\Debug\MongoDBAccess.pdb

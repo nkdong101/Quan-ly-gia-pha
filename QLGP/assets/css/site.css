@@ -1,0 +1,92 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #eee;
+  padding-bottom: 0;
+  font-family: "Lato", Arial, sans-serif;
+
+  font-size: 13px;
+  color: #444;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+.el-menu-item,
+.el-submenu__title {
+  font-size: 13px;
+  padding-right: 44px;
+}
+.el-button--small {
+  font-size: 13px;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.el-select .el-input .el-select__caret {
+  font: normal normal normal 14px/1 FontAwesome !important;
+}
+.el-select .el-input .el-select__caret::before {
+  content: "";
+}
+.el-select .el-input__icon {
+  width: 13px;
+  font-size: 13px !important;
+}
+.el-select .el-input__inner {
+  padding: 0 10px;
+  text-align: left;
+}
+.el-select .el-input__suffix {
+  padding-right: 5px;
+}
+.el-select-dropdown__item {
+  padding: 0 10px;
+  font-size: 13px;
+}
+.el-pagination__sizes {
+  margin: 0;
+}
+.el-pagination .el-select .el-input {
+  margin: 0;
+}
+.el-pager li {
+  min-width: 20.5px;
+}
+.el-dialog__wrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+.el-dialog__wrapper .el-dialog {
+  margin: auto;
+}
+.icon-btn {
+  padding: 7px;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  margin: auto;
+}
+.fa {
+  width: 12px;
+  height: 12px;
+  position: relative;
+}
+.fa:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

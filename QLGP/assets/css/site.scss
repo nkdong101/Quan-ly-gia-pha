@@ -1,0 +1,357 @@
+@import "@/assets/css/variable.scss";
+
+html,
+body {
+  // min-width: 1200px;
+  margin: 0;
+  height: 100%;
+  background: #eee;
+  padding-bottom: 0;
+  font-family: "Lato", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue",
+    sans-serif;
+  font-size: 13px;
+  color: #444;
+  box-sizing: border-box;
+}
+pre {
+  font-family: "Lato", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue",
+    sans-serif;
+  font-size: 13px;
+  color: #444;
+}
+textarea {
+  font-family: "Lato", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue",
+    sans-serif;
+  font-size: 13px;
+  color: #444;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+.el-menu-item,
+.el-submenu__title {
+  font-size: 13px;
+  padding-right: 44px;
+}
+.el-button--small {
+  font-size: 13px;
+}
+// .el-menu--collapse > div > .el-submenu > .el-submenu__title span {
+//   height: 0;
+//   width: 0;
+//   overflow: hidden;
+//   visibility: hidden;
+//   display: inline-block;
+// }
+// .el-menu--collapse > div > .el-submenu > .el-submenu__title .el-submenu__icon-arrow {
+//   display: none;
+// }
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.el-select {
+  .el-input .el-icon-arrow-up {
+    // color: black;
+    font: normal normal normal 14px/1 FontAwesome !important;
+    &::before {
+      content: "\f0d8";
+    }
+  }
+  .el-input__icon {
+    width: 13px;
+    font-size: 13px !important;
+  }
+  .el-input__inner {
+    padding: 0 10px;
+    text-align: left;
+  }
+  .el-input__suffix {
+    padding-right: 5px;
+  }
+}
+.el-select-dropdown__item {
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.el-pagination__sizes {
+  margin: 0;
+}
+.el-pagination .el-select .el-input {
+  margin: 0;
+}
+.el-pager li {
+  min-width: 20.5px;
+}
+.el-input-group--prepend .el-select .el-input.is-focus .el-input__inner {
+  border-color: #409eff;
+}
+.el-dialog__wrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  .el-dialog {
+    margin: auto;
+  }
+}
+.icon-btn {
+  padding: 7px;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  // margin: auto;
+  &:first-child {
+    margin-left: auto;
+  }
+}
+
+.fa {
+  width: 13px;
+  height: 13px;
+  position: relative;
+  // &:before {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  // }
+}
+
+.form-title {
+  font-size: 13px;
+  display: block;
+  background-color: #f5f7fa;
+  color: black;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  padding: 4px 10px;
+  width: 100%;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 28px;
+  position: relative;
+}
+.iValid-class {
+  background-color: #fef0f0 !important;
+  color: #f56c6c;
+  border-color: red !important;
+}
+.el-tooltip {
+  outline: none;
+
+  .el-input-group__prepend {
+    border-color: #dcdfe6;
+    box-shadow: 0px 0px 1px #dcdfe6;
+  }
+
+  & > .has-border {
+    border-color: #dcdfe6;
+  }
+  input,
+  .form-checkbox {
+    border-top-color: #dcdfe6;
+    border-right-color: #dcdfe6;
+    border-bottom-color: #dcdfe6;
+    box-shadow: 0px 0px 1px #dcdfe6;
+  }
+
+  .i-g-c {
+    border-color: #dcdfe6;
+    box-shadow: 0px 0px 1px #dcdfe6;
+  }
+  .el-input.is-disabled .el-input__inner {
+    box-shadow: 0px 0px 1px #dcdfe6;
+  }
+
+  &[is-not-valid] {
+    // & > * {
+    //   box-shadow: 0px 0px 1px red;
+    //   border-color: red;
+    // }
+    color: red !important;
+    .el-input-group__prepend {
+      border-color: red;
+      box-shadow: 0px 0px 1px red;
+    }
+
+    & > * {
+      border-color: red !important;
+    }
+    input,
+    .form-checkbox {
+      border-left-color: red;
+      border-top-color: red;
+      border-right-color: red;
+      border-bottom-color: red;
+      box-shadow: 0px 0px 1px red;
+    }
+    .i-g-c {
+      border-color: red;
+      box-shadow: 0px 0px 1px red;
+    }
+  }
+}
+.el-input--mini {
+  font-size: 13px; //!important;
+}
+
+.el-table--mini {
+  font-size: 13px;
+}
+
+.el-menu--horizontal .el-menu .el-menu-item,
+.el-menu--horizontal .el-menu .el-submenu__title {
+  padding: 0 20px;
+}
+
+.el-button {
+  span {
+    display: flex;
+    align-items: baseline;
+  }
+}
+
+.instruct-tooltip {
+  color: blue;
+  border-color: blue !important;
+  .popper__arrow {
+    left: 5px !important;
+    border-top-color: blue !important;
+    // &::after {
+    //   border-top: #409eff;
+    // }
+  }
+}
+
+.el-message--success {
+  top: 45% !important;
+  padding: 20px;
+  border: 1px solid blue;
+  background-color: white;
+  font-weight: bold;
+  .el-message__icon {
+    color: blue;
+  }
+  .el-message__content {
+    color: blue;
+  }
+  .el-message__closeBtn {
+    color: blue;
+  }
+}
+.el-message--error {
+  top: 45% !important;
+  padding: 20px;
+  border: 1px solid red;
+  background-color: white;
+  font-weight: bold;
+  .el-message__icon {
+    color: red;
+  }
+  .el-message__content {
+    color: red;
+  }
+  .el-message__closeBtn {
+    color: red;
+  }
+}
+.el-input--mini .el-input__inner {
+  height: 25px;
+}
+
+b {
+  font-weight: 600;
+}
+
+
+/* For WebKit-based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+  transition: width 0.3s ease;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Roundness of the scrollbar thumb */
+  border: 2px solid #f1f1f1; /* Padding around the thumb */
+  transition: background-color 0.3s ease, width 0.3s ease; /* Smooth transition for thumb and width */
+
+}
+
+// ::-webkit-scrollbar-thumb:hover,::-webkit-scrollbar-track:hover {
+//   width: 12px;
+//   background-color: #555; /* Color of the scrollbar thumb on hover */
+// }
+
+/* For Firefox */
+html {
+  scrollbar-width: thin; /* Default width */
+  scrollbar-color: #888 #f1f1f1; /* Color of the thumb and track */
+}
+
+// html:hover {
+//   scrollbar-width: auto; /* Increase width on hover */
+// }
+
+/* For IE10+ */
+* {
+  -ms-overflow-style: none; /* Hide the default scrollbar */
+}
+
+.submenu {
+  background-image: linear-gradient(
+    180deg,
+    rgba(48, 53, 58, 0.6) 0%,
+    rgba(50, 48, 48, 0.2) 70%
+
+  ),
+  url("/images/banner1.jpg");
+  background-position: right;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  backdrop-filter: blur(20px) !important;
+  margin-top: 10px !important;
+.el-menu--popup-bottom-start{
+  margin-top: 0;
+}
+  .el-menu{
+   
+    background-color:transparent;
+    padding: 0 !important;
+    .el-menu-item{
+      background-color:inherit;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .form-element-child-horizontal{
+    flex-direction: column;
+  }
+  span,p{
+    font-size: 11px;
+  }
+
+}
+
+.align-flex-start{
+  align-items: flex-start;
+}
