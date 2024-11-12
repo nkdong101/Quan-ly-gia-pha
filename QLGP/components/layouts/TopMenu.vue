@@ -5,7 +5,8 @@
       { hasUser: user && $route.path !== '/Account/Home/trang-chu' },
     ]"
   >
-    <div class="header-logo"></div>
+    <div class="header-logo">1231</div>
+    123123
     <div class="header-menu">
       <i class="el-icon-s-fold slide-in-top" @click="toggleMenu"></i>
       <el-menu

@@ -1,0 +1,123 @@
+[
+    {
+        "email": "viettechdigital.jsc@gmail.com",
+        "refresh_token": "1//0e03olSIu1ixgCgYIARAAGA4SNwF-L9IrXrbSfqS0bTUFsFVlToaSeo00NdncPUwrC7LVExNlP6BGAFQ2PmU99E1CKm4HHWfwZBI",
+        "tokens": [
+            {
+                "access_token": "ya29.a0AeTM1idSTXkcmXQuIB6ss2mHp2ZWCoIrfqfB78D3IosHb62DtmGd1xrIH09qAFK9gkzEkkUoh4tlTaUqwHN-cWfbERLV7y4XwXSdcBsQeR5QlPO3XxBMWq8OILL8R4qROMEzZBebfZjK5jP7XSBatSNK0RxdaCgYKAUkSARMSFQHWtWOmcfxRRWcQgnRIaMTvrvvP2g0163",
+                "code": "4/0AfgeXvvE7czfg7HHsCvxm2Ipt8g0MvYhe3WBFoFpR_OZc0xmaYNLpr-EsVfJPqVm6l9uOA",
+                "expiry_date": 1670019069390
+            },
+            {
+                "access_token": "ya29.a0AeTM1ifXcrKmrLOgraOBE_POOzdIvw8Xr0dEFi6dw0v5ILN892v2L55y4StesXFF3XzRbqElBRFB5HwoZ8njprPF2G3xKZYM5QppjOYoBBz-yFu1bjrZOCT1fR2_r92EPGdQA6-MMX_4RBdnCkYw388nRaoraCgYKAeMSARMSFQHWtWOm8rcXW1laMIa-oE3InbsUnw0163",
+                "code": "4/0AfgeXvuYiLy2-BXE4rmLK7jVXEBKHrgi2f65oM4rX6FQVFDxp0NrHVDL_dRbL1mK3WCIRA",
+                "expiry_date": 1670019161972
+            },
+            {
+                "access_token": "ya29.a0AeTM1id9F9wIO8J3UqKvbhsi0HoNJnUpf2ooPq2NRViKkevdrqNeceJnwnpdMxRu4Hfi7iMBR-uy6KtxBfPXjCoQ7cgpMipABNXFUW7qV1-AHKjEh10baOlmmCXpwMLal-iRtMqNdENX4FaFa36orKP9XORIaCgYKAVkSARMSFQHWtWOmQkpoIP6ZScz-d9yoqfN63w0163",
+                "code": "4/0AfgeXvtTFg5QxPld9a_qNAjuNHBihsqME0Z1yvTDei7fXzXL2f_RORYJ5i-vEU8QWd0KyQ",
+                "expiry_date": 1670603442404,
+                "expiry_date_str": "09/12/2022 11:30:42"
+            },
+            {
+                "access_token": "ya29.a0AVvZVsrk89MMXls9XTSZyDCiA6MBABd7uZS7gGd4cA2D1AK3zZqRp_sXZ8QmimDSH-oLT1iMBnH90ybrwbuL-s4MajO0cUzbm_sSOzS_86ljraMy4CDogKVmplxd64qVQLbBAxUPTlaZO9Xe27syLsZTJnhRaCgYKAbkSARMSFQGbdwaIXFwCaassEdq-A90YZsU8-A0163",
+                "code": "4/0AWtgzh5NrVmHdo92MXESqpc_GclpDXieglQIikRvzA9j0JUCSKDhwE5FbbIeZdL9VPgvxQ",
+                "expiry_date": 1676314471802,
+                "expiry_date_str": "14/02/2023 01:54:31"
+            },
+            {
+                "access_token": "ya29.a0AVvZVsp733yTGx17xQocmoNAKXzYxYND78zDAABJ_YtUwOkqGGVNw7e1VO1YnJ4pERTrJj_0gZKuWz9oZXUejpYCNqEtfZuf-mdhXCvl4e07sFrzHhaCdDjiDeL42D_LElzqi5mSG1to-Y9jOJ9Gr5wfRha2aCgYKAZ4SARMSFQGbdwaIcL1810g4_qLJY3S4Q_s6yg0163",
+                "code": "4/0AWtgzh4hGQUXOkpD22l1F_fe37OxnSmOVYAiy6MN2nNZNt5XGrDTEDQNZKJQuNn4VxYRtw",
+                "expiry_date": 1676316331367,
+                "expiry_date_str": "14/02/2023 02:25:31"
+            }
+        ],
+        "userInfo": {
+            "id": "100934039645597517256",
+            "email": "viettechdigital.jsc@gmail.com",
+            "verified_email": true,
+            "name": "Le Trung",
+            "given_name": "Le",
+            "family_name": "Trung",
+            "picture": "https://lh3.googleusercontent.com/a/AEdFTp5B7FkLBJHcaYt1ylOtvwrkcviCrQ187vIzxBh1=s96-c",
+            "locale": "vi"
+        }
+    },
+    {
+        "email": "duytrung93@gmail.com",
+        "refresh_token": "1//0g2hlaW53nWYOCgYIARAAGBASNwF-L9Ir8s-sflbEhoJvtda99vn71g8dYUDFnU4hzQC_9XEKReK01-0hmwOygjEIA8fvBS16nD0",
+        "tokens": [],
+        "userInfo": {
+            "id": "111209497489314144441",
+            "email": "duytrung93@gmail.com",
+            "verified_email": true,
+            "name": "Lê Duy Trung",
+            "given_name": "Lê",
+            "family_name": "Duy Trung",
+            "picture": "https://lh3.googleusercontent.com/a/AEdFTp5g3wGxkw51nT7TH3h76RFjDL6UolycZe10GwVj=s96-c",
+            "locale": "en"
+        }
+    },
+    {
+        "userInfo": "viettechdigital.jsc@gmail.com",
+        "refresh_token": "1//0gtTOK3-L-kxZCgYIARAAGBASNwF-L9Irxh_9bSmZQozL1hb3VUlc7jBeJfnPOpowMBTYGl7bzv9Ill-f-HPNaqZfGV0I2g_4evk",
+        "tokens": []
+    },
+    {
+        "email": "phamminhhoangptit@gmail.com",
+        "userInfo": {
+            "id": "113596085929124073832",
+            "email": "phamminhhoangptit@gmail.com",
+            "verified_email": true,
+            "name": "Hoang Pham Minh",
+            "given_name": "Hoang",
+            "family_name": "Pham Minh",
+            "picture": "https://lh3.googleusercontent.com/a/AEdFTp7SuMgDwsnJT4TW-FmuArHc0cC5VnpQeYI5KG_d=s96-c",
+            "locale": "vi"
+        },
+        "refresh_token": "1//0etQVS46AIb8wCgYIARAAGA4SNwF-L9IrpzkAaHejXPKazXA3fyB1ogpmA6owjjurvwc3voRY0pwa0QdGYoeaAMPWXGuAUchxRxg",
+        "tokens": [
+            {
+                "access_token": "ya29.a0AVvZVsqbIwjIcklaHSCxKtWBdEnxvr4zj9g45X2R0MmNauVmVS3zLnbmVy4UykkKz-c-tpWfKiaS3uy5x2RTa7yp09ZLE1k0Lmy7IZ_IsEr8cX5_SYSCMywriGTpHeNoRxmiUk9RqGAt5ILoTg7EbEdajyI7XMEaCgYKAW4SAQASFQGbdwaIJYfhdTPWpaaT7oADlhva4Q0166",
+                "expiry_date": 1676282344085,
+                "expiry_date_str": "13/02/2023 04:59:04"
+            }
+        ]
+    },
+    {
+        "email": "thethixas@gmail.com",
+        "userInfo": {
+            "id": "110745915127619960206",
+            "email": "thethixas@gmail.com",
+            "verified_email": true,
+            "name": "Phạm Minh Hoàng",
+            "given_name": "Phạm Minh Hoàng",
+            "picture": "https://lh3.googleusercontent.com/a/AEdFTp5hBq3sM84dJg_WOQCfW4ZBgrI_Qh1wHB1JtsN7=s96-c",
+            "locale": "vi"
+        },
+        "refresh_token": "1//0eDoRiuiQ3XQ3CgYIARAAGA4SNwF-L9Ir1KWoUiEHFaLahcL1-Ve3rh8FUxj0WC16eKwckMBqRyguUB_DgO9SOJu5B5tfqh6obnk",
+        "tokens": []
+    },
+    {
+        "email": "warmaster5010@gmail.com",
+        "userInfo": {
+            "id": "118042781952879188411",
+            "email": "warmaster5010@gmail.com",
+            "verified_email": true,
+            "name": "Uzumaki Pain",
+            "given_name": "Uzumaki",
+            "family_name": "Pain",
+            "picture": "https://lh3.googleusercontent.com/a/AEdFTp6VZxBCgJRJtYl0NgcDlIwfcl_KdjY3PdUVrn_E=s96-c",
+            "locale": "vi"
+        },
+        "refresh_token": "1//0egmEIkhbD4s2CgYIARAAGA4SNwF-L9IrwNIBNty3TC8gVnTw5NMC9ry8YzMHVVElJ0oelYzlWTKJUPNgvrTUFgpDg1TcU-6FMWY",
+        "tokens": [
+            {
+                "access_token": "ya29.a0AVvZVspIV9bg491ManPwOap5zLrcdkksxLp2nc91LmWZ9m5oiUrUNNzDZHOgTPudF243DZh39yuIOGbpSPRTy6kj3TME-UzzUMmqVnK9xu-rRsyAKOXDbzMzcfruG0gHasfozejMbcPJZKWhlVBbxQHevWa4aCgYKAX0SARISFQGbdwaInRmpPqvZ48CZ2aM0ueFjpw0163",
+                "code": "4/0AWtgzh5A3QrV-NyIu8iMvczu1rh7kYIabbb_pTbl-dj--DBJPPM5nctbqOoiCg0RSZm1IQ",
+                "expiry_date": 1676285698664,
+                "expiry_date_str": "13/02/2023 05:54:58"
+            }
+        ]
+    }
+]

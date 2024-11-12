@@ -11,6 +11,6 @@ export default function (context) {
     context.redirect('/Account/Home');
   } 
   else {
-    return $auth.init(localStorage.user);
+    return $auth.init(localStorage.user || JSON.stringify({}));
   }
 }

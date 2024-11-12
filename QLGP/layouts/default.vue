@@ -124,10 +124,10 @@ export default {
   },
   mounted() {
     // console.log("default", this);
-    if (location.href.indexOf("localhost") == -1) {
-      console.log = () => {};
-      console.error = () => {};
-    }
+    // if (location.href.indexOf("localhost") == -1) {
+    //   console.log = () => {};
+    //   console.error = () => {};
+    // }
     this.InitStuff().then(() => {
       this.mainLoad = true;
     });

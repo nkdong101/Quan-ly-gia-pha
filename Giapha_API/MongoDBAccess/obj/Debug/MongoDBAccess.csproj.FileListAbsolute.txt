@@ -30,3 +30,5 @@ C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\bin\Debug\Newtons
 C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\obj\Debug\MongoDBAccess.csproj.CopyComplete
 C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\obj\Debug\MongoDBAccess.dll
 C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\MongoDBAccess\obj\Debug\MongoDBAccess.pdb
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\MongoDBAccess\obj\Debug\MongoDBAccess.csproj.AssemblyReference.cache
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\MongoDBAccess\obj\Debug\MongoDBAccess.csproj.CoreCompileInputs.cache
