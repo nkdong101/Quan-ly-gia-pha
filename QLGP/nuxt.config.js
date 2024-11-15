@@ -39,16 +39,16 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
 
-    // 'element-ui/lib/theme-chalk/index.css',
+    'element-ui/lib/theme-chalk/index.css',
     '@/assets/css/site.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    // '@/plugins/element-ui',
-    // "@/plugins/moment",
-    // "@/plugins/something",
-    // "@/plugins/auth",
+    '@/plugins/element-ui',
+    "@/plugins/moment",
+    "@/plugins/something",
+    "@/plugins/auth",
     // { src: '~/plugins/chart.js', mode: 'client' },
   ],
 

@@ -76,7 +76,7 @@
       y="83"
       text-anchor="start"
       ><tspan x="100" y="83" text-anchor="start"
-        >{{ data.Namsinh == 0 || !data.Namsinh ? 'Không rõ': data.Namsinh }}
+        >{{ data.Namsinh == 0 || !data.Namsinh ? '?': data.Namsinh }}
         {{ data.Nammat ? " - "  + data.Nammat : "" }}
       </tspan></text
     >

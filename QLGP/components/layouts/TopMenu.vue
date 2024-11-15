@@ -5,14 +5,14 @@
       { hasUser: user && $route.path !== '/Account/Home/trang-chu' },
     ]"
   >
-    <div class="header-logo">1231</div>
-    123123
+    <div class="header-logo"></div>
+   
     <div class="header-menu">
-      <i class="el-icon-s-fold slide-in-top" @click="toggleMenu"></i>
+      <!-- <i class="el-icon-s-fold slide-in-top" @click="toggleMenu"></i> -->
       <el-menu
         :default-active="$route.path"
         :class="['el-menu']"
-        :mode="!this.menuVisible ? 'horizontal' : 'vertical'"
+        mode="horizontal"
         active-text-color=" #fff"
         text-color="#f1f1f1"
         :router="true"
@@ -29,11 +29,11 @@
         <el-menu-item
           v-if="!user"
           @click="menuClick"
-          index="/Account/Home/dang-ky"
+          index="/Account/Home/dang-nhap"
         >
-          <!-- <a href="#reigter">Đăng ký sử dụng</a> -->
-          <nuxt-link to="/Account/Home/dang-ky">Đăng ký sử dụng</nuxt-link>
-          <!-- Đăng ký sử dụng -->
+      
+          <nuxt-link to="/Account/Home/dang-nhap">Đăng nhập</nuxt-link>
+     
         </el-menu-item>
         <el-menu-item
           v-if="!user"
@@ -43,7 +43,7 @@
           <!-- <a href="#Comment">Góp ý</a> -->
           <nuxt-link to="/Account/Home/gop-y">Góp ý</nuxt-link>
         </el-menu-item>
-        <el-submenu v-if="user" popper-class="submenu" index="#">
+        <!-- <el-submenu v-if="user" popper-class="submenu" index="#">
           <template slot="title">Mở rộng</template>
 
           <el-menu-item
@@ -52,16 +52,15 @@
             :index="item.path"
             >{{ item.banner }}</el-menu-item
           >
-          <!-- <el-menu-item index="2-2">item two</el-menu-item>
-          <el-menu-item index="2-3">item three</el-menu-item> -->
-        </el-submenu>
-        <el-menu-item
+  
+        </el-submenu> -->
+        <!-- <el-menu-item
           style="display: flex; align-items: center"
           v-if="user"
           index="#"
         >
           <Avatar />
-        </el-menu-item>
+        </el-menu-item> -->
       </el-menu>
     </div>
   </div>
@@ -125,7 +124,7 @@ export default {
     background-repeat: no-repeat;
     background-size: contain;
     // background-;
-    background-image: url("/images/vanhoaviet.png");
+    background-image: url("/images/ngoicon.jpg");
   }
 
   .header-menu {

@@ -50,8 +50,8 @@
             padding: 5px;
           "
         >
-          <div style="cursor:pointer" class="Register" @click="toRegiter()">Đăng ký</div>
-          <div class="forget-pass" @click="forgetPass()">Quên mật khẩu</div>
+          <!-- <div style="cursor:pointer" class="Register" @click="toRegiter()">Đăng ký</div> -->
+          <!-- <div class="forget-pass" @click="forgetPass()">Quên mật khẩu</div> -->
         </div>
 
         <div class="button-action">
@@ -59,9 +59,9 @@
             <el-button type="primary" size="medium" :loading="loading" @click="Login()"
               >Đăng nhập</el-button
             >
-            <el-button type="primary" size="medium"
+            <!-- <el-button type="primary" size="medium"
               >Đăng nhập bằng email</el-button
-            >
+            > -->
           </div>
         </div>
         <div class="footer">
@@ -248,8 +248,8 @@ export default {
       position: relative;
       display: flex;
       flex-direction: column;
-      box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-      background: #fff;
+      // box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+      // background: #fff;
       width: 300px;
       border-radius: 20px;
       padding: 20px;
@@ -267,7 +267,7 @@ export default {
       }
 
       & > div {
-        padding-bottom: 20px;
+        padding-bottom: 10px;
 
         &:last-of-type {
           padding-bottom: 0;

@@ -2,7 +2,7 @@
   <div>
     <div id="hero-section" class="hero-section">
       <div class="hero-section-logo">
-        <img src="/images/vanhoaviet.png" />
+        <img src="/images/ngoicon.jpg" />
         <dowload_link></dowload_link>
       </div>
       <div v-if="!isAdd" class="hero-section-content">

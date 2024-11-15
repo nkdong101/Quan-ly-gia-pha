@@ -16,3 +16,12 @@ C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\Utility\obj\Debug\Utility.cspro
 C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\Utility\obj\Debug\Utility.csproj.CopyComplete
 C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\Utility\obj\Debug\Utility.dll
 C:\Users\gnodo\OneDrive\Desktop\đồ án\Giapha\Utility\obj\Debug\Utility.pdb
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\Utility\bin\Debug\Utility.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\Utility\bin\Debug\Utility.pdb
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\Utility\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\Utility\bin\Debug\Newtonsoft.Json.xml
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\Utility\obj\Debug\Utility.csproj.AssemblyReference.cache
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\Utility\obj\Debug\Utility.csproj.CoreCompileInputs.cache
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\Utility\obj\Debug\Utility.csproj.CopyComplete
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\Utility\obj\Debug\Utility.dll
+C:\Users\gnodo\OneDrive\Desktop\đồ án\Quan-ly-gia-pha\Giapha_API\Utility\obj\Debug\Utility.pdb

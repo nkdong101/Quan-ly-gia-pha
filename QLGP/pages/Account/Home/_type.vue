@@ -1,8 +1,8 @@
 <template lang="">
   <div>
-    <div id="dang-nhap" class="hero-section">
+    <div id="trang-chu" class="hero-section">
       <div class="hero-section-logo">
-        <img :style="{ width: '250px' }" src="/images/vanhoaviet.png" />
+        <img :style="{ width: '250px' }" src="/images/ngoicon.jpg" />
         <dowload_link></dowload_link>
       </div>
       <!-- <div>{{ type }}</div> -->
@@ -30,29 +30,29 @@
         </div>
         <div class="intro-content">
           <el-row :gutter="24">
-            <el-col :span="8">
+            <el-col :span="12">
               <el-card shadow="always">
                 <p style="font-size: 36pt">{{ countDongho  }}</p>
                 <h4>Dòng họ</h4>
               </el-card>
             </el-col>
-            <el-col :span="8">
+            <el-col :span="12">
               <el-card shadow="always">
                 <p style="font-size: 36pt">{{ countGiapha  }}</p>
                 <h4>Người sử dụng</h4>
               </el-card>
             </el-col>
-            <el-col :span="8">
+            <!-- <el-col :span="8">
               <el-card shadow="always">
                 <p style="font-size: 36pt">{{ countTinh  }}</p>
                 <h4>Tỉnh có mặt</h4>
               </el-card>
-            </el-col>
+            </el-col> -->
           </el-row>
         </div>
       </div>
     </div>
-    <div id="dang-ky" class="reigter">
+    <div id="dang-nhap" class="reigter">
       <div style="text-align: center" class="regiter-wrapper">
         <h4>{{ isRegit ? "Khởi tạo thông tin dòng họ" : "Đăng nhập" }}</h4>
         <div
@@ -89,14 +89,14 @@ export default {
     return {
       // isAdd: null,
       home: {
-        Dongho: 0,
-        Giapha: 0,
-        Tinh: 0,
+        Dongho: 1,
+        Giapha: 20,
+       
       },
       countDongho: 0,
       countGiapha: 0,
       countTinh: 0,
-      isRegit: true,
+      isRegit: false,
       hasStarted: false,
     };
   },
@@ -116,11 +116,11 @@ export default {
   },
   methods: {
     handleRegister(value) {
-      this.isRegit = value;
+      this.isRegit = false;
       // console.log(value);
     },
     checkScroll() {
-      console.log(this.hasStarted)
+      // console.log(this.hasStarted)
       let introPos = "";
       if (this.$refs.intro)
         introPos = this.$refs.intro.getBoundingClientRect().top;
@@ -158,17 +158,18 @@ export default {
   mounted() {
     // console.log(this);
     this.hasStarted = false;
-    console.log('mounted',this.hasStarted)
+    // console.log('mounted',this.hasStarted)
     GetDataAPI({
       url: API.Reports_Home,
       action: (re) => {
         // console.log(re)
-        this.home = re;
+        // this.home = re;
         window.addEventListener("scroll", this.checkScroll);
       },
     });
     this.$nextTick(() => {
-      // console.log(document.getElementById(this.type));
+      // console.log(this)
+      console.log(document.getElementById(this.type));
       setTimeout(() => {
         document.getElementById(this.type).scrollIntoView();
       }, 0);

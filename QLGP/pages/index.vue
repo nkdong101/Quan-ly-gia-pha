@@ -521,7 +521,7 @@ export default {
     // console.log(this)
     // this.$refs.svgContainer.querySelector('g').addEventListener("click", this.nodeClick);
     this.dongho_id = this.user.Dongho_id;
-    this.GetNodeData();
+    // this.GetNodeData();
     console.log(this);
 
     // <

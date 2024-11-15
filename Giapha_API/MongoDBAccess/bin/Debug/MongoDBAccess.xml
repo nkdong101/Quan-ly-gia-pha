@@ -1,0 +1,2112 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MongoDBAccess</name>
+    </assembly>
+    <members>
+        <member name="T:MongoDBAccess.API_Input.Add_ACE_Input">
+            <summary>
+            Dữ liệu đầu Vào khi thêm anh chị em
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_ACE_Input.Curent_Info">
+            <summary>
+            Thông tin người thêm anh chị em
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_ACE_Input.ACE_Info">
+            <summary>
+            Thông tin của anh chị em người thêm
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.API_Input.Add_bome_Input">
+            <summary>
+            Thông tin khi thêm bố mẹ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_bome_Input.Con_Info">
+            <summary>
+            Thông tin con
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_bome_Input.Bo_Info">
+            <summary>
+            Thông tin bố
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_bome_Input.Me_Info">
+            <summary>
+            Thông tin mẹ
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.API_Input.Add_Vo_Input">
+            <summary>
+            Thêm mới vợ/ chồng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_Vo_Input.Chong_Info">
+            <summary>
+            Thông tin người chồng thực hiện thêm vợ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_Vo_Input.Vo_Info">
+            <summary>
+            Thông tin Vợ/ chồng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_Vo_Input.Index">
+            <summary>
+            Thứ tự của vợ (vợ thứ mấy?)
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.API_Input.Add_Con_Input">
+            <summary>
+            Thông tin khi thêm con
+            Khi Thêm con tất cả đều thêm từ mẹ (nếu không xác định được thì thêm bản ghi là không xác định)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_Con_Input.Con_Info">
+            <summary>
+            Thông tin con
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_Con_Input.Me_Info">
+            <summary>
+            Thông tin mẹ 
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Add_Con_Input.Conrieng">
+            <summary>
+            True: Con riêng
+            False: Con chung
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Doi_lich.Day">
+            <summary>
+            Ngày cần kiểm tra
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Doi_lich.Amlich">
+            <summary>
+            True nếu đầu vào là ngày âm lịch
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Doi_lich.Nhuan">
+            <summary>
+            Dữ liệu đầu vào là ngày âm lịch 
+            True: Nếu tháng đầu vào là tháng nhuận
+            False: nếu tháng đầu vào không phải tháng nhuận
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.API_Input.Register">
+            <summary>
+            Thông tin khi đăng ký tài khoản
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Register.User_Info">
+            <summary>
+            Thông tin người dùng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.API_Input.Register.Dongho_Info">
+            <summary>
+            Thông tin dòng họ
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Google.GoogleAuthPortal.Login(System.String,System.String)">
+            <summary>
+            Hàm lấy code từ web call lên khi login google thành công
+            Giải mã code lấy access_token, refresh_token để trả cho client
+            </summary>
+            <param name="code"></param>
+            <param name="redirect_uri"></param>
+        </member>
+        <member name="T:MongoDBAccess.AccountHelper">
+            <summary>
+            Xử lý thông tin người dùng
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.AccountHelper.#ctor(System.Nullable{System.UInt32},MongoDB.Driver.MongoClient)">
+            <summary>
+            
+            </summary>
+            <param name="iUserId"></param>
+            <param name="iClient"></param>
+        </member>
+        <member name="M:MongoDBAccess.AccountHelper.Register(MongoDBAccess.API_Input.Register)">
+            <summary>
+            Đăng ký sử dụng hệ thống
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.AccountHelper.EditUser(MongoDBAccess.Models.User,MongoDBAccess.Models.User)">
+            <summary>
+            Sửa tài khoản
+            </summary>
+            <param name="iAccountAction"></param>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.AccountHelper.AddUser(MongoDBAccess.Models.User,MongoDBAccess.Models.User,MongoDB.Driver.IClientSessionHandle)">
+            <summary>
+            Thêm mới thông tin người dùng
+            </summary>
+            <param name="iAccountAction">Thông tin tài khoản thực hiện thêm dữ liệu</param>
+            <param name="iInfo">Thông tin được thêm</param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.AccountHelper.SetPermission(MongoDBAccess.Models.GroupPermission,System.UInt32)">
+            <summary>
+            Cập nhật thông tin quyền người dùng
+            </summary>
+            <param name="iPermission"></param>
+            <param name="iId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.AccountHelper.FindByFilter(MongoDBAccess.AccountFilter)">
+            <summary>
+            Bỏ
+            Lấy danh sách Account by filter
+            </summary>
+            <param name="iFilters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.AccountHelper.FindUser(System.String,System.String)">
+            <summary>
+            Lấy thông tin user
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.AccountHelper.ProcessLogin(System.String,System.String)">
+            <summary>
+            Đăng nhập hệ thống
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.AccountHelper.ChangeAvatar(System.UInt32,System.String)">
+            <summary>
+            Thay đổi ảnh đại diện
+            </summary>
+            <param name="iUser_id"></param>
+            <param name="iURL"></param>
+        </member>
+        <member name="M:MongoDBAccess.AccountHelper.CheckDelete(System.UInt32,MongoDBAccess.Models.User)">
+            <summary>
+            Kiểm tra xóa tài khoản
+            </summary>
+            <param name="iId"></param>
+            <param name="iUser"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MongoDBAccess.AccountFilter">
+            <summary>
+            Tham số Get đơn vị
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.AccountFilter.Search">
+            <summary>
+            Nội dung tìm kiếm
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.AccountFilter.Dongho_id">
+            <summary>
+            ID dòng họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.AccountFilter.Tinh_id">
+            <summary>
+            ID tỉnh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.AccountFilter.Huyen_id">
+            <summary>
+            ID huyện
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.CommentHelper">
+            <summary>
+            Góp ý của người dùng
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.CommentHelper.#ctor(System.Nullable{System.UInt32})">
+            <summary>
+            Khởi tạo
+            </summary>
+            <param name="iUserId"></param>
+        </member>
+        <member name="M:MongoDBAccess.CommentHelper.Add(MongoDBAccess.Models.Comments)">
+            <summary>
+            thêm mới
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MongoDBAccess.DonviHanhchinhHelper">
+            <summary>
+            Tỉnh - Thành phố
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.DonviHanhchinhHelper.#ctor(System.Nullable{System.UInt32})">
+            <summary>
+            Khởi tạo
+            </summary>
+            <param name="iUserId"></param>
+        </member>
+        <member name="M:MongoDBAccess.DonviHanhchinhHelper.Add_Huyen(MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh)">
+            <summary>
+            Thêm mới huyện
+            </summary>
+            <param name="iHuyen"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DonviHanhchinhHelper.Edit_Huyen(MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh)">
+            <summary>
+            Sửa thông tin huyện
+            </summary>
+            <param name="iHuyen"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MongoDBAccess.DonghoHelper">
+            <summary>
+            Họ của người dùng
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.DonghoHelper.#ctor(System.Nullable{System.UInt32})">
+            <summary>
+            Khởi tạo
+            </summary>
+            <param name="iUserId"></param>
+        </member>
+        <member name="M:MongoDBAccess.DonghoHelper.Add(MongoDBAccess.Models.Dong_ho,MongoDB.Driver.IClientSessionHandle)">
+            <summary>
+            thêm mới
+            </summary>
+            <param name="iInfo"></param>
+            <param name="iSession"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MongoDBAccess.Helper.Thuchi_Helper">
+            <summary>
+            Xử lý nghiệp vụ thu chi
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Helper.Thuchi_Helper.GetByEvent(System.UInt32)">
+            <summary>
+            Lấy danh sách theo sự kiện
+            </summary>
+            <param name="iEvent_id">ID sự kiện</param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Helper.Thuchi_Helper.Add(MongoDBAccess.Models.Thu_Chi)">
+            <summary>
+            Thêm mới bản ghi thu chi
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Helper.Thuchi_Helper.Edit(MongoDBAccess.Models.Thu_Chi)">
+            <summary>
+            Sửa thông tin
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MongoDBAccess.Helper.Event_Registers_Helper">
+            <summary>
+            Xử lý nghiệp vụ liên quan đến sự kiện
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Helper.Event_Registers_Helper.GetList(System.UInt32)">
+            <summary>
+            Lấy danh sách
+            </summary>
+            <param name="iEvent_id">ID sự kiện</param>
+            <returns></returns>
+        </member>
+        <member name="T:MongoDBAccess.Helper.Event_Helper">
+            <summary>
+            Xử lý nghiệp vụ liên quan đến sự kiện
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Helper.Event_Helper.GetList(System.UInt32)">
+            <summary>
+            Lấy danh sách
+            </summary>
+            <param name="iDongho_id">ID dòng họ lấy dữ liệu</param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Helper.Event_Helper.Add(MongoDBAccess.Models.Events)">
+            <summary>
+            Thêm mới 
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Helper.Event_Helper.Edit(MongoDBAccess.Models.Events)">
+            <summary>
+            Sửa thông tin
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Helper.Event_Helper.Remove(MongoDBAccess.Models.Events)">
+            <summary>
+            Xóa thông tin
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Helper.Event_Helper.Cancel_Pending(MongoDBAccess.Models.Events)">
+            <summary>
+            Hủy sự kiện hoặc tạm dừng
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Helper.Event_Helper.Register(MongoDBAccess.Models.Event_Registers,MongoDBAccess.Models.User)">
+            <summary>
+            Đăng ký tham gia sự kiện
+            </summary>
+            <param name="iInfo"></param>
+            <param name="iUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Helper.UserLoginSocialHelper.#ctor(System.Nullable{System.UInt32})">
+            <summary>
+            
+            </summary>
+            <param name="iUserId"></param>
+        </member>
+        <member name="T:MongoDBAccess.Ho_VietNamHelper">
+            <summary>
+            Họ việt nam
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Ho_VietNamHelper.#ctor(System.Nullable{System.UInt32},MongoDB.Driver.MongoClient)">
+            <summary>
+            Khởi tạo
+            </summary>
+            <param name="iUserId"></param>
+        </member>
+        <member name="T:MongoDBAccess.GroupPermissionHelper">
+            <summary>
+            Xử lý dữ liệu đơn vị cung cấp bảo hiểm
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.GroupPermissionHelper.#ctor(System.Nullable{System.UInt32})">
+            <summary>
+            Khởi tạo giá trị
+            </summary>
+            <param name="iUserId"></param>
+        </member>
+        <member name="T:MongoDBAccess.Gia_phaHelper">
+            <summary>
+            Các hàm xử lý nghiệp vụ liên quan đến gia phả
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.#ctor(System.Nullable{System.UInt32},MongoDB.Driver.MongoClient)">
+            <summary>
+            Khởi tạo
+            </summary>
+            <param name="iUserId"></param>
+            <param name="iClient">Kết nối</param>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.Doilich(MongoDBAccess.API_Input.Doi_lich)">
+            <summary>
+            Đổi ngày âm dương
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.GetTree(System.UInt32,MongoDBAccess.Models.Extend.Tree_box_Config)">
+            <summary>
+            Lấy cây gia phả của dòng họ
+            </summary>
+            <param name="iDongho_id">ID dòng họ</param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.GetInfo(System.UInt32,MongoDBAccess.Models.Gia_pha,MongoDBAccess.Models.Gia_pha,System.Collections.Generic.List{MongoDBAccess.Models.Gia_pha},System.Collections.Generic.List{MongoDBAccess.Models.Extend.Level_Index}@,MongoDBAccess.Models.Extend.Tree_box_Config,System.Int32,System.Collections.Generic.List{MongoDBAccess.Models.Extend.Tree_Line}@)">
+            <summary>
+            Lấy dữ liệu liên quan đến 1 người
+            </summary>
+            <param name="iDongho_id">ID dòng họ</param>
+            <param name="iViewer">Người xem dữ liệu</param>
+            <param name="iInfo">Người trong dòng họ đang cần lấy dữ liệu</param>
+            <param name="iData">Danh sách người trong dòng họ</param>
+            <param name="iIndex">Sử dụng để lấy stt theo từng đời</param>
+            <param name="iConfig">Cấu hình để vẽ cây gia phả</param>
+            <param name="iMaxIndex">Số thành viên lớn nhất trong 1 đời</param>
+            <param name="Lines">Danh sách các đường nối vợ chồng con cái</param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.DrawTree(System.UInt32,MongoDBAccess.Models.Gia_pha,MongoDBAccess.Models.Gia_pha,System.Collections.Generic.List{MongoDBAccess.Models.Gia_pha},System.Collections.Generic.List{MongoDBAccess.Models.Extend.Level_Index}@,MongoDBAccess.Models.Extend.Tree_box_Config,MongoDBAccess.Models.Extend.Level_Index,System.Collections.Generic.List{MongoDBAccess.Models.Extend.Tree_Line}@)">
+            <summary>
+            Vẽ cây gia phả
+            </summary>
+            <param name="iDongho_id"></param>
+            <param name="iViewer"></param>
+            <param name="iInfo"></param>
+            <param name="iData"></param>
+            <param name="iIndex"></param>
+            <param name="iConfig"></param>
+            <param name="iMaxIndex"></param>
+            <param name="Lines"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.GetFamily(System.UInt32)">
+            <summary>
+            Lấy thông tin gia đình
+            </summary>
+            <param name="iCurent_id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.Save_Bome(MongoDBAccess.API_Input.Add_bome_Input)">
+            <summary>
+            Lưu thông tin bố mẹ
+            </summary>
+            <param name="iInfo"></param>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.Add_Anh_Chi_Em(MongoDBAccess.API_Input.Add_ACE_Input)">
+            <summary>
+            Thêm mới anh chị em
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.Add_Con(MongoDBAccess.API_Input.Add_Con_Input)">
+            <summary>
+            Thêm mới con
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.Add_Vo(MongoDBAccess.API_Input.Add_Vo_Input)">
+            <summary>
+            Thêm mới vợ/ chồng
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.Validate(MongoDBAccess.Models.Gia_pha,MongoDB.Driver.IClientSessionHandle)">
+            <summary>
+            Kiểm tra dữ liệu trước khi cập nhật
+            </summary>
+            <param name="iInfo"></param>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.Edit(MongoDBAccess.Models.Gia_pha)">
+            <summary>
+            Sửa thông tin
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.Remove(System.UInt32)">
+            <summary>
+            Xóa thông tin
+            </summary>
+            <param name="iInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.CheckLevel(System.Int32)">
+            <summary>
+            Xác định lại level của dòng họ
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.SendAccount(MongoDBAccess.Models.Gia_pha)">
+            <summary>
+            Gửi thông tin tài khoản cho người này
+            </summary>
+            <param name="iInfo"></param>
+        </member>
+        <member name="M:MongoDBAccess.Gia_phaHelper.To_tien_chung(MongoDBAccess.Models.Gia_pha,MongoDBAccess.Models.Gia_pha)">
+            <summary>
+            Tìm tổ tiên chung của 2 người
+            </summary>
+            <param name="iperson1"></param>
+            <param name="person2"></param>
+            <returns></returns>
+        </member>
+        <member name="F:MongoDBAccess.Global.vList_LevelName">
+            <summary>
+            Danh sách tên gọi theo đời đối với người gọi
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Global.GetSequance``1">
+            <summary>
+            Lấy ID theo số tự tăng của từng bảng
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:MongoDBAccess.Models.Comments">
+            <summary>
+            Thông tin góp ý
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Comments.Name">
+            <summary>
+            Người góp ý
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Comments.Phone">
+            <summary>
+            Số liên hệ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Comments.Email">
+            <summary>
+            địa chỉ email
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Comments.Content">
+            <summary>
+            Nội dung góp ý
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Comments.UserId">
+            <summary>
+            Tài khoản góp ý
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Danhmuc.Ho_VietNam">
+            <summary>
+            Dòng họ của việt nam
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Danhmuc.Ho_VietNam.Name">
+            <summary>
+            Tên họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Danhmuc.Ho_VietNam.Total">
+            <summary>
+            Số lượng bản ghi
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Danhmuc.Ho_VietNam.Person">
+            <summary>
+            Số lượng thành viên
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Danhmuc.Ho_VietNam.DS_Tinh">
+            <summary>
+            Danh sách tỉnh
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Models.Danhmuc.Ho_VietNam.Validate">
+            <summary>
+            Kiểm tra chuẩn hóa dữ liệu
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh">
+            <summary>
+            Thông tin tỉnh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh.Level">
+            <summary>
+            Cấp độ
+            0: = Tỉnh
+            1: = Huyện
+            2: = Xã
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh.Name">
+            <summary>
+            Tên tỉnh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh.Index">
+            <summary>
+            Mã số
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh.Parent_id">
+            <summary>
+            ID cấp trên
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh.Childs">
+            <summary>
+            Danh sách đơn vị hành chính cấp dưới
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Dong_ho">
+            <summary>
+            Thông tin dòng họ do người dùng đăng ký
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Dong_ho.Name">
+            <summary>
+            Tên dòng họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Dong_ho.Ho_Vietnam_id">
+            <summary>
+            ID dòng họ việt nam
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Dong_ho.Tinh_id">
+            <summary>
+            ID tỉnh hiện tại
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Dong_ho.Huyen_id">
+            <summary>
+            ID Huyện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Dong_ho.Description">
+            <summary>
+            Thông tin mô tả
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Dong_ho.Address">
+            <summary>
+            Địa chỉ dòng họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Dong_ho.Total">
+            <summary>
+            Tổng số con cháu (hệ thống tự tính)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Dong_ho.Total_Male">
+            <summary>
+            Tổng số xuất đinh (nam giới và còn sống)
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Models.Dong_ho.Validate">
+            <summary>
+            Kiểm tra dữ liệu
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Enums.eQuanhe_ACE">
+            <summary>
+            Quan hệ của anh chị em trong gia đình
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.eQuanhe_ACE.ACE_Ruot">
+            <summary>
+            Anh chị em cùng cha cùng mẹ
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.eQuanhe_ACE.Cung_me">
+            <summary>
+            Anh chị em cùng mẹ khác cha
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.eQuanhe_ACE.Cung_Cha">
+            <summary>
+            Anh chị em cùng cha khác mẹ
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Enums.EventState">
+            <summary>
+            Trạng thái đăng ký sự kiện
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.EventState.None">
+            <summary>
+            Chưa kích hoạt
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.EventState.Active">
+            <summary>
+            Đang kích hoạt
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.EventState.Cancel">
+            <summary>
+            Bị hủy
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.EventState.Pending">
+            <summary>
+            Tạm dừng 
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.EventState.Finish">
+            <summary>
+            Kết thúc
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Enums.Gender">
+            <summary>
+            Giới tính
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.Gender.male">
+            <summary>
+            Nam
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.Gender.female">
+            <summary>
+            Nữ
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Enums.Quanhe">
+            <summary>
+            Quan hệ gia đình
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.Quanhe.Bo_Me">
+            <summary>
+            Bố hoặc mẹ
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.Quanhe.Vo_Chong">
+            <summary>
+            Vợ hoặc chồng
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.Quanhe.Con_de">
+            <summary>
+            Con đẻ
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.Quanhe.Con_nuoi">
+            <summary>
+            Con nuôi
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.Quanhe.Anh_chi">
+            <summary>
+            Anh hoặc chị
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.Quanhe.Em">
+            <summary>
+            Em
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Enums.State">
+            <summary>
+            Trạng thái 
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.State.Live">
+            <summary>
+            Đang sống
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.State.Dead">
+            <summary>
+            Đã chết
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Enums.State.No_Infomation">
+            <summary>
+            Hiện không có thông tin
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Events">
+            <summary>
+            Sự kiện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.Title">
+            <summary>
+            Tiêu đề
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.Content">
+            <summary>
+            Nội dung mô tả
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.Files">
+            <summary>
+            Danh sách file đính kèm
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.DateBegin">
+            <summary>
+            Thời điểm bắt đầu
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.DateEnd">
+            <summary>
+            Thời điểm kết thúc
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.DateRegister">
+            <summary>
+            Thời điểm cuối cùng được phép đăng ký
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.Organizers">
+            <summary>
+            Danh sách ban tổ chức
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.State">
+            <summary>
+            Trạng thái sự kiện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.Dongho_id">
+            <summary>
+            ID dòng họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.Person">
+            <summary>
+            Số người tham gia (hệ thống tự tổng hợp khi người dùng đăng ký)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Events.Registers">
+            <summary>
+            3 người đăng ký gần nhất
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Models.Events.Validate">
+            <summary>
+            Kiểm tra dữ liệu
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Event_Registers">
+            <summary>
+            Người dùng đăng ký tham gia sự kiện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Event_Registers.Event_id">
+            <summary>
+            Sự kiện đăng ký
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Event_Registers.Description">
+            <summary>
+            Thông tin mô tả khi đăng ký
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Anh_Chi_Em">
+            <summary>
+            Thông tin anh chị em
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Anh_Chi_Em.Index">
+            <summary>
+            Thứ tự sắp xếp
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Anh_Chi_Em.Id">
+            <summary>
+            ID đối tượng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Anh_Chi_Em.Quanhe">
+            <summary>
+            Mối quan hệ anh chị em
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Event_Organizers">
+            <summary>
+            Danh sách thành viên ban tổ chức sự kiện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Event_Organizers.User_id">
+            <summary>
+            ID người tham gia
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Event_Organizers.Vaitro">
+            <summary>
+            Vai trò trong ban tổ chức
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Event_Organizers.Description">
+            <summary>
+            Mô tả thông tin khác
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Event_Organizers.Index">
+            <summary>
+            Thứ tự sắp xếp
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Event_Register">
+            <summary>
+            Thông tin người đăng ký sự kiện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Event_Register.UserId">
+            <summary>
+            Người đăng ký
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Event_Register.DateActive">
+            <summary>
+            Ngày đăng ký
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Family">
+            <summary>
+            Thông tin các thành viên trong gia đình
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family.Farther">
+            <summary>
+            Thông tin bố
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family.Mother">
+            <summary>
+            Thông tin mẹ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family.Curent">
+            <summary>
+            Thông tin chính mình
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family.Couple">
+            <summary>
+            Thông tin vợ/ chồng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family.Siblings">
+            <summary>
+            Thông tin anh chị em
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Family_Person">
+            <summary>
+            Thông tin thành viên trong gia đình
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Id">
+            <summary>
+            ID hệ thống
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Avatar">
+            <summary>
+            ảnh đại diện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Name">
+            <summary>
+            Tên thành viên
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Other_Name">
+            <summary>
+            tên gọi khác (nếu có)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Gender">
+            <summary>
+            Giới tính
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Birthday">
+            <summary>
+            Ngày sinh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Year_Of_Birth">
+            <summary>
+            Năm sinh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Date_of_death">
+            <summary>
+            Ngày mất
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Index">
+            <summary>
+            Con thứ mấy trong gia đình
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Number_Siblings">
+            <summary>
+            Số lượng anh chị em trong gia đình
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Number_Couple">
+            <summary>
+            Số lượng vợ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Number_Childs">
+            <summary>
+            Số lượng con
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Childs">
+            <summary>
+            Danh sách những người con dùng để hiển thị dạng tree
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Address">
+            <summary>
+            Địa chỉ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.burial_ground">
+            <summary>
+            Nơi chôn cất
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Description">
+            <summary>
+            Thông tin mô tả
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Giapha_Tree">
+            <summary>
+            Dữ liệu vẽ cây phả hệ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.id">
+            <summary>
+            ID hệ thống
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.Level">
+            <summary>
+            Đời
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.name">
+            <summary>
+            Họ tên
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.gioitinh">
+            <summary>
+            Giới tính
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.mid">
+            <summary>
+            ID mẹ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.fid">
+            <summary>
+            ID cha
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.pids">
+            <summary>
+            Danh sách vợ/ chồng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.index">
+            <summary>
+            Con thứ mấy trong gia đình
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.SL_Anhem">
+            <summary>
+            Số lượng anh em
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.SL_Con">
+            <summary>
+            Số lượng con
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.Stt">
+            <summary>
+            Stt khi sắp xếp
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.Namsinh">
+            <summary>
+            Năm sinh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.Nammat">
+            <summary>
+            Năm mất
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.Ngaymat_amlich">
+            <summary>
+            Ngày mất khi chuyển sang âm lịch
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.Hongoai_id">
+            <summary>
+            Nam: luôn = 0
+            Nữ: Họ của bố mẹ đẻ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.Dongho_id">
+            <summary>
+            Nam: Họ nội
+            Nữ: Họ của chồng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.Box">
+            <summary>
+            Thông số để vẽ cây gia phả
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.Tengoi">
+            <summary>
+            Tên gọi đối với người đang truy cập hệ thống
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.State">
+            <summary>
+            Trạng thái
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree.Avatar">
+            <summary>
+            Ảnh đại diện
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Models.Extend.Giapha_Tree.GetRight(MongoDBAccess.Models.Extend.Tree_box_Config)">
+            <summary>
+            Lấy tọa độ tâm bên phải hình vẽ
+            </summary>
+            <param name="iConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Models.Extend.Giapha_Tree.GetLeft(MongoDBAccess.Models.Extend.Tree_box_Config)">
+            <summary>
+            Lấy tọa độ tâm bên trái hình vẽ
+            </summary>
+            <param name="iConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Models.Extend.Giapha_Tree.Center_Top(MongoDBAccess.Models.Extend.Tree_box_Config)">
+            <summary>
+            Tâm phía trên
+            </summary>
+            <param name="iConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree_Result.Data">
+            <summary>
+            Dữ liệu
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Giapha_Tree_Result.Config">
+            <summary>
+            Thông số cấu hình
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.Extend.Giapha_Tree_Result.Lines">
+            <summary>
+            Danh sach duong ves
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Tree_Line">
+            <summary>
+            Thông tin đoạn nối
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_Line.Id1">
+            <summary>
+            ID 1
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_Line.Id2">
+            <summary>
+            id 2
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_Line.Points">
+            <summary>
+            Danh sách tọa độ
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.HomeInfo">
+            <summary>
+            Thông tin hiển thị trang chủ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.HomeInfo.Dongho">
+            <summary>
+            Số lượng dòng họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.HomeInfo.Giapha">
+            <summary>
+            Số lượng người trong gia phả
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.HomeInfo.Tinh">
+            <summary>
+            Số tỉnh có mặt
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.LCA_Info">
+            <summary>
+            Mối quan hệ gần nhất giữa 2 người
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Level">
+            <summary>
+            Thông tin cấp bậc
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Level.Index">
+            <summary>
+            Thứ tự sắp xếp
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Level.Id">
+            <summary>
+            ID đối tượng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Level.Cognition">
+            <summary>
+            True: người thân cùng huyết thống (hoặc chính thống nếu là quan hệ vợ chồng)
+            False: không cùng huyết thống
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Level_Index.Level">
+            <summary>
+            Đời
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Level_Index.Count">
+            <summary>
+            Số lượng bản ghi
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Level_Index.Index">
+            <summary>
+            Thứ tự xử lý đến hiện tại
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Models.Extend.Level_Index.GetIndex(System.Int32)">
+            <summary>
+            Lấy stt lớn nhất trong đời
+            </summary>
+            <param name="iMax"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.LevelName">
+            <summary>
+            Tên gọi các đời
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.LevelName.Gender">
+            <summary>
+            Giới tính
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.LevelName.Level">
+            <summary>
+            Cấp độ so với người gọi
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.LevelName.Name">
+            <summary>
+            Tên gọi
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Location">
+            <summary>
+            Tọa độ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Location.Lat">
+            <summary>
+            Vĩ độ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Location.Lng">
+            <summary>
+            Kinh độ
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Tree_box_Config">
+            <summary>
+            Tham số cấu hình
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_box_Config.X">
+            <summary>
+            Tọa độ bắt đầu vẽ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_box_Config.Y">
+            <summary>
+            Tọa độ bắt đầu vẽ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_box_Config.Width">
+            <summary>
+            Chiều rộng ngoài cùng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_box_Config.Height">
+            <summary>
+            Chiều cao của khối
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_box_Config.Border">
+            <summary>
+            Chiều rộng border
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_box_Config.Distance">
+            <summary>
+            Khoảng cách giữa 2 khối
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_box_Config.Header_Height">
+            <summary>
+            Chiều cao của Header
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_box_Config.MaxWidth">
+            <summary>
+            Kích thước khu vực vẽ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_box_Config.MaxHeight">
+            <summary>
+            Khu vực vẽ lớn nhất
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Tree_Box">
+            <summary>
+            Thông tin để vẽ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_Box.Row">
+            <summary>
+            Cấp độ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_Box.Index">
+            <summary>
+            Thứ tự trong hàng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_Box.X">
+            <summary>
+            Chiều ngang
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Tree_Box.Y">
+            <summary>
+            Chiều dọc
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Models.Extend.Tree_Box.Re(MongoDBAccess.Models.Extend.Tree_box_Config,System.Int32)">
+            <summary>
+            Xác định lại tọa độ
+            </summary>
+            <param name="iConfig"></param>
+            <param name="iCol"></param>
+        </member>
+        <member name="T:MongoDBAccess.Models.Extend.Pha_he">
+            <summary>
+            Thông tin phả hệ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Pha_he.Mother_id">
+            <summary>
+            ID mẹ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Pha_he.Father_id">
+            <summary>
+            ID bố
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Gia_pha">
+            <summary>
+            Thông tin 1 cá nhân trong gia phả
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Dongho_id">
+            <summary>
+            ID họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.HoVietNam_id">
+            <summary>
+            ID họ việt nam
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Hongoai_id">
+            <summary>
+            ID họ ngoại (chỉ áp dụng với nữ)
+            Khi nữ lấy chồng thì họ sẽ theo nhà chồng và chuyển họ của mình thành họ ngoại
+            Làm như thế để tạo mối liên hệ giữa 2 họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Name">
+            <summary>
+            Họ tên
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Other_Name">
+            <summary>
+            Tên gọi khác
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Place_of_birth">
+            <summary>
+            Nơi sinh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Address">
+            <summary>
+            Địa chỉ liên hệ hiện tại
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Noisinh">
+            <summary>
+            Nơi sinh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Phone">
+            <summary>
+            Số liên hệ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.CCCD">
+            <summary>
+            Số CCCD
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Birthday">
+            <summary>
+            Ngày sinh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Index">
+            <summary>
+            Thứ tự trong gia đình
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Level">
+            <summary>
+            Đời thứ mấy trong dòng họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Year_Of_Birth">
+            <summary>
+            Năm sinh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Avatar">
+            <summary>
+            Ảnh đại diện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.URL">
+            <summary>
+            Đường link tư liệu mô tả về người này
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Gender">
+            <summary>
+            Giới tính
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.State">
+            <summary>
+            Trạng thái
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Date_of_death">
+            <summary>
+            Ngày giỗ theo âm lịch
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.burial_ground">
+            <summary>
+            Nơi chôn cất sau khi mất
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Burial_GPS">
+            <summary>
+            Tọa độ nơi chôn cất
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Parent">
+            <summary>
+            Thông tin bố mẹ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Childs">
+            <summary>
+            Danh sách con cái
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Couple">
+            <summary>
+            Danh sách vợ/ chồng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.siblings">
+            <summary>
+            Danh sách anh chị em
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.User_id">
+            <summary>
+            Tài khoản của người này trong hệ thống
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Models.Gia_pha.Tofamily">
+            <summary>
+            Định dạng thành viên trong gia đình
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.Models.Gia_pha.ToTree(MongoDBAccess.Models.Extend.Tree_Box,MongoDBAccess.Models.Gia_pha)">
+            <summary>
+            Định dạng dữ liệu hiển thị cây gia phả
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:MongoDBAccess.Models.GroupPermission.Name">
+            <summary>
+            Tên nhóm quyền
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.GroupPermission.Description">
+            <summary>
+            Mô tả
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.GroupPermission.Permission">
+            <summary>
+            Các quyền được sử dụng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.ListMenuButton">
+            <summary>
+            Danh sách nút lệnh trong từng menu
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.ListButton">
+            <summary>
+            Danh sách nút lệnh dùng hiển thị trên web (lấy theo người dùng)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Parent_id">
+            <summary>
+            Menu cấp trên
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Controller">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Name">
+            <summary>
+            Tên menu
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Fullname">
+            <summary>
+            Tên hiển thị
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Icon">
+            <summary>
+            Icon
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Viewall">
+            <summary>
+            True: Ai cũng có thể xem
+            False: Chỉ người được cấp quyền mới có thể xem
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Element_id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Element_class">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Title_class">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Other_class">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Stt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Tag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Action">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Systemkey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Menu.Type_id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.MenuResultType.Button">
+            <summary>
+            Nút lệnh
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.MenuResultType.Menu">
+            <summary>
+            Menu
+            </summary>
+        </member>
+        <member name="F:MongoDBAccess.Models.MenuResultType.MenuAction">
+            <summary>
+            chức năng trong menu
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.MenuResult.isViewAll">
+            <summary>
+            True: Tất cả tài khoản đều có thể xem được
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.Thu_Chi">
+            <summary>
+            Quản lý thu chi trong dòng họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Thu_Chi.Dongho_id">
+            <summary>
+            ID dòng họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Thu_Chi.isThu">
+            <summary>
+            True: Thu
+            False: Chi
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Thu_Chi.Description">
+            <summary>
+            Mô tả về khoản thu/ chi
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Thu_Chi.DateActive">
+            <summary>
+            Thời điểm ghi nhận
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Thu_Chi.Bank">
+            <summary>
+            True: Chuyển khoản
+            False: Tiền mặt
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Thu_Chi.Person">
+            <summary>
+            người thực hiện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Thu_Chi.Money">
+            <summary>
+            Số tiền (nếu chi thì số tiền để âm, sau này cộng tổng cho dễ)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Thu_Chi.Event_id">
+            <summary>
+            ID sự kiện nếu thu chi cho sự kiện
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Models.Thu_Chi.Validate">
+            <summary>
+            kiểm tra tính hợp lệ của dữ liệu
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Models.User">
+            <summary>
+            Thông tin người dùng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.UserName">
+            <summary>
+            Tên đăng nhập
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.Password">
+            <summary>
+            Mật khẩu (khi insert để giá trị chưa mã hóa)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.FullName">
+            <summary>
+            Tên đầy đủ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.Buttons">
+            <summary>
+            Danh sách quyền
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.GroupPermission_Id">
+            <summary>
+            Id nhóm quyền
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.Images">
+            <summary>
+            Ảnh đại diện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.Address">
+            <summary>
+            Ảnh đại diện
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.CMND">
+            <summary>
+            Số CCCD
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.BirthDay">
+            <summary>
+            Ngày sinh
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.Phone">
+            <summary>
+            Số liên hệ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.Gender">
+            <summary>
+            Giới tính
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.Dongho_id">
+            <summary>
+            ID dòng họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.Dongho_Name">
+            <summary>
+            Tên dòng họ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.User.Giapha_id">
+            <summary>
+            ID người dùng trong gia phả
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.Models.User.Verify(MongoDBAccess.Models.User)">
+            <summary>
+            Kiểm tra tính hợp lên
+            </summary>
+            <param name="iAccountAction">Account thực hiện</param>
+            <returns></returns>
+        </member>
+        <member name="P:MongoDBAccess.Objects.CustomObjectAttr.IsEdit">
+            <summary>
+            Cho phép trường được sử đụng trong hàm thêm hoặc sửa khi sử dụng hàm DefaultUpdateDefine()
+            true: cho phép thêm/ Sửa (default)
+            false: không cho phép thêm/ Sửa
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Objects.ObjectBase.Id">
+            <summary>
+            Id hệ thống (hệ thống lấy tự động)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Objects.ObjectBase.UserCreate">
+            <summary>
+            Người tạo (hệ thống lấy tự động)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Objects.ObjectBase.UserUpdate">
+            <summary>
+            Người cập nhật (hệ thống lấy tự động)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Objects.ObjectBase.DateCreate">
+            <summary>
+            Ngày tạo (hệ thống lấy tự động)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Objects.ObjectBase.DateUpdate">
+            <summary>
+            Ngày cập nhật (hệ thống lấy tự động)
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Objects.ObjectBase.Use">
+            <summary>
+            True: Còn sử dụng
+            False: Không sử dụng nữa
+            </summary>
+        </member>
+        <member name="T:MongoDBAccess.Objects.Sequence">
+            <summary>
+            Thông tin id cho từng bảng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Objects.Sequence.Value">
+            <summary>
+            Giá trị lớn nhất
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Objects.Sequence.TableName">
+            <summary>
+            Tên bảng
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.ExtendMethods.GetCustomObjectAttr(System.Reflection.PropertyInfo)">
+            <summary>
+            Lấy thông tin CustomObjectAttr
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.ExtendMethods.DefaultUpdateDefine``1(``0)">
+            <summary>
+            Lấy thông tin update của Object mặc định
+            Sử dụng [CustomObjectAttr] để cho phép hoặc không cho phép Edit
+            </summary>  
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.ExtendMethods.ToNumber(System.DateTime,System.String)">
+            <summary>
+            Convert DateTime to number
+            </summary>
+            <param name="date"></param>
+            <param name="number_format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.ExtendMethods.ToNonUnicode(System.String)">
+            <summary>
+            Bỏ dấu text
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.ExtendMethods.CompareStr``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.String)">
+            <summary>
+            Builder filter cho text theo Regex
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="field"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.ExtendMethods.ReplaceItem``1(System.Collections.Generic.List{``0},System.Predicate{``0},``0)">
+            <summary>
+            thay thế phần tử trong mảng theo filter
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="filter"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.IGenericRepository`1.Create(`0,MongoDB.Driver.IClientSessionHandle)">
+            <summary>
+            
+            </summary>
+            <param name="Model"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.IGenericRepository`1.Save(`0,MongoDB.Driver.IClientSessionHandle,System.Boolean)">
+            <summary>
+            Lưu thông tin
+            - Chưa có thì tạo mới
+            - Có rồi thì update
+            </summary>
+            <param name="Model"></param>
+            <param name="session"></param>
+            <param name="isUpsert"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.IGenericRepository`1.Update(System.UInt32,System.Collections.Generic.List{MongoDB.Driver.UpdateDefinition{`0}},MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.UpdateOptions)">
+            <summary>
+            Cập nhật thông tin
+            </summary>
+            <param name="Id"></param>
+            <param name="update"></param>
+            <param name="session"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.IGenericRepository`1.Update(System.UInt32,System.Func{MongoDB.Driver.UpdateDefinitionBuilder{`0},MongoDB.Driver.UpdateDefinition{`0}},MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.UpdateOptions)">
+            <summary>
+            Cập nhật thông tin
+            </summary>
+            <param name="Id"></param>
+            <param name="update"></param>
+            <param name="session"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.IGenericRepository`1.Delete(System.UInt32,MongoDB.Driver.IClientSessionHandle)">
+            <summary>
+            Xóa thông tin
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.IGenericRepository`1.FindById(System.UInt32,MongoDB.Driver.IClientSessionHandle)">
+            <summary>
+            Tìm theo id
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.IGenericRepository`1.Find">
+            <summary>
+            Lấy tất cả
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.IGenericRepository`1.Find(MongoDB.Driver.FilterDefinition{`0})">
+            <summary>
+            
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.IGenericRepository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="P:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.Collection">
+            <summary>
+            Kết nối
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.UserId">
+            <summary>
+            Tài khoản hiện tại
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.Save(`0,MongoDB.Driver.IClientSessionHandle,System.Boolean)">
+            <summary>
+            Thay 1 thế bản tin
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.Update(System.UInt32,System.Func{MongoDB.Driver.UpdateDefinitionBuilder{`0},MongoDB.Driver.UpdateDefinition{`0}},MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.UpdateOptions)">
+            <summary>
+            Update 1 thông tin bản tin
+            </summary>
+            <param name="Id"></param>
+            <param name="UpdateCB"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.Update(System.UInt32,System.Collections.Generic.List{MongoDB.Driver.UpdateDefinition{`0}},MongoDB.Driver.IClientSessionHandle,MongoDB.Driver.UpdateOptions)">
+            <summary>
+            Update 1 thông tin bản tin
+            </summary>
+            <param name="Id"></param>
+            <param name="update"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.Create(`0,MongoDB.Driver.IClientSessionHandle)">
+            <summary>
+            Tạo 1 bản tin
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.Delete(System.UInt32,MongoDB.Driver.IClientSessionHandle)">
+            <summary>
+            Xóa 1 bản tin
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.FindById(System.UInt32,MongoDB.Driver.IClientSessionHandle)">
+            <summary>
+            Tìm kiếm 1 bản tin theo id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.Find">
+            <summary>
+            Lấy dánh sách tất cả bản tin
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.Find(MongoDB.Driver.FilterDefinition{`0})">
+            <summary>
+            Lấy danh sách theo filterBuilder
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.ModelGenericRepository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Lấy danh sách theo linq
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MongoDBAccess.DataAccess.MongoDB.SequenceHelper">
+            <summary>
+            Lấy số thứ tự tự tăng
+            </summary>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.SequenceHelper.#ctor(System.UInt32,MongoDB.Driver.MongoClient)">
+            <summary>
+            
+            </summary>
+            <param name="iUserId"></param>
+            <param name="iClient"></param>
+        </member>
+        <member name="M:MongoDBAccess.DataAccess.MongoDB.SequenceHelper.GetNextSequence``1">
+            <summary>
+            Lấy ID
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

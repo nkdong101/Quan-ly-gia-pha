@@ -36,16 +36,16 @@ namespace API.Controllers
         /// </summary>
         /// <param name="Value">Thông tin đăng ký</param>
         /// <returns></returns>
-        [ResponseType(typeof(APIResult<string>))]
-        [Route("Account/Register")]
-        [HttpPost]
-        [AllowAnonymous]
-        public HttpResponseMessage Register([FromBody] MongoDBAccess.API_Input.Register Value)
-        {
-            helper.Register(Value);
-            return Request.SuccessResult("OK");
+        //[ResponseType(typeof(APIResult<string>))]
+        //[Route("Account/Register")]
+        //[HttpPost]
+        //[AllowAnonymous]
+        //public HttpResponseMessage Register([FromBody] MongoDBAccess.API_Input.Register Value)
+        //{
+        //    helper.Register(Value);
+        //    return Request.SuccessResult("OK");
 
-        }
+        //}
         /// <summary>
         /// Đăng nhập hệ thống
         /// </summary>
@@ -79,41 +79,41 @@ namespace API.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [ResponseType(typeof(APIResult<LoginResult>))]
-        [Route("Account/LoginGoogle")]
-        [HttpPost]
-        [AllowAnonymous]
-        public HttpResponseMessage LoginGoogle([FromBody] string model)
-        {
-            string redirect_uri = Request.Headers.GetValues("redirect_uri").FirstOrDefault();
-            LoginSocial loginSocial = GoogleAuthPortal.Login(model, redirect_uri);
-            if (loginSocial == null)
-                throw new Exception("Đăng nhập không thành công");
+        //[ResponseType(typeof(APIResult<LoginResult>))]
+        //[Route("Account/LoginGoogle")]
+        //[HttpPost]
+        //[AllowAnonymous]
+        //public HttpResponseMessage LoginGoogle([FromBody] string model)
+        //{
+        //    string redirect_uri = Request.Headers.GetValues("redirect_uri").FirstOrDefault();
+        //    LoginSocial loginSocial = GoogleAuthPortal.Login(model, redirect_uri);
+        //    if (loginSocial == null)
+        //        throw new Exception("Đăng nhập không thành công");
 
-            User user = new AccountHelper(1).Find(p => p.Email.ToLower() == loginSocial.email.ToLower()).FirstOrDefault();
-            if (user == null)
-                throw new Exception("Tài khoản của bạn không có trên hệ thống");
+        //    User user = new AccountHelper(1).Find(p => p.Email.ToLower() == loginSocial.email.ToLower()).FirstOrDefault();
+        //    if (user == null)
+        //        throw new Exception("Tài khoản của bạn không có trên hệ thống");
 
-            if (!user.Use)
-            {
-                throw new Exception("Tài khoản của bạn đã bị khóa");
-            }
+        //    if (!user.Use)
+        //    {
+        //        throw new Exception("Tài khoản của bạn đã bị khóa");
+        //    }
 
-            LoginUlti login = new LoginUlti(user.Id) { UserName = user.UserName, Authority = Request.RequestUri.Authority };
-            List<GroupPermission> groupPermissions = new GroupPermissionHelper(this.user?.Id).Find().ToList();
-            return Request.SuccessResult(new LoginResult
-            {
-                AccessToken = login.GetAccessToken(user.Password),
-                AccountSerial = user.Id,
-                UserName = user.UserName,
-                FullName = user.FullName,
-                GroupPermission_Id = user.GroupPermission_Id,
-                ChucVu = groupPermissions.Where(p => p.Id == user.GroupPermission_Id).FirstOrDefault()?.Name,
-                ImgUrl = user.Images,
-                TokenType = "Bearer",
-                ExpiresIn = (int)login.DateExpired.Subtract(DateTime.Now).TotalSeconds
-            });
-        }
+        //    LoginUlti login = new LoginUlti(user.Id) { UserName = user.UserName, Authority = Request.RequestUri.Authority };
+        //    List<GroupPermission> groupPermissions = new GroupPermissionHelper(this.user?.Id).Find().ToList();
+        //    return Request.SuccessResult(new LoginResult
+        //    {
+        //        AccessToken = login.GetAccessToken(user.Password),
+        //        AccountSerial = user.Id,
+        //        UserName = user.UserName,
+        //        FullName = user.FullName,
+        //        GroupPermission_Id = user.GroupPermission_Id,
+        //        ChucVu = groupPermissions.Where(p => p.Id == user.GroupPermission_Id).FirstOrDefault()?.Name,
+        //        ImgUrl = user.Images,
+        //        TokenType = "Bearer",
+        //        ExpiresIn = (int)login.DateExpired.Subtract(DateTime.Now).TotalSeconds
+        //    });
+        //}
         /// <summary>
         /// Lấy danh sách người dùng
         /// </summary>

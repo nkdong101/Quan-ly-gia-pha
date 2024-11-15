@@ -487,23 +487,9 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="M:API.Controllers.AccountController.Register(MongoDBAccess.API_Input.Register)">
-            <summary>
-            Đăng ký sử dụng
-            </summary>
-            <param name="Value">Thông tin đăng ký</param>
-            <returns></returns>
-        </member>
         <member name="M:API.Controllers.AccountController.Login(API.Models.LoginModel)">
             <summary>
             Đăng nhập hệ thống
-            </summary>
-            <param name="model"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.AccountController.LoginGoogle(System.String)">
-            <summary>
-            Đăng nhập với tài khoản gmail
             </summary>
             <param name="model"></param>
             <returns></returns>
