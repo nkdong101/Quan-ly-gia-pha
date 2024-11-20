@@ -43,7 +43,7 @@
           <!-- <a href="#Comment">Góp ý</a> -->
           <nuxt-link to="/Account/Home/gop-y">Góp ý</nuxt-link>
         </el-menu-item>
-        <!-- <el-submenu v-if="user" popper-class="submenu" index="#">
+        <el-submenu v-if="user" popper-class="submenu" index="#">
           <template slot="title">Mở rộng</template>
 
           <el-menu-item
@@ -53,14 +53,14 @@
             >{{ item.banner }}</el-menu-item
           >
   
-        </el-submenu> -->
-        <!-- <el-menu-item
+        </el-submenu>
+        <el-menu-item
           style="display: flex; align-items: center"
           v-if="user"
           index="#"
         >
           <Avatar />
-        </el-menu-item> -->
+        </el-menu-item>
       </el-menu>
     </div>
   </div>

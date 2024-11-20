@@ -28,7 +28,7 @@ namespace API
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //MongoDBAccess.Global.Init("mongodb://giapha:giapha_viettech_2024@localhost:20182/", "viettech_vanhoaviet");
-            MongoDBAccess.Global.Init("mongodb://giapha:giapha_viettech_2024@27.71.225.195:20182/", "viettech_vanhoaviet");
+            MongoDBAccess.Global.Init("mongodb://dong:123@localhost:27017/", "Giapha");
         }
     }
 }

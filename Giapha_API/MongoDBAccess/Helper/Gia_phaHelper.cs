@@ -53,13 +53,15 @@ namespace MongoDBAccess
         /// </summary>
         /// <param name="iDongho_id">ID dòng họ</param>
         /// <returns></returns>
-        public Models.Extend.Giapha_Tree_Result GetTree(uint iDongho_id, Models.Extend.Tree_box_Config iConfig)
+        public Models.Extend.Giapha_Tree_Result GetTree()
         {
+            uint iDongho_id = 1;
+            var iConfig = new Models.Extend.Tree_box_Config();
             if (iConfig == null) iConfig = new Models.Extend.Tree_box_Config();
-            var vPersonView = this.Find(p => p.User_id == this.UserId && (p.Dongho_id == iDongho_id || p.Hongoai_id == iDongho_id)).FirstOrDefault();
+            var vPersonView = this.Find(p => p.User_id == this.UserId && (p.Dongho_id == iDongho_id)).FirstOrDefault();
             Models.Extend.Giapha_Tree_Result vResult = new Models.Extend.Giapha_Tree_Result();
 
-            var vData = this.Find(p => p.Dongho_id == iDongho_id || p.Hongoai_id == iDongho_id)
+            var vData = this.Find(p => p.Dongho_id == iDongho_id)
                            .SortBy(p => p.Level).ThenBy(p => p.Gender)
                            .ToList();
             if (vData.Count == 0) return vResult;
@@ -67,7 +69,7 @@ namespace MongoDBAccess
             var vGroup = vData.GroupBy(p => p.Level).Select(p => new Models.Extend.Level_Index()
             {
                 Level = p.Key,
-                Count = p.Count() + p.Where(a => a.Gender == Models.Enums.Gender.female && a.Hongoai_id == iDongho_id).Sum(a => a.Couple.Count),
+                Count = p.Count() + p.Where(a => a.Gender == Models.Enums.Gender.female).Sum(a => a.Couple.Count),
                 Index = 0
             }).ToList().OrderByDescending(a => a.Count).ToList();
             var vMax = vGroup.FirstOrDefault();
@@ -211,7 +213,7 @@ namespace MongoDBAccess
                 foreach (var Item in vList)
                 {
                     var vChild = iData.Where(p => p.Id == Item.Id).FirstOrDefault();
-                    if (vChild == null && iInfo.Hongoai_id == iDongho_id)
+                    if (vChild == null)
                         vChild = this.FindById(Item.Id);
                     if (vChild != null)
                     {
@@ -543,7 +545,7 @@ namespace MongoDBAccess
                                 };
                                 var vHo_id = new DonghoHelper(this.UserId, this.MongoClient).Create(vDongho_new, session);
                                 iInfo.Bo_Info.Dongho_id = vHo_id;
-                                this.Update(vCheck.Id, p => p.Set(a => a.Hongoai_id, vHo_id), session, null);
+                                //this.Update(vCheck.Id, p => p.Set(a => a.Other_Name, vHo_id), session, null);
                             }
                         }
                     }
@@ -893,7 +895,7 @@ namespace MongoDBAccess
                             };
                             var vHo_id = new DonghoHelper(this.UserId, this.MongoClient).Create(vDongho_new, session);
                             iInfo.Vo_Info.Dongho_id = vHo_id;
-                            this.Update(vCheck.Id, p => p.Set(a => a.Dongho_id, vHo_id).Set(a => a.Hongoai_id, vCheck.Dongho_id), session, null);
+                            //this.Update(vCheck.Id, p => p.Set(a => a.Dongho_id, vHo_id).Set(a => a.Hongoai_id, vCheck.Dongho_id), session, null);
                         }
                     }
                     uint vVoId = this.Create(iInfo.Vo_Info, session);
@@ -926,8 +928,8 @@ namespace MongoDBAccess
             var vCheck = vHelper.FindById(iInfo.Dongho_id, iSesstion);
             if (vCheck == null)
                 throw new Exception("Xin vui lòng cho biết: " + iInfo.Name + " thuộc dòng họ nào?");
-            if (iInfo.HoVietNam_id == 0)
-                iInfo.HoVietNam_id = vCheck.Ho_Vietnam_id;
+            //if (iInfo.HoVietNam_id == 0)
+                //iInfo.HoVietNam_id = vCheck.Ho_Vietnam_id;
             iInfo.Name = Utility.TextManage.ChuHoaDau(iInfo.Name);
         }
         /// <summary>
@@ -957,13 +959,13 @@ namespace MongoDBAccess
                 var vCurent = new AccountHelper(this.UserId).FindById((uint)this.UserId);
                 if (vCurent == null)
                     throw new Exception("Rất tiếc, chúng tôi không xác định được người thực hiện xóa dữ liệu!");
-                if (vCurent.Dongho_id == vCheck.Dongho_id)
-                {
+                //if (vCurent.Dongho_id == vCheck.Dongho_id)
+                //{
                     if (vCheck.Gender == Models.Enums.Gender.female)
                         throw new Exception("Vui lòng xóa chồng của người này trước khi xóa thông tin người này!");
                     else
                         throw new Exception("Vui lòng xóa vợ của người này trước khi xóa thông tin người này!");
-                }
+                //}
             }
             using (var session = this.MongoClient.StartSession())
             {
@@ -1124,7 +1126,7 @@ namespace MongoDBAccess
                 Images = vInfo.Avatar,
                 BirthDay = vInfo.Birthday,
                 CMND = vInfo.CCCD,
-                Dongho_id = vInfo.Dongho_id,
+                //Dongho_id = vInfo.Dongho_id,
                 Email = vInfo.Email,
                 FullName = vInfo.Name,
                 Phone = vInfo.Phone,

@@ -70,12 +70,12 @@ namespace MongoDBAccess.Models
         /// <summary>
         /// ID dòng họ
         /// </summary>
-        public uint Dongho_id { get; set; }
-        /// <summary>
-        /// Tên dòng họ
-        /// </summary>
-        [BsonIgnore]
-        public string Dongho_Name { get; set; }
+        //public uint Dongho_id { get; set; }
+        ///// <summary>
+        ///// Tên dòng họ
+        ///// </summary>
+        //[BsonIgnore]
+        //public string Dongho_Name { get; set; }
         /// <summary>
         /// ID người dùng trong gia phả
         /// </summary>

@@ -14,7 +14,7 @@ namespace Utility
         /// <summary>
         /// Tài khoản quản trị
         /// </summary>
-        public static string UserAdmin => "admin";
+        public static string UserAdmin => "ngodong";
 
         /// <summary>
         /// Mã bí mật 

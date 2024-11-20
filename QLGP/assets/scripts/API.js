@@ -1,10 +1,10 @@
-export var linkAPI = 'http://localhost:8301/';
-// linkAPI = 'http://asset.quanlynoibo.com/fa_api/';
-linkAPI = 'http://demo.quanlynoibo.com:8115/';
-// linkAPI = 'http://localhost:63008/';
+export var linkAPI = 'http://localhost:2002/';
+
+// linkAPI = 'http://demo.quanlynoibo.com:8115/';
 
 
-// export var linkPurchase = 'http://purchase.quanlynoibo.com:8060';
+
+
 export default {
   Login: linkAPI + 'Account/Login',
   Logout: linkAPI + 'Account/Logout',

@@ -159,14 +159,14 @@ export default {
     // console.log(this);
     this.hasStarted = false;
     // console.log('mounted',this.hasStarted)
-    GetDataAPI({
-      url: API.Reports_Home,
-      action: (re) => {
-        // console.log(re)
-        // this.home = re;
-        window.addEventListener("scroll", this.checkScroll);
-      },
-    });
+    window.addEventListener("scroll", this.checkScroll);
+
+    // GetDataAPI({
+    //   url: API.Reports_Home,
+    //   action: (re) => {// console.log(re)
+    //     // this.home = re;
+    //   },
+    // });
     this.$nextTick(() => {
       // console.log(this)
       console.log(document.getElementById(this.type));

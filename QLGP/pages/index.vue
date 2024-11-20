@@ -17,7 +17,6 @@
         display: block;
         position: relative;
       "
-       
     >
       <!-- -->
       <svg
@@ -26,10 +25,9 @@
         @mouseup="endPan"
         @mouseleave="endPan"
         @touchstart="startPan"
-    @touchmove="pan"
-    @touchend="endPan"
-    @touchcancel="endPan"
-      
+        @touchmove="pan"
+        @touchend="endPan"
+        @touchcancel="endPan"
         ref="svgElement"
         :viewBox="viewBox"
         style="height: 100%; width: 100%; overflow-x: auto; overflow-y: auto"
@@ -124,11 +122,10 @@
           @nameClick="nameClick"
           @findHoNgoai="findHoNgoai"
           ref="node"
-          @hook:mounted="movetoNode0(item, index)"
         />
       </svg>
-
-      <el-popover
+      <!-- @hook:mounted="movetoNode0(item, index)" -->
+      <!-- <el-popover
         :style="nodePoperStyles"
         class="btn-p"
         placement="right"
@@ -141,7 +138,7 @@
           <el-button>aaa</el-button>
         </div>
         <el-button style="opacity: 1; padding: 0" slot="reference"></el-button>
-      </el-popover>
+      </el-popover> -->
     </div>
     <!-- <div v-if="node.Data && node.Data.length ==0">
       <el-button type="text">Thêm thông tin đầu tiền</el-button>
@@ -285,18 +282,13 @@ export default {
         const svgElement = this.$refs.svgElement;
         const svgRect = svgElement.getBoundingClientRect();
 
-      
         const svgCenterX = svgRect.width;
-        
 
         const [_, y, viewBoxWidth, viewBoxHeight] = this.viewBox
           .split(" ")
           .map(Number);
 
-       
         this.viewBox = `${svgCenterX} ${y} ${viewBoxWidth} ${viewBoxHeight}`;
-
-        
       }
     },
 
@@ -343,42 +335,49 @@ export default {
     },
 
     startPan(event) {
-       
-        if (event.type === 'mousedown' && event.button !== 0) return; 
+      if (event.type === "mousedown" && event.button !== 0) return;
 
-        this.isPanning = true;
+      this.isPanning = true;
 
-   
-        const clientX = event.type === 'mousedown' ? event.clientX : event.touches[0].clientX;
-        const clientY = event.type === 'mousedown' ? event.clientY : event.touches[0].clientY;
+      const clientX =
+        event.type === "mousedown" ? event.clientX : event.touches[0].clientX;
+      const clientY =
+        event.type === "mousedown" ? event.clientY : event.touches[0].clientY;
 
-        this.startPoint = { x: clientX, y: clientY };
+      this.startPoint = { x: clientX, y: clientY };
 
-        const viewBoxValues = this.viewBox.split(" ").map(Number);
-        this.startViewBox = {
-            x: viewBoxValues[0],
-            y: viewBoxValues[1],
-            width: viewBoxValues[2],
-            height: viewBoxValues[3],
-        };
+      const viewBoxValues = this.viewBox.split(" ").map(Number);
+      this.startViewBox = {
+        x: viewBoxValues[0],
+        y: viewBoxValues[1],
+        width: viewBoxValues[2],
+        height: viewBoxValues[3],
+      };
     },
     pan(event) {
-        if (!this.isPanning) return;
+      if (!this.isPanning) return;
 
-     
-        const clientX = event.type === 'mousemove' ? event.clientX : event.touches[0].clientX;
-        const clientY = event.type === 'mousemove' ? event.clientY : event.touches[0].clientY;
+      const clientX =
+        event.type === "mousemove" ? event.clientX : event.touches[0].clientX;
+      const clientY =
+        event.type === "mousemove" ? event.clientY : event.touches[0].clientY;
 
-        const dx = (this.startPoint.x - clientX) * ((this.startViewBox.width + 500) / this.$refs.svgElement.clientWidth);
-        const dy = (this.startPoint.y - clientY) * ((this.startViewBox.height + 500) / this.$refs.svgElement.clientHeight);
+      const dx =
+        (this.startPoint.x - clientX) *
+        ((this.startViewBox.width + 1) / this.$refs.svgElement.clientWidth);
+      const dy =
+        (this.startPoint.y - clientY) *
+        ((this.startViewBox.height + 1) / this.$refs.svgElement.clientHeight);
 
-        let newX = this.startViewBox.x + dx;
-        if (this.startViewBox.x + dx < 0) return;
+      let newX = this.startViewBox.x + dx;
+      // if (this.startViewBox.x + dx < 0) return;
 
-        this.viewBox = `${newX} ${this.startViewBox.y + dy} ${this.startViewBox.width} ${this.startViewBox.height}`;
+      this.viewBox = `${newX} ${this.startViewBox.y + dy} ${
+        this.startViewBox.width
+      } ${this.startViewBox.height}`;
     },
     endPan() {
-        this.isPanning = false;
+      this.isPanning = false;
     },
     nodePosition(item, index) {
       // console.log(item);
@@ -429,10 +428,34 @@ export default {
         },
         action: (re) => {
           this.nodes = re;
-          // console.log(this.nodes);
+          console.log(this.nodes);
+          this.$nextTick(() => {
+            this.moveScreenTo();
+          });
         },
       });
     },
+
+    moveScreenTo() {
+      const node = this.$refs.node[0].$el.getBoundingClientRect();
+      const svg = this.$refs.svgElement.getBoundingClientRect();
+
+      // Lấy kích thước của node và svg
+      const svgWidth = svg.width;
+      const svgHeight = svg.height;
+
+      const nodeX = node.left + node.width / 2 - svg.left;
+      const nodeY = node.top + node.height / 2 - svg.top;
+
+      // Tính toán để node nằm giữa SVG
+      const centerX = nodeX - svgWidth / 2;
+      const centerY = nodeY - svgHeight / 2;
+
+      // Cập nhật viewBox
+
+      this.viewBox = `${centerX} ${centerY} ${svgWidth} ${svgHeight}`;
+    },
+
     onWheel(e) {
       // console.log(e);
       // this.$refs.pop.doDestroy();
@@ -521,7 +544,7 @@ export default {
     // console.log(this)
     // this.$refs.svgContainer.querySelector('g').addEventListener("click", this.nodeClick);
     this.dongho_id = this.user.Dongho_id;
-    // this.GetNodeData();
+    this.GetNodeData();
     console.log(this);
 
     // <
@@ -610,25 +633,23 @@ export default {
 }
 
 @media only screen and (max-width: 800px) {
-  /deep/#div_Couple_form{
+  /deep/#div_Couple_form {
     width: 100%;
     margin-bottom: 5px;
     overflow-x: scroll;
     border-right: 1px solid gray;
-    #Couple_form{
+    #Couple_form {
       min-width: 560px;
-    
     }
   }
 
-  /deep/#div_siblings_form{
+  /deep/#div_siblings_form {
     width: 100%;
     margin-bottom: 5px;
     overflow-x: scroll;
-    #siblings_form{
+    #siblings_form {
       min-width: 560px;
     }
   }
-
 }
 </style>

@@ -17,14 +17,14 @@ export default function (obj) {
 
     Name: new FormElement({
       id: "txtName",
-      label: "Account type name",
+      label: "Loại tài khoản",
       model: "Name",
       type: FormElementType.text
     }),
 
     Description: new FormElement({
       id: "txtDescription",
-      label: "Description",
+      label: "Mô tả",
       model: "Description",
       type: FormElementType.text
     }),

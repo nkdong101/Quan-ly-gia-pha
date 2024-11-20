@@ -34,9 +34,9 @@ namespace API.Controllers
         [ResponseType(typeof(APIResult<List<MongoDBAccess.Models.Extend.Giapha_Tree>>))]
         [Route("Giapha/GetTree")]
         [HttpGet]
-        public HttpResponseMessage GetTree([FromUri] MongoDBAccess.API_Input.GetTree_input iInfo)
+        public HttpResponseMessage GetTree()
         {
-            return Request.SuccessResult(helper.GetTree(iInfo.iDongho_id, iInfo.iConfig));
+            return Request.SuccessResult(helper.GetTree());
         }
         /// <summary>
         /// Lấy thông tin gia đình của 1 người

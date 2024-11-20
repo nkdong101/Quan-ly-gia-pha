@@ -158,7 +158,7 @@ export default {
                       //     this.form.obj.Project_id = re;
                       //   }
                       //   this.$refs.form.getEntry("formProjectSave").LoadData();
-                      ShowMessage("Save successfully", "success");
+                      ShowMessage("Đã lưu thành công", "success");
                       this.form.visible = false;
                       EventBus.$emit("reloadFormFam", this.obj.Curent.Id);
                     },

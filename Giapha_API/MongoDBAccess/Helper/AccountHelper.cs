@@ -33,19 +33,19 @@ namespace MongoDBAccess
         {
             if (iInfo == null)
                 throw new Exception("Dữ liệu đầu vào không đúng!");
-            if (iInfo.Dongho_Info == null)
-                throw new Exception("Vui lòng cung cấp thông tin về dòng họ của bạn!");
+            //if (iInfo.Dongho_Info == null)
+            //    throw new Exception("Vui lòng cung cấp thông tin về dòng họ của bạn!");
             if (iInfo.User_Info == null)
                 throw new Exception("Vui lòng cung cấp thông tin cá nhân của bạn!");
-            var vTinh = new DonviHanhchinhHelper(1).FindById(iInfo.Dongho_Info.Tinh_id);
-            if (vTinh == null)
-                throw new Exception("Vui lòng cung cấp tên tỉnh nơi dòng họ của bạn");
-            iInfo.Dongho_Info.Address = vTinh.Name;
-            var vHuyen = vTinh.Childs.Where(p => p.Id == iInfo.Dongho_Info.Huyen_id).FirstOrDefault();
-            if (vHuyen != null)
-                iInfo.Dongho_Info.Address = vHuyen.Name + " - " + iInfo.Dongho_Info.Address;
-            iInfo.User_Info.Verify(null);
-            iInfo.Dongho_Info.Validate();
+            //var vTinh = new DonviHanhchinhHelper(1).FindById(iInfo.Dongho_Info.Tinh_id);
+            //if (vTinh == null)
+            //    throw new Exception("Vui lòng cung cấp tên tỉnh nơi dòng họ của bạn");
+            //iInfo.Dongho_Info.Address = vTinh.Name;
+            //var vHuyen = vTinh.Childs.Where(p => p.Id == iInfo.Dongho_Info.Huyen_id).FirstOrDefault();
+            //if (vHuyen != null)
+            //    iInfo.Dongho_Info.Address = vHuyen.Name + " - " + iInfo.Dongho_Info.Address;
+            //iInfo.User_Info.Verify(null);
+            //iInfo.Dongho_Info.Validate();
             using (var session = this.MongoClient.StartSession())
             {
                 try
@@ -53,17 +53,17 @@ namespace MongoDBAccess
                     session.StartTransaction();
                     iInfo.User_Info.Id = Global.GetSequance<User>();
                     //1. Tạo dòng họ
-                    var vHo_id = new DonghoHelper(iInfo.User_Info.Id, this.MongoClient).Add(iInfo.Dongho_Info, session);
+                    //var vHo_id = new DonghoHelper(iInfo.User_Info.Id, this.MongoClient).Add(iInfo.Dongho_Info, session);
                     //2. Tạo tài khoản
-                    iInfo.User_Info.Dongho_id = vHo_id;
+                    //iInfo.User_Info.Dongho_id = vHo_id;
                     var vUser_id = this.AddUser(new User() { Id = 1, }, iInfo.User_Info, session);
                     //3. Tạo người đầu tiên trong dòng họ
                     var vGiaPha = new Gia_pha()
                     {
                         Address = iInfo.User_Info.Address,
                         Avatar = iInfo.User_Info.Images,
-                        Dongho_id = vHo_id,
-                        HoVietNam_id = iInfo.Dongho_Info.Ho_Vietnam_id,
+                        Dongho_id = 1,
+                        //HoVietNam_id = iInfo.Dongho_Info.Ho_Vietnam_id,
                         Email = iInfo.User_Info.Email,
                         Name = iInfo.User_Info.FullName,
                         Birthday = iInfo.User_Info.BirthDay,
@@ -77,6 +77,8 @@ namespace MongoDBAccess
                     };
                     var vGiapha_id = new Gia_phaHelper(vUser_id, this.MongoClient).Create(vGiaPha, session);
                     // Cập nhật lại thông tin gia phả vào bảng users
+                    
+                    //this.Update(vUser_id, iInfo.User_Info.DefaultUpdateDefine(),session);
                     this.Update(vUser_id, p => p.Set(a => a.Giapha_id, vGiapha_id), session, null);
                     session.CommitTransaction();
                 }
@@ -169,21 +171,21 @@ namespace MongoDBAccess
 
             if (!string.IsNullOrEmpty(iFilters.Search))
                 filter &= builder.Regex(a => a.FullName, new BsonRegularExpression($".*{iFilters.Search}.*"));
-            if (iFilters.Dongho_id != null && iFilters.Dongho_id > 0)
-                filter &= builder.Eq(a => a.Dongho_id, iFilters.Dongho_id);
+            //if (iFilters.Dongho_id != null && iFilters.Dongho_id > 0)
+            //    filter &= builder.Eq(a => a.Dongho_id, iFilters.Dongho_id);
             if (string.IsNullOrEmpty(iFilters.Search) && (iFilters.Dongho_id == null || iFilters.Dongho_id == 0))
-                vResult = this.Find().SortBy(p => p.Dongho_id).ThenByDescending(p => p.DateCreate).Limit(100).ToList();
-            else
-                vResult = this.Find(filter).SortBy(p => p.DateCreate).ToList();
-            var HoHelper = new DonghoHelper(this.UserId);
-            Dong_ho vDongho = null;
-            foreach (var Item in vResult)
-            {
-                if (vDongho == null || vDongho.Id != Item.Dongho_id)
-                    vDongho = HoHelper.FindById(Item.Dongho_id);
-                if (vDongho != null)
-                    Item.Dongho_Name = vDongho.Name + $" ({vDongho.Address})";
-            }
+                vResult = this.Find().SortBy(p => p.DateCreate).Limit(100).ToList();
+            //else
+            //    vResult = this.Find(filter).SortBy(p => p.DateCreate).ToList();
+            //var HoHelper = new DonghoHelper(this.UserId);
+            //Dong_ho vDongho = null;
+            //foreach (var Item in vResult)
+            //{
+            //    if (vDongho == null || vDongho.Id != Item.Dongho_id)
+            //        vDongho = HoHelper.FindById(Item.Dongho_id);
+            //    if (vDongho != null)
+            //        Item.Dongho_Name = vDongho.Name + $" ({vDongho.Address})";
+            //}
             return vResult;
         }
         /// <summary>
@@ -260,13 +262,13 @@ namespace MongoDBAccess
         /// ID dòng họ
         /// </summary>
         public uint? Dongho_id { get; set; }
-        /// <summary>
-        /// ID tỉnh
-        /// </summary>
-        public uint? Tinh_id { get; set; }
-        /// <summary>
-        /// ID huyện
-        /// </summary>
-        public uint? Huyen_id { get; set; }
+        ///// <summary>
+        ///// ID tỉnh
+        ///// </summary>
+        //public uint? Tinh_id { get; set; }
+        ///// <summary>
+        ///// ID huyện
+        ///// </summary>
+        //public uint? Huyen_id { get; set; }
     }
 }

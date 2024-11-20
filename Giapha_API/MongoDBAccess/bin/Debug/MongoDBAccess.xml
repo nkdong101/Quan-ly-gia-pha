@@ -108,11 +108,6 @@
             Thông tin người dùng
             </summary>
         </member>
-        <member name="P:MongoDBAccess.API_Input.Register.Dongho_Info">
-            <summary>
-            Thông tin dòng họ
-            </summary>
-        </member>
         <member name="M:MongoDBAccess.Google.GoogleAuthPortal.Login(System.String,System.String)">
             <summary>
             Hàm lấy code từ web call lên khi login google thành công
@@ -216,16 +211,6 @@
         <member name="P:MongoDBAccess.AccountFilter.Dongho_id">
             <summary>
             ID dòng họ
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.AccountFilter.Tinh_id">
-            <summary>
-            ID tỉnh
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.AccountFilter.Huyen_id">
-            <summary>
-            ID huyện
             </summary>
         </member>
         <member name="T:MongoDBAccess.CommentHelper">
@@ -333,7 +318,7 @@
             Xử lý nghiệp vụ liên quan đến sự kiện
             </summary>
         </member>
-        <member name="M:MongoDBAccess.Helper.Event_Helper.GetList(System.UInt32)">
+        <member name="M:MongoDBAccess.Helper.Event_Helper.GetList">
             <summary>
             Lấy danh sách
             </summary>
@@ -423,7 +408,7 @@
             <param name="iInfo"></param>
             <returns></returns>
         </member>
-        <member name="M:MongoDBAccess.Gia_phaHelper.GetTree(System.UInt32,MongoDBAccess.Models.Extend.Tree_box_Config)">
+        <member name="M:MongoDBAccess.Gia_phaHelper.GetTree">
             <summary>
             Lấy cây gia phả của dòng họ
             </summary>
@@ -1435,18 +1420,6 @@
             ID họ
             </summary>
         </member>
-        <member name="P:MongoDBAccess.Models.Gia_pha.HoVietNam_id">
-            <summary>
-            ID họ việt nam
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.Models.Gia_pha.Hongoai_id">
-            <summary>
-            ID họ ngoại (chỉ áp dụng với nữ)
-            Khi nữ lấy chồng thì họ sẽ theo nhà chồng và chuyển họ của mình thành họ ngoại
-            Làm như thế để tạo mối liên hệ giữa 2 họ
-            </summary>
-        </member>
         <member name="P:MongoDBAccess.Models.Gia_pha.Name">
             <summary>
             Họ tên
@@ -1815,16 +1788,6 @@
         <member name="P:MongoDBAccess.Models.User.Email">
             <summary>
             Email
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.Models.User.Dongho_id">
-            <summary>
-            ID dòng họ
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.Models.User.Dongho_Name">
-            <summary>
-            Tên dòng họ
             </summary>
         </member>
         <member name="P:MongoDBAccess.Models.User.Giapha_id">

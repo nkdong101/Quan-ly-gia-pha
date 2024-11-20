@@ -36,16 +36,16 @@ namespace API.Controllers
         /// </summary>
         /// <param name="Value">Thông tin đăng ký</param>
         /// <returns></returns>
-        //[ResponseType(typeof(APIResult<string>))]
-        //[Route("Account/Register")]
-        //[HttpPost]
-        //[AllowAnonymous]
-        //public HttpResponseMessage Register([FromBody] MongoDBAccess.API_Input.Register Value)
-        //{
-        //    helper.Register(Value);
-        //    return Request.SuccessResult("OK");
+        [ResponseType(typeof(APIResult<string>))]
+        [Route("Account/Register")]
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage Register([FromBody] MongoDBAccess.API_Input.Register Value)
+        {
+            helper.Register(Value);
+            return Request.SuccessResult("OK");
 
-        //}
+        }
         /// <summary>
         /// Đăng nhập hệ thống
         /// </summary>
@@ -70,7 +70,7 @@ namespace API.Controllers
                 ChucVu = groupPermissions.Where(p => p.Id == user.GroupPermission_Id).FirstOrDefault()?.Name,
                 ImgUrl = user.Images,
                 TokenType = "Bearer",
-                Dongho_id = user.Dongho_id,
+                //Dongho_id = user.Dongho_id,
                 ExpiresIn = (int)login.DateExpired.Subtract(DateTime.Now).TotalSeconds
             });
         }
@@ -145,7 +145,7 @@ namespace API.Controllers
         /// <param name="value">Thông tin người dùng</param>
         /// <returns></returns>
         [ResponseType(typeof(APIResult<string>))]
-        [AllowAnonymous]
+        [HttpPost]
         public HttpResponseMessage Post([FromBody] User value)
         {
             return Request.SuccessResult(helper.AddUser(this.user, value, null));
@@ -157,6 +157,7 @@ namespace API.Controllers
         /// <param name="value">Thông tin người dùng mới</param>
         /// <returns></returns>
         [ResponseType(typeof(APIResult<string>))]
+        [HttpPut]
         public HttpResponseMessage Put(string id, [FromBody] User value)
         {
             return Request.SuccessResult(helper.EditUser(this.user, value));

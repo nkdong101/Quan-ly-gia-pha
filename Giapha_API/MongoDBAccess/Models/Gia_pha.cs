@@ -18,16 +18,16 @@ namespace MongoDBAccess.Models
         /// ID họ
         /// </summary>
         public uint Dongho_id { get; set; }
-        /// <summary>
-        /// ID họ việt nam
-        /// </summary>
-        public uint HoVietNam_id { get; set; }
-        /// <summary>
-        /// ID họ ngoại (chỉ áp dụng với nữ)
-        /// Khi nữ lấy chồng thì họ sẽ theo nhà chồng và chuyển họ của mình thành họ ngoại
-        /// Làm như thế để tạo mối liên hệ giữa 2 họ
-        /// </summary>
-        public uint Hongoai_id { get; set; }
+        ///// <summary>
+        ///// ID họ việt nam
+        ///// </summary>
+        //public uint HoVietNam_id { get; set; }
+        ///// <summary>
+        ///// ID họ ngoại (chỉ áp dụng với nữ)
+        ///// Khi nữ lấy chồng thì họ sẽ theo nhà chồng và chuyển họ của mình thành họ ngoại
+        ///// Làm như thế để tạo mối liên hệ giữa 2 họ
+        ///// </summary>
+        //public uint Hongoai_id { get; set; }
         /// <summary>
         /// Họ tên
         /// </summary>
@@ -197,7 +197,7 @@ namespace MongoDBAccess.Models
                 State = this.State,
                 Avatar = this.Avatar,
                 gioitinh = this.Gender,
-                Hongoai_id = this.Hongoai_id,
+                //Hongoai_id = this.Hongoai_id,
                 Dongho_id = this.Dongho_id,
                 Stt = iBox.Index,
                 Box = iBox,

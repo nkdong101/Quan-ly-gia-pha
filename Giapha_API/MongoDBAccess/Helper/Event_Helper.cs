@@ -22,9 +22,9 @@ namespace MongoDBAccess.Helper
         /// </summary>
         /// <param name="iDongho_id">ID dòng họ lấy dữ liệu</param>
         /// <returns></returns>
-        public List<Models.Events> GetList(uint iDongho_id)
+        public List<Models.Events> GetList()
         {
-            return this.Find(p => p.Dongho_id == iDongho_id).ToList();
+            return this.Find().ToList();
         }
         /// <summary>
         /// Thêm mới 

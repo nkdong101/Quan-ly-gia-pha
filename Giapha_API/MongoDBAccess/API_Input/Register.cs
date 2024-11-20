@@ -15,9 +15,9 @@ namespace MongoDBAccess.API_Input
         /// Thông tin người dùng
         /// </summary>
         public Models.User User_Info { get; set; }
-        /// <summary>
-        /// Thông tin dòng họ
-        /// </summary>
-        public Models.Dong_ho Dongho_Info { get; set; }
+        ///// <summary>
+        ///// Thông tin dòng họ
+        ///// </summary>
+        //public Models.Dong_ho Dongho_Info { get; set; }
     }
 }

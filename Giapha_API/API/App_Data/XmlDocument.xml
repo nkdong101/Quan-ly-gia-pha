@@ -487,6 +487,13 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:API.Controllers.AccountController.Register(MongoDBAccess.API_Input.Register)">
+            <summary>
+            Đăng ký sử dụng
+            </summary>
+            <param name="Value">Thông tin đăng ký</param>
+            <returns></returns>
+        </member>
         <member name="M:API.Controllers.AccountController.Login(API.Models.LoginModel)">
             <summary>
             Đăng nhập hệ thống
@@ -611,17 +618,6 @@
             </summary>
             <param name="disposing"></param>
         </member>
-        <member name="T:API.Controllers.ReportsController">
-            <summary>
-            API báo cáo thống kê
-            </summary>
-        </member>
-        <member name="M:API.Controllers.ReportsController.GetInfo">
-            <summary>
-            Gửi góp ý
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:API.Controllers.CommentsController">
             <summary>
             API góp ý của người dùng
@@ -633,79 +629,12 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:API.Controllers.EventsController">
-            <summary>
-            API quản lý thông tin sự kiện
-            </summary>
-        </member>
-        <member name="M:API.Controllers.EventsController.Get_List">
-            <summary>
-            Lấy danh sách 
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.EventsController.Add(MongoDBAccess.Models.Events)">
-            <summary>
-            Thêm mới
-            </summary>
-            <param name="iInfo"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.EventsController.Edit(MongoDBAccess.Models.Events)">
-            <summary>
-            Sửa thông tin 
-            </summary>
-            <param name="iInfo"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.EventsController.Delete(MongoDBAccess.Models.Events)">
-            <summary>
-            Xóa thông tin
-            </summary>
-            <param name="iInfo"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.EventsController.Cancel(MongoDBAccess.Models.Events)">
-            <summary>
-            Hủy sự kiện
-            </summary>
-            <param name="iInfo"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.EventsController.Pending(MongoDBAccess.Models.Events)">
-            <summary>
-            Tạm dừng đăng ký sự kiện
-            </summary>
-            <param name="iInfo"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.EventsController.Register(MongoDBAccess.Models.Event_Registers)">
-            <summary>
-            Đăng ký tham gia sự kiện
-            </summary>
-            <param name="iInfo"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.EventsController.Person_Register(System.UInt32)">
-            <summary>
-            Lấy danh sách người đăng ký
-            </summary>
-            <param name="iEvent_id">ID sự kiện</param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.EventsController.Thuchi(System.UInt32)">
-            <summary>
-            Lấy chi tiết thu chi của sự kiện
-            </summary>
-            <param name="iEvent_id"></param>
-            <returns></returns>
-        </member>
         <member name="T:API.Controllers.GiaphaController">
             <summary>
             API các quản lý gia phả
             </summary>
         </member>
-        <member name="M:API.Controllers.GiaphaController.GetTree(MongoDBAccess.API_Input.GetTree_input)">
+        <member name="M:API.Controllers.GiaphaController.GetTree">
             <summary>
             Lấy danh sách gia phả hiển thị dạng tree
             </summary>
@@ -773,153 +702,6 @@
             Sắp xếp lại các đời của dòng họ
             </summary>
             <param name="iDongho_id"></param>
-            <returns></returns>
-        </member>
-        <member name="T:API.Controllers.DonviHanhchinhController">
-            <summary>
-            API quản lý đơn vị hành chính
-            </summary>
-        </member>
-        <member name="M:API.Controllers.DonviHanhchinhController.Get_Tinh">
-            <summary>
-            Lấy danh sách  
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.DonviHanhchinhController.Add_Tinh(MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh)">
-            <summary>
-            Tạo mới
-            </summary>
-            <param name="value"></param>
-        </member>
-        <member name="M:API.Controllers.DonviHanhchinhController.Edit_Tinh(System.UInt32,MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh)">
-            <summary>
-            Sửa thông tin
-            </summary>
-            <param name="id"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.DonviHanhchinhController.Delete_Tinh(System.UInt32)">
-            <summary>
-            Xóa thông tin
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.DonviHanhchinhController.Get_Huyen(System.UInt32)">
-            <summary>
-            Lấy danh sách huyện của tỉnh
-            </summary>
-            <param name="iTinh_id">ID tỉnh</param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.DonviHanhchinhController.Add_Huyen(MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh)">
-            <summary>
-            Thêm mới huyện
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.DonviHanhchinhController.Edit_Huyen(MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh)">
-            <summary>
-            Sửa thông tin huyện
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.DonviHanhchinhController.Delete_Huyen(MongoDBAccess.Models.Danhmuc.Donvi_Hanhchinh)">
-            <summary>
-            Xóa thông tin huyện
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.DonviHanhchinhController.Convert_Huyen">
-            <summary>
-            Lấy danh mục huyện từ cổng thông tin quốc gia
-            </summary>
-        </member>
-        <member name="T:API.Controllers.DonghoController">
-            <summary>
-            API các dòng họ đăng ký trên hệ thống
-            </summary>
-        </member>
-        <member name="M:API.Controllers.DonghoController.Get(System.UInt32)">
-            <summary>
-            Lấy danh sách  
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:API.Controllers.ThuchiController">
-            <summary>
-            API quản lý thu chi
-            </summary>
-        </member>
-        <member name="M:API.Controllers.ThuchiController.Get">
-            <summary>
-            Lấy danh sách  
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.ThuchiController.Post(MongoDBAccess.Models.Thu_Chi)">
-            <summary>
-            Tạo mới
-            </summary>
-            <param name="value"></param>
-        </member>
-        <member name="M:API.Controllers.ThuchiController.Put(System.UInt32,MongoDBAccess.Models.Thu_Chi)">
-            <summary>
-            Sửa thông tin
-            </summary>
-            <param name="id"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.ThuchiController.Delete(System.UInt32)">
-            <summary>
-            Xóa thông tin
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="T:API.Controllers.HoVietNamController">
-            <summary>
-            API các dòng họ việt nam
-            </summary>
-        </member>
-        <member name="M:API.Controllers.HoVietNamController.Get">
-            <summary>
-            Lấy danh sách  
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.HoVietNamController.Get(System.UInt32)">
-            <summary>
-            Lấy thông tin
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.HoVietNamController.Post(MongoDBAccess.Models.Danhmuc.Ho_VietNam)">
-            <summary>
-            Tạo mới
-            </summary>
-            <param name="value"></param>
-        </member>
-        <member name="M:API.Controllers.HoVietNamController.Put(System.UInt32,MongoDBAccess.Models.Danhmuc.Ho_VietNam)">
-            <summary>
-            Sửa thông tin
-            </summary>
-            <param name="id"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.HoVietNamController.Delete(System.UInt32)">
-            <summary>
-            Xóa thông tin
-            </summary>
-            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="T:API.Controllers.GroupPermissionController">
