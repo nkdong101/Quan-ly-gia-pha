@@ -31,5 +31,10 @@ namespace MongoDBAccess
             uint vResult = this.Create(iInfo, null);
             return "Góp ý của bạn đã được chúng tôi ghi nhận, xin cảm ơn và chúc bạn mọi điều tốt lành!";
         }
+
+        public List<Models.Comments> GetList()
+        {
+            return this.Find().ToList();
+        }
     }
 }

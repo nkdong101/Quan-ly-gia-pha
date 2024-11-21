@@ -41,5 +41,18 @@ namespace API.Controllers
                 iInfo.UserId = this.user.Id;
             return Request.SuccessResult(helper.Add(iInfo));
         }
+
+        /// <summary>
+        /// Lấy danh sách
+        /// </summary>
+        /// <returns></returns>
+        [ResponseType(typeof(APIResult<string>))]
+        [Route("Comments/GetList")]
+        [HttpGet]
+        //[AllowAnonymous]
+        public HttpResponseMessage GetList()
+        {
+            return Request.SuccessResult(helper.GetList());
+        }
     }
 }

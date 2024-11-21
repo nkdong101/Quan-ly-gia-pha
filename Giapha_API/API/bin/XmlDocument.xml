@@ -629,6 +629,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:API.Controllers.CommentsController.GetList">
+            <summary>
+            Lấy danh sách
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:API.Controllers.GiaphaController">
             <summary>
             API các quản lý gia phả

@@ -525,26 +525,28 @@ namespace MongoDBAccess
                     //0. Lấy Id và gán quan hệ
                     if (iInfo.Bo_Info.Id == 0)
                     {
+
                         iInfo.Bo_Info.Id = Global.GetSequance<Gia_pha>();
                         isCreate_bo = true;
+                        iInfo.Bo_Info.Dongho_id = 1;
                         if (vCheck.Gender == Models.Enums.Gender.female)
                         {
                             var vHoBo = iInfo.Bo_Info.Name.Split(new char[] { ' ' });
                             if (vHoBo.Length > 0)
                             {
-                                var vHo = new Ho_VietNamHelper(1).Find(p => p.Name == Utility.TextManage.ChuHoaDau(vHoBo[0])).FirstOrDefault();
-                                if (vHo == null)
-                                {
-                                    throw new Exception("Rất tiếc, hệ thống không xác định được họ bố của " + vCheck.Name);
-                                }
-                                var vDongho_new = new Dong_ho()
-                                {
-                                    Ho_Vietnam_id = vHo.Id,
-                                    Name = Utility.TextManage.ChuHoaDau(vHoBo[0]),
-                                    Address = iInfo.Bo_Info.Noisinh
-                                };
-                                var vHo_id = new DonghoHelper(this.UserId, this.MongoClient).Create(vDongho_new, session);
-                                iInfo.Bo_Info.Dongho_id = vHo_id;
+                                //var vHo = new Ho_VietNamHelper(1).Find(p => p.Name == Utility.TextManage.ChuHoaDau(vHoBo[0])).FirstOrDefault();
+                                //if (vHo == null)
+                                //{
+                                //    throw new Exception("Rất tiếc, hệ thống không xác định được họ bố của " + vCheck.Name);
+                                //}
+                                //var vDongho_new = new Dong_ho()
+                                //{
+                                //    Ho_Vietnam_id = vHo.Id,
+                                //    Name = Utility.TextManage.ChuHoaDau(vHoBo[0]),
+                                //    Address = iInfo.Bo_Info.Noisinh
+                                //};
+                                //var vHo_id = new DonghoHelper(this.UserId, this.MongoClient).Create(vDongho_new, session);
+                                iInfo.Bo_Info.Dongho_id = 1;
                                 //this.Update(vCheck.Id, p => p.Set(a => a.Other_Name, vHo_id), session, null);
                             }
                         }
@@ -924,10 +926,10 @@ namespace MongoDBAccess
         /// <param name="iInfo"></param>
         private void Validate(Gia_pha iInfo, IClientSessionHandle iSesstion)
         {
-            var vHelper = new DonghoHelper(this.UserId);
-            var vCheck = vHelper.FindById(iInfo.Dongho_id, iSesstion);
-            if (vCheck == null)
-                throw new Exception("Xin vui lòng cho biết: " + iInfo.Name + " thuộc dòng họ nào?");
+            //var vHelper = new DonghoHelper(this.UserId);
+            //var vCheck = vHelper.FindById(iInfo.Dongho_id, iSesstion);
+            //if (vCheck == null)
+            //    throw new Exception("Xin vui lòng cho biết: " + iInfo.Name + " thuộc dòng họ nào?");
             //if (iInfo.HoVietNam_id == 0)
                 //iInfo.HoVietNam_id = vCheck.Ho_Vietnam_id;
             iInfo.Name = Utility.TextManage.ChuHoaDau(iInfo.Name);

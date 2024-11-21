@@ -1757,6 +1757,11 @@
             Giới tính
             </summary>
         </member>
+        <member name="P:MongoDBAccess.Models.User.userLevel">
+            <summary>
+            Cấp độ người dùng (loại tài khoản)
+            </summary>
+        </member>
         <member name="P:MongoDBAccess.Models.User.Email">
             <summary>
             Email

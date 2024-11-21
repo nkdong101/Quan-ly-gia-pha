@@ -62,7 +62,11 @@ namespace MongoDBAccess.Models
         /// <summary>
         /// Giới tính
         /// </summary>
-        public Enums.Gender Gender { get; set; }
+        public Enums.Gender Gender { get; set; } 
+        /// <summary>
+        /// Cấp độ người dùng (loại tài khoản)
+        /// </summary>
+        public uint userLevel { get; set; }
         /// <summary>
         /// Email
         /// </summary>

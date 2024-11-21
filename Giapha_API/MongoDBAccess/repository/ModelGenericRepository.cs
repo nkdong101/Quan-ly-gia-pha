@@ -195,9 +195,9 @@ namespace MongoDBAccess.DataAccess.MongoDB
 
             DeleteResult deleted = null ;
             if (iSession == null)
-                Collection.DeleteOne(filterId);
+                deleted = Collection.DeleteOne(filterId);
             else
-                Collection.DeleteOne(iSession, filterId);
+                deleted = Collection.DeleteOne(iSession, filterId);
 
             if (deleted.IsAcknowledged)
                 return ("OK");
