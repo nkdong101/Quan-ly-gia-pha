@@ -75,54 +75,54 @@ namespace MongoDBAccess.Helper
         /// <param name="iInfo"></param>
         /// <param name="iUser"></param>
         /// <returns></returns>
-        public string Register(Models.Event_Registers iInfo, Models.User iUser)
-        {
-            var vInfo = this.FindById(iInfo.Event_id);
-            if (vInfo == null)
-                throw new Exception("Không tìm thấy thông tin sự kiện!");
-            if (vInfo.State != Models.Enums.EventState.Active)
-                throw new Exception("Bạn chỉ có thể đăng ký khi sự kiện đang được kích hoạt!");
-            if (vInfo.DateRegister != null && (DateTime)vInfo.DateRegister < DateTime.Now)
-                throw new Exception("Rất tiếc, sự kiện đã hết hạn đăng ký!");
+        //public string Register(Models.Event_Registers iInfo, Models.User iUser)
+        //{
+        //    var vInfo = this.FindById(iInfo.Event_id);
+        //    if (vInfo == null)
+        //        throw new Exception("Không tìm thấy thông tin sự kiện!");
+        //    if (vInfo.State != Models.Enums.EventState.Active)
+        //        throw new Exception("Bạn chỉ có thể đăng ký khi sự kiện đang được kích hoạt!");
+        //    if (vInfo.DateRegister != null && (DateTime)vInfo.DateRegister < DateTime.Now)
+        //        throw new Exception("Rất tiếc, sự kiện đã hết hạn đăng ký!");
 
-            using (var session = this.MongoClient.StartSession())
-            {
-                try
-                {
-                    session.StartTransaction();
-                    var vRHelper = new Event_Registers_Helper(this.UserId, this.MongoClient);
-                    var vCheck = vRHelper.Find(p => p.Event_id == iInfo.Event_id && p.UserCreate == iUser.Id).FirstOrDefault();
-                    if (vCheck != null)
-                    {
-                        session.AbortTransaction();
-                        throw new Exception("Bạn đã đăng ký sự kiện này ngày: " + vCheck.DateCreate.ToString("dd/MM/yyyy"));
-                    }
-                    var vRegister = new Models.Event_Registers()
-                    {
-                        Event_id = vInfo.Id,
-                        Description = iInfo.Description
-                    };
-                    vRHelper.Create(vRegister, session);
-                    if (vInfo.Registers != null && vInfo.Registers.Count > 3)
-                    {
-                        this.Update(vInfo.Id, p => p.Pull(a => a.Registers, vInfo.Registers[0]), session);
-                    }
-                    this.Update(vInfo.Id, p => p.Push(a => a.Registers, new Models.Extend.Event_Register()
-                    {
-                        DateActive = DateTime.Now,
-                        UserId = iUser.Id
-                    }), null);
+        //    using (var session = this.MongoClient.StartSession())
+        //    {
+        //        try
+        //        {
+        //            session.StartTransaction();
+        //            var vRHelper = new Event_Registers_Helper(this.UserId, this.MongoClient);
+        //            var vCheck = vRHelper.Find(p => p.Event_id == iInfo.Event_id && p.UserCreate == iUser.Id).FirstOrDefault();
+        //            if (vCheck != null)
+        //            {
+        //                session.AbortTransaction();
+        //                throw new Exception("Bạn đã đăng ký sự kiện này ngày: " + vCheck.DateCreate.ToString("dd/MM/yyyy"));
+        //            }
+        //            var vRegister = new Models.Event_Registers()
+        //            {
+        //                Event_id = vInfo.Id,
+        //                Description = iInfo.Description
+        //            };
+        //            vRHelper.Create(vRegister, session);
+        //            if (vInfo.Registers != null && vInfo.Registers.Count > 3)
+        //            {
+        //                this.Update(vInfo.Id, p => p.Pull(a => a.Registers, vInfo.Registers[0]), session);
+        //            }
+        //            this.Update(vInfo.Id, p => p.Push(a => a.Registers, new Models.Extend.Event_Register()
+        //            {
+        //                DateActive = DateTime.Now,
+        //                UserId = iUser.Id
+        //            }), null);
 
-                    session.CommitTransaction();
-                }
-                catch (Exception ex)
-                {
-                    session.AbortTransaction();
-                    throw ex;
-                }
+        //            session.CommitTransaction();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            session.AbortTransaction();
+        //            throw ex;
+        //        }
 
-            }
-            return "OK";
-        }
+        //    }
+        //    return "OK";
+        //}
     }
 }

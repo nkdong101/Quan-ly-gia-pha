@@ -353,14 +353,6 @@
             <param name="iInfo"></param>
             <returns></returns>
         </member>
-        <member name="M:MongoDBAccess.Helper.Event_Helper.Register(MongoDBAccess.Models.Event_Registers,MongoDBAccess.Models.User)">
-            <summary>
-            Đăng ký tham gia sự kiện
-            </summary>
-            <param name="iInfo"></param>
-            <param name="iUser"></param>
-            <returns></returns>
-        </member>
         <member name="M:MongoDBAccess.Helper.UserLoginSocialHelper.#ctor(System.Nullable{System.UInt32})">
             <summary>
             
@@ -827,29 +819,9 @@
             Thời điểm cuối cùng được phép đăng ký
             </summary>
         </member>
-        <member name="P:MongoDBAccess.Models.Events.Organizers">
-            <summary>
-            Danh sách ban tổ chức
-            </summary>
-        </member>
         <member name="P:MongoDBAccess.Models.Events.State">
             <summary>
             Trạng thái sự kiện
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.Models.Events.Dongho_id">
-            <summary>
-            ID dòng họ
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.Models.Events.Person">
-            <summary>
-            Số người tham gia (hệ thống tự tổng hợp khi người dùng đăng ký)
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.Models.Events.Registers">
-            <summary>
-            3 người đăng ký gần nhất
             </summary>
         </member>
         <member name="M:MongoDBAccess.Models.Events.Validate">

@@ -193,7 +193,7 @@ namespace MongoDBAccess.DataAccess.MongoDB
 
 
 
-            DeleteResult deleted = null;
+            DeleteResult deleted = null ;
             if (iSession == null)
                 Collection.DeleteOne(filterId);
             else
