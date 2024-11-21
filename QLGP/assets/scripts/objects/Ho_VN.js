@@ -3,50 +3,53 @@ import { Para } from "../Para";
 import { SelectOption } from "../base/SelectOption";
 import API from "../API";
 export default class Ho_VN {
-    /** @type {number} - description */
-    Total;
     /** @type {string} - description */
-    Name;
-    /** @type {number} - description */
-    DateUpdate;
-    /** @type {number} - description */
-    DateCreate;
-    /** @type {number} - description */
+    Title;
+    /** @type {string} - description */
+    Content;
+    /** @type {string} - description */
+    DateBegin;
+    /** @type {string} - description */
+    DateEnd;
+    /** @type {string} - description */
     UserCreate;
-    /** @type {number} - description */
+    /** @type {string} - description */
     UserUpdate;
-    DS_Tinh = ''
+    
+    Files = [];
 
 
     _formElements = {
-        Total: new FormElement({
-            label: "Số lượng",
-            model: "Total",
-            type: FormElementType.number,
-            disabled: true,
+        Content: new FormElement({
+            label: "Nội dung tổ chức",
+            model: "Content",
+            type: FormElementType.text,
+            attr:{
+                type: 'textarea',
+            }
+            // disabled: true,
             // options: Para.Level,
         }),
-        Name: new FormElement({
-            label: "Tên họ",
-            model: "Name",
+        Title: new FormElement({
+            label: "Tên sự kiện",
+            model: "Title",
             type: FormElementType.text,
             // disabled: true,
         }),
 
-        DS_Tinh: new FormElement({
-            label: "Tỉnh",
-            model: "DS_Tinh",
-            type: FormElementType.select,
-            options: Para.Donvihanhchinh,
-            disabled: true,
+        DateBegin: new FormElement({
+            label: "Ngày bắt đầu",
+            model: "DateBegin",
+            type: FormElementType.datePicker,
+
 
 
             // labelWidth: 140,
         }),
-        Id: new FormElement({
-            label: "Id",
-            model: "Id",
-            type: FormElementType.text,
+        DateEnd: new FormElement({
+            label: "Ngày kết thúc",
+            model: "DateEnd",
+            type: FormElementType.datePicker,
         }),
 
 
@@ -78,9 +81,10 @@ export default class Ho_VN {
             formData: this,
             elements: [
 
-                this._formElements.Name,
-                this._formElements.Total,
-                this._formElements.DS_Tinh,
+                this._formElements.Title,
+                this._formElements.Content,
+                this._formElements.DateBegin,
+                this._formElements.DateEnd,
 
             ]
         });

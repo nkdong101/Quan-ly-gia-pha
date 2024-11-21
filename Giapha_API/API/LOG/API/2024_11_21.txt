@@ -184,3 +184,23 @@ Exception
  Xin vui lòng cho biết: Ngô Kim Chính thuộc dòng họ nào?
  --------------------------------------
 
+21/11/2024 23:09:26.191|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Register
+Exception
+ Vui lòng cung cấp thông tin cá nhân của bạn!
+ --------------------------------------
+
+21/11/2024 23:16:20.514|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Register
+Exception
+ Vui lòng cung cấp thông tin cá nhân của bạn!
+ --------------------------------------
+
+21/11/2024 23:17:00.839|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Register
+Exception
+ Vui lòng cung cấp thông tin cá nhân của bạn!
+ --------------------------------------
+
+21/11/2024 23:17:33.234|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Register
+Exception
+ Vui lòng cung cấp thông tin cá nhân của bạn!
+ --------------------------------------
+

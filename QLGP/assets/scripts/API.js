@@ -20,11 +20,12 @@ export default {
   GroupPermission: linkAPI + "GroupPermission",
   Menu: linkAPI + "Menu",
   MenuButton: linkAPI + "MenuButton",
+  Event: linkAPI + "Events",
 
 
 
   //Ho_VietNam
-  HoVietNam : linkAPI + "HoVietNam",
+  // HoVietNam : linkAPI + "HoVietNam",
 
   // /Giapha
   GetTree : linkAPI + "Giapha/GetTree",

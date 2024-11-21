@@ -355,3 +355,29 @@ html {
 .align-flex-start{
   align-items: flex-start;
 }
+
+.dd-mess[x-placement^=bottom] {
+  margin-top: 2px;
+}
+
+.dd-mess{
+  .el-dropdown-menu__item{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    i{
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .title{
+      p{
+        word-wrap: break-word;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      // word-break: break-all;
+
+    }
+  }
+}

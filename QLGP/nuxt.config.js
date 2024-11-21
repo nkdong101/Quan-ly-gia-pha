@@ -21,18 +21,18 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/images.ico' },
       { rel: "stylesheet", href: "/font-awesome-4.7.0/css/font-awesome.min.css" },
       { rel: "stylesheet", href: 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300' },
-      // { rel: "stylesheet", href: "/scripts/quill-editor/katex.min.css" },
-      // { rel: "stylesheet", href: "/scripts/quill-editor/monokai-sublime.min.css" },
-      // { rel: "stylesheet", href: "/scripts/quill-editor/quill.snow.css" }
+      { rel: "stylesheet", href: "/scripts/quill-editor/katex.min.css" },
+      { rel: "stylesheet", href: "/scripts/quill-editor/monokai-sublime.min.css" },
+      { rel: "stylesheet", href: "/scripts/quill-editor/quill.snow.css" }
     ],
     script: [
       { src: "/scripts/socket.io.min.js" },
-      // { src: "/scripts/ExportExcel/FileSaver.js" },
-      // { src: "/scripts/ExportExcel/xlsx.core.min.js" },
-      // { src: "/scripts/quill-editor/katex.min.js" },
-      // { src: "/scripts/quill-editor/highlight.min.js" },
-      // { src: "/scripts/quill-editor/quill.min.js" },
-      // { src: "/scripts/quill-editor/image-resize.min.js" }
+      { src: "/scripts/ExportExcel/FileSaver.js" },
+      { src: "/scripts/ExportExcel/xlsx.core.min.js" },
+      { src: "/scripts/quill-editor/katex.min.js" },
+      { src: "/scripts/quill-editor/highlight.min.js" },
+      { src: "/scripts/quill-editor/quill.min.js" },
+      { src: "/scripts/quill-editor/image-resize.min.js" }
     ]
   },
 
@@ -49,7 +49,7 @@ export default {
     "@/plugins/moment",
     "@/plugins/something",
     "@/plugins/auth",
-    // { src: '~/plugins/chart.js', mode: 'client' },
+    { src: '~/plugins/chart.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

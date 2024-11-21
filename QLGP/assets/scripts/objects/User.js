@@ -10,24 +10,28 @@ export default class User {
     /** @type {string} - description */
     Email;
     /** @type {string} - description */
-    Title;
-    /** @type {number} - description */
-    Office_id;
+    Address;
     /** @type {string} - description */
-    UserLevel_id;
-    /** @type {number} - description */
-    Country_id;
-    /** @type {number} - description */
-    UserStatus;
+    CMND;
     /** @type {string} - description */
-    SignatureImage;
+    userLevel;
+    /** @type {string} - description */
+    BirthDay;
+    /** @type {string} - description */
+    Phone;
+    /** @type {Number} - description */
+    Gender;
+    /** @type {string} - description */
+    Phone;
+    /** @type {string} - description */
+    Images;
     /** @type {object} - description */
     Buttons;
 
 
     _formElements = {
         FullName: new FormElement({
-            label: "Full Name",
+            label: "Họ tên",
             model: "FullName",
             type: FormElementType.text,
         }),
@@ -36,27 +40,29 @@ export default class User {
             model: "Email",
             type: FormElementType.text,
         }),
-        Title: new FormElement({
-            label: "Title",
-            model: "Title",
+        BirthDay: new FormElement({
+            label: "Ngày sinh",
+            model: "BirthDay",
+            type: FormElementType.datePicker,
+        }),
+        Gender: new FormElement({
+            label: "Giới tính",
+            model: "Gender",
+            type: FormElementType.select,
+            options: Para.Gender,
+        }),
+        Address: new FormElement({
+            label: "Địa chỉ",
+            model: "Address",
             type: FormElementType.text,
+            // options: Para.GroupPermission,
         }),
-        Office_id: new FormElement({
-            label: "Office",
-            model: "Office_id",
+        userLevel: new FormElement({
+            label: "Loại tài khoản",
+            model: "userLevel",
             type: FormElementType.select,
-            options: Para.Para_Office,
-        }),
-        UserLevel_id: new FormElement({
-            label: "Level",
-            model: "UserLevel_id",
-            type: FormElementType.select,
+
             options: Para.GroupPermission,
-        }),
-        Country_id: new FormElement({
-            label: "Country",
-            model: "Country_id",
-            type: FormElementType.text,
         }),
         UserStatus: new FormElement({
             label: "Status",
@@ -64,19 +70,19 @@ export default class User {
             type: FormElementType.select,
             options: Para.Para_Use,
         }),
-        SignatureImage: new FormElement({
-            label: "SignatureImage",
-            model: "SignatureImage",
+        Images: new FormElement({
+            label: "Ảnh đại diện",
+            model: "Images",
             type: FormElementType.text,
         }),
-        Buttons: new FormElement({
-            label: "Buttons",
-            model: "Buttons",
+        Phone: new FormElement({
+            label: "Số điện thoại",
+            model: "Phone",
             type: FormElementType.text,
         }),
-        Name_Excel: new FormElement({
-            label: "Name Excel",
-            model: "Name_Excel",
+        CMND: new FormElement({
+            label: "CMND/CCCD",
+            model: "CMND",
             type: FormElementType.text,
         }),
 
@@ -107,13 +113,16 @@ export default class User {
             formData: this,
             elements: [
                 this._formElements.FullName,
+                this._formElements.BirthDay,
+                this._formElements.Phone,
+                this._formElements.Gender,
                 this._formElements.Email,
-                this._formElements.Title,
-                this._formElements.Office_id,
-                this._formElements.UserLevel_id,
-                this._formElements.Country_id,
-                this._formElements.UserStatus,
-                this._formElements.Name_Excel,
+                this._formElements.CMND,
+                this._formElements.Address,
+                this._formElements.userLevel,
+                // this._formElements.Country_id,
+                // this._formElements.UserStatus,
+                // this._formElements.Name_Excel,
 
             ]
         });

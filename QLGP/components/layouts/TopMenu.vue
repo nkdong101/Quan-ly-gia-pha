@@ -61,7 +61,16 @@
         >
           <Avatar />
         </el-menu-item>
+
+        <el-menu-item
+          style="display: flex; align-items: center"
+          v-if="user"
+          index="#"
+        >
+          <bell_notify />
+        </el-menu-item>
       </el-menu>
+
     </div>
   </div>
 </template>
@@ -131,7 +140,7 @@ export default {
     .el-menu {
       border: 0;
       background-color: inherit !important;
-      /deep/ .el-submenu {
+      ::v-deep .el-submenu {
         div {
           &:hover {
             background: transparent;

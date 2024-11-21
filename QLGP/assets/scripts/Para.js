@@ -51,59 +51,11 @@ export var Para = {
     baseUrl: '/Images/Inventory/Attachment/',
     accept: InputFileAccept.image,
   }),
-  Disposal_Attachment: new InputFileModel({
-    baseUrl: '/Images/Disposal/Attachment/'
-  }),
-  PR_Attachment: new InputFileModel({
-    baseUrl: '/Images/Purchase/Attachment/',
-  }),
-  Comment_Attachment: new InputFileModel({
-    baseUrl: '/Images/Comment/Attachment/',
-  }),
 
-  PR_Procurment_Attachment: new InputFileModel({
-    baseUrl: '/Images/Purchase/Procurment_Attachment/',
-  }),
-
-  FixedAssetsImage: new InputFileModel({
-    baseUrl: '/Images/FixedAssets/Attachment/',
-    autoUpload: true
-  }),
-
-  PR_Procurment_Contract_Attachment: new InputFileModel({
-    baseUrl: '/Images/Purchase/Contract_Attachment/',
-    limit: 1,
-    multiple: false
-  }),
   GroupPermission: new SelectOption({
     data: []
   }),
-  Para_Office: new SelectOption({
-    data: [],
-    IsItemDisabled: item => {
-      if (item.Use == 2)
-        return true;
-    },
-  }),
-  Para_Category: new SelectOption({
-    data: []
-  }),
-  Para_VehicleType: new SelectOption({
-    data: []
-  }),
-  Para_Currency: new SelectOption({
-    data: [],
-    label: "Currency_Code",
-    value: "Currency_Code",
-  }),
-  Para_Currency_now: new SelectOption({
-    data: API.Get_Currency,
-    label: "Currency_Code",
-    value: "Currency_Code",
-  }),
-  Para_Practice: new SelectOption({
-    data: [],
-  }),
+ 
   Gender: new SelectOption({
     // placeholder: 'Select one',
     data: [

@@ -120,6 +120,7 @@
           :transform="`translate(${item.Box.X}, ${item.Box.Y})`"
           @dotClick="dotClick"
           @nameClick="nameClick"
+          @CreateAcc="CreateAcc"
           @findHoNgoai="findHoNgoai"
           ref="node"
         />
@@ -178,6 +179,32 @@
         </div>
       </div>
     </DefaultForm>
+
+    <DefaultForm :model="formCrAcc" @actionOK="formCrAcc.Save.call(this)">
+      <div slot="content">
+        <el-form
+          :model="formCrAcc.objUser"
+          status-icon
+          :rules="rules"
+          ref="ruleForm"
+          label-width="120px"
+          class="demo-ruleForm"
+        >
+          <el-form-item label="Tên tài khoản" prop="UserName">
+            <el-input
+              v-model="formCrAcc.objUser.UserName"
+              autocomplete="off"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="Mật khẩu" prop="Password">
+            <el-input
+              v-model="formCrAcc.objUser.Password"
+              autocomplete="off"
+            ></el-input>
+          </el-form-item>
+        </el-form>
+      </div>
+    </DefaultForm>
   </div>
 </template>
 
@@ -190,10 +217,13 @@ import {
   ShowMessage,
   ShowConfirm,
   MessageType,
+  Uni2None,
 } from "~/assets/scripts/Functions";
 import GetDataAPI from "~/assets/scripts/GetDataAPI";
 import { EventBus } from "~/assets/scripts/EventBus.js";
 import APIHelper from "~/assets/scripts/API/APIHelper";
+import User from "~/assets/scripts/objects/User";
+import ConvertStr from "~/assets/scripts/ConvertStr";
 export default {
   // layout: this.user.ChucVu === "Administrator" ? 'default' : "UserLayout",
   computed: {
@@ -214,7 +244,23 @@ export default {
       nodeClicked: null,
       isPanning: null,
       viewBox: "561 0 648 729",
-      viewBoxImg: "0 200 200 200",
+
+      rules: {
+        UserName: [
+          {
+            required: true,
+            message: "Trường này bắt buộc nhập",
+            trigger: "blur",
+          },
+        ],
+        Password: [
+          {
+            required: true,
+            message: "Trường này bắt buộc nhập",
+            trigger: "blur",
+          },
+        ],
+      },
       dongho_id: null,
       model: {
         enableSearch: false,
@@ -273,9 +319,90 @@ export default {
           console.log("save", this.tieusu);
         },
       }),
+      formCrAcc: new DefaultForm({
+        obj: new Giapha(),
+        objUser: new User(),
+        title: "",
+        visible: false,
+        // type: 'dialog',
+        width: "400px",
+        // noSave: true,
+        // fullscreen: true,
+        ShowForm: (title, obj, isAdd) => {
+          // this.isAdd = isAdd;
+          var _app = this;
+          this.formCrAcc.title = title;
+
+          GetDataAPI({
+            url: API.Giapha + `/${obj.id}`,
+            // params: {
+            //   iPerson_id: ,
+            // },
+            action: (re) => {
+              this.formCrAcc.objUser = new User({
+                ...re,
+              });
+              const objN = this.formCrAcc.objUser;
+
+              this.formCrAcc.objUser.UserName =
+                Uni2None(objN.Name.replaceAll(" ", "")).toLocaleLowerCase() +
+                ConvertStr.ToDateStr(objN.Birthday, "ddMMyyyy");
+              this.formCrAcc.objUser.Password =
+                Uni2None(objN.Name.replaceAll(" ", "")).toLocaleLowerCase() +
+                ConvertStr.ToDateStr(objN.Birthday, "ddMMyyyy");
+              console.log(this.formCrAcc.objUser);
+              this.formCrAcc.visible = true;
+            },
+          });
+        },
+        Save: () => {
+          console.log("save", this.tieusu);
+          this.formCrAcc.objUser.userLevel = 1;
+          this.$refs.ruleForm.validate((valid) => {
+            if (valid) {
+              alert("submit!");
+              GetDataAPI({
+                url: API.Register,
+                method: "POST",
+                // params: this.formCrAcc.objUser.toJSON(),
+                params: {
+                  User_Info: {
+                    UserName: this.formCrAcc.objUser.UserName,
+                    Password: this.formCrAcc.objUser.Password,
+                    Images: this.formCrAcc.objUser.Avatar,
+                    Address: this.formCrAcc.objUser.Address,
+                    CMND: this.formCrAcc.objUser.CCCD,
+                    BirthDay: this.formCrAcc.objUser.Birthday,
+                    Gender: this.formCrAcc.objUser.Gender,
+                    userLevel: 2,
+                    Email: this.formCrAcc.objUser.Email,
+                    FullName: this.formCrAcc.objUser.Name,
+                  },
+                },
+                action: (re) => {
+                  ShowMessage(
+                    `Đã cấp tài khoản cho <b>${this.formCrAcc.objUser.Name}</b>`
+                  );
+                },
+              });
+            } else {
+              console.log("error submit!!");
+              return false;
+            }
+          });
+        },
+      }),
     };
   },
   methods: {
+    CreateAcc(data) {
+      console.log(data);
+      this.formCrAcc.ShowForm(
+        `Cấp tài khoản cho <b>${data.name}</b> `,
+        data,
+        false
+      );
+    },
     movetoNode0(item, index) {
       if (index === 0) {
         const node0 = this.$refs.node[0].$el.getBoundingClientRect();
@@ -573,7 +700,7 @@ export default {
 
   .form-info {
     height: 100%;
-    /deep/ .form-info-c {
+    ::v-deep .form-info-c {
       height: 100%;
       display: flex;
       // overflow-y: auto;
@@ -633,7 +760,7 @@ export default {
 }
 
 @media only screen and (max-width: 800px) {
-  /deep/#div_Couple_form {
+  ::v-deep#div_Couple_form {
     width: 100%;
     margin-bottom: 5px;
     overflow-x: scroll;
@@ -643,7 +770,7 @@ export default {
     }
   }
 
-  /deep/#div_siblings_form {
+  ::v-deep#div_siblings_form {
     width: 100%;
     margin-bottom: 5px;
     overflow-x: scroll;

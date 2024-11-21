@@ -44,6 +44,7 @@ export default {
   methods: {},
   computed: {},
   mounted() {
+    console.log(this)
     this.quill = new Quill("#" + this.app_id, {
       theme: "snow",
       placeholder: this.placeholder || "Nhập nội dung...",

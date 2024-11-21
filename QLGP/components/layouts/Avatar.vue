@@ -12,7 +12,7 @@
           <div class="circle-avatar">
             <!-- <img :src="user.Picture.split('|')[0] + '?t=' + new Date().getTime()"
                  :alt="user.Picture.split('|')[0] " /> -->
-                 <i style="color: white" class="el-icon-user-solid"></i>
+                 <i style="color: white;font-size: 28px;" class="el-icon-user-solid"></i>
           </div>
         </div>
       </el-button>
