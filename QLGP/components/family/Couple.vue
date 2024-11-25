@@ -15,32 +15,60 @@
         </div>
       </div>
     </div> -->
-    <el-tree default-expand-all
-     v-if="obj.Couple && obj.Couple.length> 0"  :data="obj.Couple"  :default-expanded-keys="[1, 2]" :props="defaultProps" node-key="Id">
+    <el-tree
+      default-expand-all
+      v-if="obj.Couple && obj.Couple.length > 0"
+      :data="obj.Couple"
+      :default-expanded-keys="[1, 2]"
+      :props="defaultProps"
+      node-key="Id"
+    >
       <div class="custom-tree-node" slot-scope="{ node, data }">
         <!-- <p v-if="node.level == 1">{{data.Gender == 1? "Chồng": "Vợ"}}</p> -->
-        <el-row  class="">
+        <el-row class="">
           <el-col :span="3">
-            <el-avatar size="small" v-if="!data.Avatar" icon="el-icon-user-solid"></el-avatar>
-          <el-avatar v-else size="small" :src="'/Images/avatar/' + data.Avatar.split('|')[0]" fit="cover"></el-avatar>
+            <el-avatar
+              size="small"
+              v-if="!data.Avatar"
+              icon="el-icon-user-solid"
+            ></el-avatar>
+            <el-avatar
+              v-else
+              size="small"
+              :src="'/Images/avatar/' + data.Avatar.split('|')[0]"
+              fit="cover"
+            ></el-avatar>
           </el-col>
-          <el-col  :span="6">
-<span>   {{ data.Name }}
-  {{ data.Other_Name ? `(${data.Other_Name})` : "" }}</span>
-         
+          <el-col :span="6">
+            <span>
+              {{ data.Name }}
+              {{ data.Other_Name ? `(${data.Other_Name})` : "" }}</span
+            >
           </el-col>
-          <el-col  style="text-align:center" :sm="4"  :style="{
-            paddingLeft: node.level == 1 ? '8px': '0'
-          }" :span="4">
-          <span>
-            {{ Para.Gender.getName(data.Gender) }}
-
-          </span>
+          <el-col
+            style="text-align: center"
+            :sm="4"
+            :style="{
+              paddingLeft: node.level == 1 ? '8px' : '0',
+            }"
+            :span="4"
+          >
+            <span>
+              {{ Para.Gender.getName(data.Gender) }}
+            </span>
           </el-col>
-          <el-col :sm="6" :style="{
-            paddingLeft: node.level == 1 ? '8px': '0'
-          }" :span="6">
-            <span v-if="(data.Birthday || data.Year_Of_Birth) && !data.Date_of_death">
+          <el-col
+            :sm="6"
+            :style="{
+              paddingLeft: node.level == 1 ? '8px' : '0',
+            }"
+            :span="6"
+          >
+            <span
+              v-if="
+                (data.Birthday || data.Year_Of_Birth) && !data.Date_of_death
+              "
+            >
               <i class="fa fa-birthday-cake" aria-hidden="true"></i>
               {{
                 data.Birthday
@@ -58,43 +86,58 @@
           <!-- <el-col :sm="4" :span="5"> </el-col>
           <el-col :sm="4" :span="2"> </el-col> -->
         </el-row>
-        <el-button
-          @click="EditVo(data)"  type="primary"
-          v-if="node.level === 1"
-     style="padding: 4px;"
-        >
-          <i class="fa fa-edit"></i>
-        </el-button>
-        <el-button
-          @click="AddChild(data)" type="primary"
-          v-if="node.level === 1"
-     style="padding: 4px;  margin-left:5px; margin-right: 10px"
-        >
-          <i class="fa fa-plus"></i>
-        </el-button>
+        <div>
+          <el-button
+            @click="EditVo(data)"
+            type="primary"
+            v-if="node.level === 1"
+            style="padding: 4px"
+          >
+            <i class="fa fa-edit"></i>
+          </el-button>
+          <el-button
+            @click="AddChild(data)"
+            type="primary"
+            v-if="node.level === 1 && user.userLevel == 1"
+            style="padding: 4px; margin-left: 5px; margin-right: 10px"
+          >
+            <i class="fa fa-plus"></i>
+          </el-button>
 
-        <el-button
-          type="warning"
-          v-if="node.level === 2"
-          @click="form.ShowForm(`Sửa thông tin ${data.Name}`, data, false,false)"
-          style="padding: 4px; margin-right: 7px"
-        >
-          <i class="fa fa-edit"></i>
-        </el-button>
-        <el-button
-          type="text"
-          v-if="node.level === 2"
-          @click="form.Delete(data)"
-          style="padding: 4px; margin-right: 12px; margin-left: 0"
-        >
-          <!-- <i class="fa fa-times"></i> -->
-        </el-button>
+          <el-button
+            type="warning"
+            v-if="node.level === 2"
+            @click="
+              form.ShowForm(`Sửa thông tin ${data.Name}`, data, false, false)
+            "
+            style="padding: 4px; margin-right: 7px"
+          >
+            <i class="fa fa-edit"></i>
+          </el-button>
+          <el-button
+            type="danger"
+            v-if="node.level === 2 && user.userLevel == 1"
+            @click="form.Delete(data)"
+            style="padding: 4px; margin-right: 12px; margin-left: 0"
+          >
+            <i class="fa fa-times"></i>
+          </el-button>
+        </div>
       </div>
     </el-tree>
 
-    <div v-else style="width: 100%; padding: 20px 0 0 0; font-weight: normal; text-align:center;">
-      <i  style="font-size: 14px; ">Không có thông tin {{obj.Curent.Gender == 1 ? "vợ" : "chồng"}}</i>
-
+    <div
+      v-else
+      style="
+        width: 100%;
+        padding: 20px 0 0 0;
+        font-weight: normal;
+        text-align: center;
+      "
+    >
+      <i style="font-size: 14px"
+        >Không có thông tin {{ obj.Curent.Gender == 1 ? "vợ" : "chồng" }}</i
+      >
     </div>
     <DefaultForm :model="form" @actionOK="form.Save.call(this)">
       <div slot="content">
@@ -115,7 +158,11 @@ import DefaultForm from "~/assets/scripts/base/DefaultForm";
 import GetDataAPI from "~/assets/scripts/GetDataAPI";
 import APIHelper from "~/assets/scripts/API/APIHelper";
 import Para from "~/assets/scripts/Para";
-import { MessageType, ShowConfirm, ShowMessage } from "~/assets/scripts/Functions";
+import {
+  MessageType,
+  ShowConfirm,
+  ShowMessage,
+} from "~/assets/scripts/Functions";
 import { EventBus } from "~/assets/scripts/EventBus.js";
 export default {
   props: {
@@ -149,7 +196,12 @@ export default {
         width: "450px",
         // noSave: true,
         // fullscreen: true,
-        ShowForm: (title, obj, isAdd,isEditWife) => {
+        ShowForm: (title, obj, isAdd, isEditWife) => {
+          if (this.user.userLevel !== 1) {
+            this.form.type = "dialog";
+          } else {
+            this.form.type = "";
+          }
           this.isAdd = isAdd;
           var _app = this;
           this.form.title = title;
@@ -171,7 +223,6 @@ export default {
           }
         },
         Save: () => {
-
           this.form.obj.Dongho_id = this.user.Dongho_id;
 
           this.$refs.form.getValidate().then((re) => {
@@ -185,37 +236,45 @@ export default {
                 .then((res) => {
                   // console.log(res);
                   this.form.obj.Avatar = res.join(",");
-                  if(this.isEditWife){
+                  if (this.isEditWife) {
                     GetDataAPI({
-                    method: "post",
-                    url: API.Add_Vo,
-                    params: {
+                      method: "post",
+                      url: API.Add_Vo,
+                      params: {
                         Chong_Info: this.obj.Curent,
                         Vo_Info: this.form.obj.toJSON(),
-                        Index: this.obj.Couple.findIndex(p => p.Id === this.form.obj.Id),
-                    },
-                    action: (re) => {
-                      //   this.LoadData();
-                      //   if (this.isAdd) {
-                      //     this.form.obj.Project_id = re;
-                      //   }
-                      //   this.$refs.form.getEntry("formProjectSave").LoadData();
-                      ShowMessage("Cập nhật thông tin thành công", "success");
-                      this.form.visible = false;
-                      EventBus.$emit("reloadFormFam", this.obj.Curent.Id);
-                    },
-                  });
+                        Index: this.obj.Couple.findIndex(
+                          (p) => p.Id === this.form.obj.Id
+                        ),
+                      },
+                      action: (re) => {
+                        //   this.LoadData();
+                        //   if (this.isAdd) {
+                        //     this.form.obj.Project_id = re;
+                        //   }
+                        //   this.$refs.form.getEntry("formProjectSave").LoadData();
+                        ShowMessage("Cập nhật thông tin thành công", "success");
+                        this.form.visible = false;
+                        EventBus.$emit("reloadFormFam", this.obj.Curent.Id);
+                      },
+                    });
                   }
 
-                  console.log(this)
+                  console.log(this);
                   // return;
                   GetDataAPI({
                     method: "post",
                     url: API.Add_Con,
                     params: {
                       Con_Info: this.form.obj.toJSON(),
-                      Me_Info: this.obj.Curent.Gender == 1?  this.mother : new Giapha(this.obj.Curent).toJSON(),
-                      Father_id: this.obj.Curent.Gender == 1 ?this.obj.Curent.Id : this.mother.Id,
+                      Me_Info:
+                        this.obj.Curent.Gender == 1
+                          ? this.mother
+                          : new Giapha(this.obj.Curent).toJSON(),
+                      Father_id:
+                        this.obj.Curent.Gender == 1
+                          ? this.obj.Curent.Id
+                          : this.mother.Id,
                       Conrieng: this.conrieng,
                     },
                     action: (re) => {
@@ -264,9 +323,13 @@ export default {
     };
   },
   methods: {
-    EditVo(obj){
-
-      this.form.ShowForm("Sửa thông tin của " + obj.Name + "", obj, false,true);
+    EditVo(obj) {
+      this.form.ShowForm(
+        "Sửa thông tin của " + obj.Name + "",
+        obj,
+        false,
+        true
+      );
     },
     SaveCR() {
       this.conrieng = true;
@@ -308,7 +371,8 @@ export default {
     // }
   }
 }
-::v-deep .el-tree-node
+::v-deep
+  .el-tree-node
   > .el-tree-node__children
   > .el-tree-node
   > .el-tree-node__content {
@@ -348,6 +412,4 @@ export default {
   padding: unset;
   border: unset;
 }
-
-
 </style>

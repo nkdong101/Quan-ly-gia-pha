@@ -1,5 +1,6 @@
 export var linkAPI = 'http://localhost:2002/';
 
+// linkAPI = 'http://localhost:62008/';
 // linkAPI = 'http://demo.quanlynoibo.com:8115/';
 
 
@@ -36,9 +37,11 @@ export default {
   Add_Vo : linkAPI + "Giapha/Add_Vo",
   // GetTree : linkAPI + "Giapha/GetTree",
   Giapha : linkAPI + "Giapha",
+  Giapha_GetNotify : linkAPI + "Giapha/GetNotify",
   Dongho : linkAPI + "Dongho",
   Reports_Home : linkAPI + "Reports/Home",
   Comments_Send : linkAPI + "Comments/Send",
+  Comments_GetNoti : linkAPI + "Comments/GetNoti",
 
 
 }

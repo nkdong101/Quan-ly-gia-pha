@@ -36,5 +36,17 @@ namespace MongoDBAccess
         {
             return this.Find().ToList();
         }
+
+
+        public List<Models.Comments> GetNoti()
+        {
+            return this.Find().SortByDescending(p=>p.DateCreate).Limit(7).ToList();
+        }
+
+        //public Models.Extend.ThongBao GetThongBao()
+        //{
+
+        //}
+
     }
 }

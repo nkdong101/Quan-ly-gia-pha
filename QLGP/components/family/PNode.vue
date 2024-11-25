@@ -40,8 +40,10 @@
 
 
                 <el-button
+
+                  
           type="primary"
-          v-if="nameTitle === ''"
+          v-if="nameTitle === '' && user.userLevel == 1"
           @click="AddVo()"
          style="color: white;padding: 7px;  "
         >
@@ -165,9 +167,9 @@ export default {
       // console.log('node click')
       this.$emit("showForm", `Thêm  Cha/Mẹ`, {}, 1, "", true);
     },
-    AddVo(title){
+    AddVo(title) {
       // console.log("AddVo")
-      this.$emit("AddVo",this.person.Gender == 2 ? "Thêm chồng thứ" : "Thêm vợ thứ")
+      this.$emit("AddVo", this.person.Gender == 2 ? "Thêm chồng thứ" : "Thêm vợ thứ")
     }
   },
   mounted() {
@@ -211,22 +213,26 @@ export default {
 .person {
   padding: 5px;
   border-radius: 10px;
+
   //   background-color: ;
   ::v-deep .el-card__body {
     padding: 0 !important;
     display: flex;
     flex-direction: column;
     height: 100%;
+
     .top {
       height: 20px;
       text-align: center;
       color: #ffffff;
       position: relative;
+
       i {
         position: absolute;
         right: 5px;
       }
     }
+
     .bottom {
       padding: 5px 0;
       background-color: #ffffff;
@@ -236,6 +242,7 @@ export default {
       align-items: center;
       //   justify-content: space-around;
       font-size: 12px;
+
       .img {
         width: fit-content;
         // width: 50px;
@@ -244,13 +251,17 @@ export default {
         // border: 1px solid black;
         margin: 0 10px 0 10px;
       }
+
       .infor {
         width: 100%;
+
         .el-row {
           padding: 2px 0;
+
           .el-col {
             display: flex;
             align-items: center;
+
             i {
               font-size: 16px;
               color: rgb(25, 172, 221);
@@ -272,10 +283,11 @@ export default {
 }
 
 @media only screen and (max-width: 500px) {
-  span,p{
-  font-size:11px;
-  }
-  
-}
 
+  span,
+  p {
+    font-size: 11px;
+  }
+
+}
 </style>

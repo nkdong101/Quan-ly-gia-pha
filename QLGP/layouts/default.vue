@@ -128,6 +128,8 @@ export default {
     //   console.log = () => {};
     //   console.error = () => {};
     // }
+   
+
     this.InitStuff().then(() => {
       this.mainLoad = true;
     });

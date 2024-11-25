@@ -58,6 +58,7 @@ namespace MongoDBAccess
                     //iInfo.User_Info.Dongho_id = vHo_id;
                     var vUser_id = this.AddUser(new User() { Id = 1, }, iInfo.User_Info, session);
                     //3. Tạo người đầu tiên trong dòng họ
+                    //if(vUser_id)
                     var vGiaPha = new Gia_pha()
                     {
                         Address = iInfo.User_Info.Address,
@@ -75,11 +76,26 @@ namespace MongoDBAccess
                         User_id = vUser_id,
                         State = Models.Enums.State.Live,
                     };
-                    var vGiapha_id = new Gia_phaHelper(vUser_id, this.MongoClient).Create(vGiaPha, session);
-                    // Cập nhật lại thông tin gia phả vào bảng users
-                    
-                    //this.Update(vUser_id, iInfo.User_Info.DefaultUpdateDefine(),session);
-                    this.Update(vUser_id, p => p.Set(a => a.Giapha_id, vGiapha_id), session, null);
+
+                  
+                    if (iInfo.User_Info.Giapha_id > 0) // khi cấp tài khoản cho thành viên trong gia phả thì không tại thêm bản ghi mới trong bảng giapha và cập nhật lại User_id
+                    {
+
+                        new Gia_phaHelper(vUser_id, this.MongoClient).Update(iInfo.User_Info.Giapha_id, p => p.Set(a => a.User_id, vUser_id), session);
+                    }
+                    else
+                    { // tạo tài khoản mới 
+                        var vGiapha_id = new Gia_phaHelper(vUser_id, this.MongoClient).Create(vGiaPha, session);
+                        this.Update(vUser_id, p => p.Set(a => a.Giapha_id, vGiapha_id), session, null);
+
+
+                    } 
+
+
+
+
+                    // Cập nhật lại thông tin gia phả vào bảng 
+                    //this.Update(vUser_id, iInfo.User_Info.DefaultUpdateDefine(), session);
                     session.CommitTransaction();
                 }
                 catch (Exception ex)

@@ -13,6 +13,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.UI.WebControls;
 using Utility;
 
 
@@ -67,10 +68,11 @@ namespace API.Controllers
                 UserName = user.UserName,
                 FullName = user.FullName,
                 GroupPermission_Id = user.GroupPermission_Id,
-                ChucVu = groupPermissions.Where(p => p.Id == user.GroupPermission_Id).FirstOrDefault()?.Name,
+                //Menu = groupPermissions.Where(x => x.Id == user.userLevel).FirstOrDefault().Permission.ToList(),
+                userLevel = user.userLevel,
                 ImgUrl = user.Images,
                 TokenType = "Bearer",
-                //Dongho_id = user.Dongho_id,
+                Dongho_id = 1,
                 ExpiresIn = (int)login.DateExpired.Subtract(DateTime.Now).TotalSeconds
             });
         }

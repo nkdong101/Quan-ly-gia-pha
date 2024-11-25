@@ -95,6 +95,7 @@ namespace MongoDBAccess.Models.Extend
         /// Ảnh đại diện
         /// </summary>
         public string Avatar { get; set; }
+        public uint? User_id { get; set; }
         #endregion
         #region Event
 

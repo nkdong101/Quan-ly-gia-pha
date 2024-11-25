@@ -24,8 +24,37 @@ namespace MongoDBAccess
         /// </summary>
         /// <param name="iInfo"></param>
         /// <returns></returns>
+        /// 
+
+        public List<string> ThongBaoNgayGio()
+        {
+            List<string> notifications = new List<string>(); List<Gia_pha> vResult = new List<Gia_pha>();
+            List<Gia_pha> list = this.Find().ToList();
+            DateTime today = DateTime.Now;
+            foreach (var item in list)
+            {
+                if (item.Date_of_death != null)
+                {
+                    for (int i = 0; i <= 7; i++) // Kiểm tra trong vòng 7 ngày tới
+                    {
+                        DateTime checkDate = today.AddDays(i);
+                        DateTime NgayAM = DoilichAM_DUONG(checkDate);
+
+                        // So sánh ngày giỗ (Date_of_death) với ngày âm lịch
+                        if (item.Date_of_death.Value.Month == NgayAM.Month &&
+                            item.Date_of_death.Value.Day == NgayAM.Day)
+                        {
+                            notifications.Add($"Ngày giỗ của <b>{item.Name}</b> là vào ngày <b>{NgayAM:dd/MM/yyyy}</b> ÂL (Dương lịch: <b>{checkDate:dd/MM/yyyy}</b>).");
+                        }
+                    }
+                }
+            }
+            return notifications;
+        }
+
         public List<string> Doilich(API_Input.Doi_lich iInfo)
         {
+            
             List<string> vResult = new List<string>();
             var vLich = new Tuvi.Lichvannien();
             if (!iInfo.Amlich)
@@ -47,6 +76,9 @@ namespace MongoDBAccess
 
             return vResult;
         }
+
+        //public string 
+
         #region GetData
         /// <summary>
         /// Lấy cây gia phả của dòng họ
@@ -454,6 +486,7 @@ namespace MongoDBAccess
                     var vFather = this.FindById((uint)vInfo.Parent.Father_id);
                     if (vFather != null)
                         vResult.Farther = vFather.Tofamily();
+                   
                 }
                 //3. Mẹ mình
                 if (vInfo.Parent != null && vInfo.Parent.Mother_id != null)
@@ -461,6 +494,7 @@ namespace MongoDBAccess
                     var vMother = this.FindById((uint)vInfo.Parent.Mother_id);
                     if (vMother != null)
                         vResult.Mother = vMother.Tofamily();
+                   
                 }
                 //4. Anh chị em
                 if (vInfo.siblings != null && vInfo.siblings.Count > 0)
@@ -555,6 +589,7 @@ namespace MongoDBAccess
                     {
                         iInfo.Me_Info.Id = Global.GetSequance<Gia_pha>();
                         iInfo.Me_Info.Dongho_id = iInfo.Bo_Info.Dongho_id;
+                        iInfo.Me_Info.Hongoai_id = 2;
                         isCreate_me = true;
                     }
 
@@ -569,7 +604,11 @@ namespace MongoDBAccess
                     //2. Thêm thông tin mẹ
                     Validate(iInfo.Me_Info, session);
                     if (!isCreate_me)
+                    {
+                        iInfo.Me_Info.Hongoai_id = 2;
                         this.Update(iInfo.Me_Info.Id, iInfo.Me_Info.DefaultUpdateDefine(), session, null);
+
+                    }
                     else
                         this.Create(iInfo.Me_Info, session);
                     //3. Cập nhật thông tin bố mẹ vào thông tin của con
@@ -662,6 +701,10 @@ namespace MongoDBAccess
                     if (iInfo.ACE_Info.Id == 0)
                         iInfo.ACE_Info.Id = Global.GetSequance<Gia_pha>();
                     iInfo.ACE_Info.Parent = vCheck.Parent;
+
+
+                    //
+
                     //1.2 Cập nhật con cái vào danh sách của bản ghi bố mẹ
                     if (vCheck.Parent.Father_id != null && vCheck.Parent.Father_id > 0)
                     {
@@ -739,7 +782,7 @@ namespace MongoDBAccess
                         var vItem = this.FindById(Item.Id);
                         if (vItem == null)
                         {
-                            session.AbortTransaction();
+                            //session.AbortTransaction();
                             throw new Exception("Dữ liệu quan hệ không đúng, vui lòng liên hệ admin hệ thống!");
                         }
                         if (vItem.siblings == null) vItem.siblings = new List<Models.Extend.Anh_Chi_Em>();
@@ -770,10 +813,11 @@ namespace MongoDBAccess
         public string Add_Con(API_Input.Add_Con_Input iInfo)
         {
             var vCheck = this.FindById(iInfo.Me_Info.Id);
-            if (vCheck == null)
-                throw new Exception("Không tìm thấy thông tin của người thêm bố mẹ!");
             if (vCheck.Gender == Models.Enums.Gender.male)
                 throw new Exception("Bạn chỉ có thể thêm con từ vị trí của người mẹ!");
+            if (vCheck == null)
+                throw new Exception("Không tìm thấy thông tin của người thêm bố mẹ!");
+           
             if (vCheck.Couple == null || vCheck.Couple.Count == 0)
                 throw new Exception("Rất tiếc, hệ thống không xác định được bố của " + iInfo.Con_Info.Name);
             using (var session = this.MongoClient.StartSession())
@@ -884,19 +928,19 @@ namespace MongoDBAccess
                         var vHochong = iInfo.Vo_Info.Name.Split(new char[] { ' ' });
                         if (vHochong.Length > 0)
                         {
-                            var vHo = new Ho_VietNamHelper(1).Find(p => p.Name == Utility.TextManage.ChuHoaDau(vHochong[0])).FirstOrDefault();
-                            if (vHo == null)
-                            {
-                                throw new Exception("Rất tiếc, hệ thống không xác định được họ chồng của " + vCheck.Name);
-                            }
-                            var vDongho_new = new Dong_ho()
-                            {
-                                Ho_Vietnam_id = vHo.Id,
-                                Name = Utility.TextManage.ChuHoaDau(vHochong[0]),
-                                Address = iInfo.Vo_Info.Noisinh
-                            };
-                            var vHo_id = new DonghoHelper(this.UserId, this.MongoClient).Create(vDongho_new, session);
-                            iInfo.Vo_Info.Dongho_id = vHo_id;
+                            //var vHo = new Ho_VietNamHelper(1).Find(p => p.Name == Utility.TextManage.ChuHoaDau(vHochong[0])).FirstOrDefault();
+                            //if (vHo == null)
+                            //{
+                            //    throw new Exception("Rất tiếc, hệ thống không xác định được họ chồng của " + vCheck.Name);
+                            //}
+                            //var vDongho_new = new Dong_ho()
+                            //{
+                            //    Ho_Vietnam_id = vHo.Id,
+                            //    Name = Utility.TextManage.ChuHoaDau(vHochong[0]),
+                            //    Address = iInfo.Vo_Info.Noisinh
+                            //};
+                            //var vHo_id = new DonghoHelper(this.UserId, this.MongoClient).Create(vDongho_new, session);
+                            iInfo.Vo_Info.Hongoai_id = 2;
                             //this.Update(vCheck.Id, p => p.Set(a => a.Dongho_id, vHo_id).Set(a => a.Hongoai_id, vCheck.Dongho_id), session, null);
                         }
                     }
@@ -932,6 +976,14 @@ namespace MongoDBAccess
             //    throw new Exception("Xin vui lòng cho biết: " + iInfo.Name + " thuộc dòng họ nào?");
             //if (iInfo.HoVietNam_id == 0)
                 //iInfo.HoVietNam_id = vCheck.Ho_Vietnam_id;
+            if(iInfo.State == Models.Enums.State.Dead)
+            {
+                if(iInfo.year_die != null)
+                {
+                    iInfo.Date_of_death = DoilichAM_DUONG((DateTime)iInfo.Date_of_death);
+
+                }
+            }
             iInfo.Name = Utility.TextManage.ChuHoaDau(iInfo.Name);
         }
         /// <summary>

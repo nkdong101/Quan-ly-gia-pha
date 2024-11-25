@@ -1,6 +1,6 @@
 <template>
   <div class="app-main-children">
-    <div class="app-main-children-label">
+    <div v-if="items.length > 0" class="app-main-children-label">
       <b>{{ title }}</b>
     </div>
     <div class="app-main">

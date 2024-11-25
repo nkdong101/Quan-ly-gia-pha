@@ -70,6 +70,10 @@ namespace MongoDBAccess.Models.Extend
         /// </summary>
         public DateTime? Date_of_death { get; set; }
         /// <summary>
+        /// Ngày mất ÂL
+        /// </summary>
+        public DateTime? Date_of_death_Lunar { get; set; }
+        /// <summary>
         /// Con thứ mấy trong gia đình
         /// </summary>
         public byte Index { get; set; }

@@ -8,9 +8,8 @@
       :hus="true"
     />
     <el-button
-      :disabled="!obj.Farther || !obj.Mother"
       type="warning"
-      @click="form.ShowForm(`Chỉnh sửa thông tin Cha/Mẹ`, obj, '', '', false)"
+      @click="form.ShowForm(`Chỉnh sửa thông tin Cha/Mẹ`, obj, '', '', true)"
       style="margin: 0 10px"
     >
       <i class="fa fa-edit"></i
@@ -59,11 +58,16 @@ export default {
         // noSave: true,
         // fullscreen: true,
         ShowForm: (title, obj, person, male, isAdd) => {
+          if (this.user.userLevel !== 1) {
+            this.form.type = "dialog";
+          } else {
+            this.form.type = "";
+          }
           this.isAdd = isAdd;
           var _app = this;
           this.form.title = title;
 
-          if (!isAdd) {
+          if (obj.Farther && obj.Mother) {
             APIHelper.Giapha.GetMarried(obj.Farther.Id, obj.Mother.Id).then(
               (re) => {
                 console.log(re);
@@ -83,12 +87,10 @@ export default {
 
           this.obj.Curent.Dongho_id = this.user.Dongho_id;
 
-          if (this.isAdd) {
-            this.form.objC.Gender = 1;
-            this.form.objM.Gender = 2;
-            this.form.objC.Dongho_id = this.user.Dongho_id;
-            this.form.objM.Dongho_id = this.user.Dongho_id;
-          }
+          this.form.objC.Gender = 1;
+          this.form.objM.Gender = 2;
+          this.form.objC.Dongho_id = this.user.Dongho_id;
+          this.form.objM.Dongho_id = this.user.Dongho_id;
 
           console.log(this);
           // return;
@@ -179,11 +181,12 @@ export default {
   methods: {
     showForm(title, obj, person, male, isAdd) {
       console.log(title, obj, person, male, isAdd);
-      this.form.ShowForm(title, obj, person, male, isAdd);
+
+      this.form.ShowForm(title, obj, person, male, true);
     },
   },
   mounted() {
-    // console.log("mounted",this.obj)
+    console.log("mounted", this.obj);
     // this.$watch( this.obj.Farther, function (newVal, oldVal) {
     //   // do something+
     //   this.$nextTick(() => {
@@ -207,24 +210,23 @@ export default {
   }
 }
 
-#father_form{
-  display: flex; justify-content: center; align-items: center;
-  
+#father_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 767px) {
-  #father_form{
-  display: flex; justify-content: center; align-items: center;
-  flex-direction: column;
-  
-}
-
+  #father_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 @media only screen and (max-width: 490px) {
-  .formCM{
-  flex-direction: column;
+  .formCM {
+    flex-direction: column;
+  }
 }
-}
-
-
 </style>

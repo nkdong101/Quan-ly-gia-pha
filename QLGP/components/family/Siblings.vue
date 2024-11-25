@@ -12,6 +12,7 @@
       </span>
 
       <el-button
+        v-if="user.userLevel == 1"
         @click="form.ShowForm('Thêm anh/chị/em', {}, true)"
         type="text"
         style="background-color: #ffffff; padding: 5px 7px"
@@ -24,20 +25,27 @@
       <div v-for="item in obj.Siblings">
         <el-row class="sib_infor">
           <el-col :span="3">
-            <el-avatar size="small" v-if="!item.Avatar" icon="el-icon-user-solid"></el-avatar>
-            <el-avatar size="small" v-else :src="'/Images/avatar/' + item.Avatar.split('|')[0]" fit="fill"></el-avatar>
+            <el-avatar
+              size="small"
+              v-if="!item.Avatar"
+              icon="el-icon-user-solid"
+            ></el-avatar>
+            <el-avatar
+              size="small"
+              v-else
+              :src="'/Images/avatar/' + item.Avatar.split('|')[0]"
+              fit="fill"
+            ></el-avatar>
           </el-col>
           <el-col :span="6">
             <span>
               {{ item.Name }}
               {{ item.Other_Name ? `(${item.Other_Name})` : "" }}
             </span>
-        
           </el-col>
           <el-col :span="2">
             <span>
               {{ Para.Gender.getName(item.Gender) }}
-
             </span>
           </el-col>
           <el-col :span="6">
@@ -69,6 +77,7 @@
             </el-button>
             <el-button
               type="danger"
+              v-if="user.userLevel == 1"
               @click="form.Delete(item)"
               style="padding: 4px; margin-left: 2px"
             >
@@ -92,7 +101,11 @@ import DefaultForm from "~/assets/scripts/base/DefaultForm";
 import GetDataAPI from "~/assets/scripts/GetDataAPI";
 import APIHelper from "~/assets/scripts/API/APIHelper";
 import Para from "~/assets/scripts/Para";
-import { MessageType, ShowConfirm, ShowMessage } from "~/assets/scripts/Functions";
+import {
+  MessageType,
+  ShowConfirm,
+  ShowMessage,
+} from "~/assets/scripts/Functions";
 import { EventBus } from "~/assets/scripts/EventBus.js";
 export default {
   props: {
@@ -110,6 +123,11 @@ export default {
         // noSave: true,
         // fullscreen: true,
         ShowForm: (title, obj, isAdd) => {
+          if (this.user.userLevel !== 1) {
+            this.form.type = "dialog";
+          } else {
+            this.form.type = "";
+          }
           this.isAdd = isAdd;
           var _app = this;
           this.form.title = title;

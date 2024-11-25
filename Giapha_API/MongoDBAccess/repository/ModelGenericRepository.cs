@@ -33,6 +33,26 @@ namespace MongoDBAccess.DataAccess.MongoDB
 
             Collection = _dbContext.DbSet<T>();
         }
+        public DateTime DoilichAM_DUONG(DateTime day)
+        {
+            var vLich = new Tuvi.Lichvannien();
+            int[] result = vLich.Duonglich_Amlich(day.Day, day.Month, day.Year);
+
+            // result[0] -> Ngày âm lịch
+            // result[1] -> Tháng âm lịch
+            // result[2] -> Năm âm lịch
+
+            try
+            {
+                // Tạo đối tượng DateTime từ ngày, tháng, năm âm lịch
+                return new DateTime(result[2], result[1], result[0]);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                // Trường hợp ngày âm không hợp lệ trong lịch Gregorian
+                throw new InvalidOperationException("Ngày âm lịch không thể chuyển đổi thành DateTime.");
+            }
+        }
 
         public ModelGenericRepository(uint? UserId, MongoClient iClient = null)
         {

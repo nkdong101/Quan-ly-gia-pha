@@ -1,6 +1,6 @@
 <template>
   <div v-if="data" class="menu-detail">
-    <MenuCardItem :title="data.banner || data.title" :items="nonChildren" />
+    <MenuCardItem v-if="nonChildren" :title="data.banner || data.title" :items="nonChildren" />
     <MenuCardItem
       style="padding-top: 30px"
       v-for="item in hasChildren"

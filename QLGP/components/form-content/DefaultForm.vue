@@ -70,13 +70,13 @@
           v-if=" !model.noSave && model.type != 'dialog'"
             type="primary"
           @click="$emit('actionOK')"
-          >{{ model.OKtext || "Save" }}</el-button
+          >{{ model.OKtext || "Lưu" }}</el-button
         >
         <el-button
           v-if="model.type != 'dialog'"
           type="default"
           @click="model.visible = false"
-          >{{ model.Canceltext || "Exit" }}</el-button
+          >{{ model.Canceltext || "Thoát" }}</el-button
         >
       </span>
     </el-dialog>

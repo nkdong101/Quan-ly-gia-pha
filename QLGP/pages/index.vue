@@ -282,6 +282,11 @@ export default {
         noSave: true,
         fullscreen: true,
         ShowForm: (title, obj, isAdd) => {
+          if (this.user.userLevel !== 1) {
+            this.form.type = "dialog";
+          } else {
+            this.form.type = "";
+          }
           this.isAdd = isAdd;
           var _app = this;
           this.form.title = title;
@@ -302,14 +307,15 @@ export default {
               action: (re) => {
                 this.form.obj = new Giapha({
                   ...re,
+                  Hongoai_id: obj.Hongoai_id
                 });
                 this.form.visible = true;
               },
             });
           } else {
             APIHelper.Giapha.getInfor(obj.id).then((re) => {
-              //   console.log(re);
-              this.form.obj = new Giapha({ ...re });
+                console.log(obj);
+              this.form.obj = new Giapha({ ...re, Hongoai_id: obj.Hongoai_id });
               this.form.noSave = false;
               this.form.visible = true;
             });
@@ -360,7 +366,7 @@ export default {
           this.formCrAcc.objUser.userLevel = 1;
           this.$refs.ruleForm.validate((valid) => {
             if (valid) {
-              alert("submit!");
+              // alert("submit!");
               GetDataAPI({
                 url: API.Register,
                 method: "POST",
@@ -377,16 +383,19 @@ export default {
                     userLevel: 2,
                     Email: this.formCrAcc.objUser.Email,
                     FullName: this.formCrAcc.objUser.Name,
+                    Giapha_id: this.formCrAcc.objUser.Id,
+
                   },
                 },
                 action: (re) => {
                   ShowMessage(
                     `Đã cấp tài khoản cho <b>${this.formCrAcc.objUser.Name}</b>`
                   );
+                  this.formCrAcc.visible = false;
                 },
               });
             } else {
-              console.log("error submit!!");
+              // console.log("error submit!!");
               return false;
             }
           });

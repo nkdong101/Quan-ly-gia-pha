@@ -13,7 +13,7 @@
       :width="config.Width"
       fill="#ffffff"
       stroke-width="3"
-      :stroke="getFillColor(data.gioitinh)"
+      :stroke="data.Nammat? '#c9c5c5' : getFillColor(data.gioitinh)"
       rx="5"
       ry="5"
     ></rect>
@@ -22,7 +22,7 @@
       y="0"
       height="20"
       :width="config.Width"
-      :fill="getFillColor(data.gioitinh)"
+      :fill="data.Nammat? '#c9c5c5' : getFillColor(data.gioitinh)"
       stroke-width="0"
       stroke="#b1b9be"
       rx="5"
@@ -34,7 +34,7 @@
       :x2="config.Width"
       y2="20"
       stroke-width="5"
-      :stroke="getFillColor(data.gioitinh)"
+      :stroke="data.Nammat? '#c9c5c5' : getFillColor(data.gioitinh)"
     ></line>
     <text
       data-text-overflow="multiline"
@@ -106,10 +106,10 @@
     >
      
     </el-popover> -->
-    <use cursor="pointer" class="colored-use"  @click="abc" v-if="data.Hongoai_id > 0" x="200" y="10" xlink:href="#base_up"></use>
+    <!-- <use cursor="pointer" class="colored-use"  @click="abc" v-if="data.Hongoai_id > 0" x="200" y="10" xlink:href="#base_up"></use> -->
 
     <foreignObject
-  
+      v-if="user.userLevel == 1 || data.User_id == user.AccountSerial"
       cursor="pointer"
       :style="{
         fontSize: '14px',
@@ -122,7 +122,7 @@
     </foreignObject>
 
     <foreignObject
-    
+    v-if="!data.User_id && user.userLevel == 1"
       cursor="pointer"
       :style="{
         fontSize: '14px',
@@ -163,9 +163,9 @@ export default {
       // console.log(this)
       this.$emit('CreateAcc',this.data);
     },
-    abc(){
-      this.$emit('findHoNgoai',this.data);
-    },
+    // abc(){
+    //   this.$emit('findHoNgoai',this.data);
+    // },
     handClickdot() {
       // console.log("handClickdotdotdotdot");
       // console.log(this.$refs['pop'+this.data.id])

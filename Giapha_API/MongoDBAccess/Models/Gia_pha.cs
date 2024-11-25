@@ -22,12 +22,12 @@ namespace MongoDBAccess.Models
         ///// ID họ việt nam
         ///// </summary>
         //public uint HoVietNam_id { get; set; }
-        ///// <summary>
-        ///// ID họ ngoại (chỉ áp dụng với nữ)
-        ///// Khi nữ lấy chồng thì họ sẽ theo nhà chồng và chuyển họ của mình thành họ ngoại
-        ///// Làm như thế để tạo mối liên hệ giữa 2 họ
-        ///// </summary>
-        //public uint Hongoai_id { get; set; }
+        /// <summary>
+        /// ID họ ngoại (chỉ áp dụng với nữ)
+        /// Khi nữ lấy chồng thì họ sẽ theo nhà chồng và chuyển họ của mình thành họ ngoại
+        /// Làm như thế để tạo mối liên hệ giữa 2 họ
+        /// </summary>
+        public uint Hongoai_id { get; set; }
         /// <summary>
         /// Họ tên
         /// </summary>
@@ -96,9 +96,13 @@ namespace MongoDBAccess.Models
         #endregion
         #region Thông tin khi mất
         /// <summary>
-        /// Ngày giỗ theo âm lịch
+        /// Ngày mất ÂL
         /// </summary>
         public DateTime? Date_of_death { get; set; }
+        /// <summary>
+        /// Năm mất ÂL
+        /// </summary>
+        public uint? year_die { get; set; }
         /// <summary>
         /// Nơi chôn cất sau khi mất
         /// </summary>
@@ -135,6 +139,30 @@ namespace MongoDBAccess.Models
         /// </summary>
         [CustomObjectAttr(IsEdit = false)]
         public uint User_id { get; set; }
+
+
+
+        public DateTime DoilichAM_DUONG(DateTime day)
+        {
+           
+            var vLich = new Tuvi.Lichvannien();
+            int[] result = vLich.Amlich_Duonglich(day.Day, day.Month, day.Year,0);
+
+            // result[0] -> Ngày âm lịch
+            // result[1] -> Tháng âm lịch
+            // result[2] -> Năm âm lịch
+
+            try { 
+            
+                return new DateTime(result[2], result[1], result[0]);
+            }
+            catch (ArgumentOutOfRangeException) { 
+            
+                throw new InvalidOperationException("Ngày âm lịch không thể chuyển đổi thành DateTime.");
+            }
+        }
+
+
         /// <summary>
         /// Định dạng thành viên trong gia đình
         /// </summary>
@@ -152,7 +180,8 @@ namespace MongoDBAccess.Models
                 Name = this.Name,
                 Other_Name = this.Other_Name,
                 Year_Of_Birth = this.Year_Of_Birth,
-                Date_of_death = this.Date_of_death,
+                Date_of_death = this.Date_of_death == null ? (DateTime?)null : DoilichAM_DUONG(this.Date_of_death.Value),
+                //Date_of_death_Lunar = this.Date_of_death == null ? (DateTime?)null : this.Doilich(this.Date_of_death.Value),
                 Number_Childs = (byte)this.Childs.Count(),
                 Number_Couple = (byte)this.Couple.Count(),
                 Number_Siblings = (byte)(this.siblings.Count() + 1),
@@ -190,6 +219,8 @@ namespace MongoDBAccess.Models
                 mid = this.Parent.Mother_id,
                 name = vName,
                 Nammat = this.Date_of_death == null ? null : this.Date_of_death?.Year,
+                //Date_of_death_Lunar = this.Date_of_death == null ? (DateTime?)null : this.Doilich(this.Date_of_death.Value),
+
                 Namsinh = this.Year_Of_Birth,
                 SL_Anhem = (byte)this.siblings.Count(),
                 SL_Con = (byte)this.Childs.Where(a => a.Cognition).Count(),
@@ -197,7 +228,8 @@ namespace MongoDBAccess.Models
                 State = this.State,
                 Avatar = this.Avatar,
                 gioitinh = this.Gender,
-                //Hongoai_id = this.Hongoai_id,
+                User_id = this.User_id,
+                Hongoai_id = this.Hongoai_id,
                 Dongho_id = this.Dongho_id,
                 Stt = iBox.Index,
                 Box = iBox,

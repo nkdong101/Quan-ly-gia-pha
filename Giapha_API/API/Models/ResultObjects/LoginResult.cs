@@ -45,6 +45,6 @@ namespace API.Models
         /// </summary>
         public List<MenuResult> Menu { get;  set; }
         public uint GroupPermission_Id { get;  set; }
-        public string ChucVu { get;  set; }
+        public uint userLevel { get; set; }
     }
 }

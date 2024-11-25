@@ -5,6 +5,7 @@
         <el-button
           @click="form.ShowForm('Thêm sự kiện', {})"
           type="primary"
+               class="icon-btn"
           v-if="pagePermission.add"
         >
           <i class="fa fa-plus"></i>

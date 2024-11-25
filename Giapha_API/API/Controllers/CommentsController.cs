@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using MongoDBAccess;
 using MongoDBAccess.Models;
+using MongoDBAccess.Models.Extend;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -40,6 +41,16 @@ namespace API.Controllers
             if (this.user != null)
                 iInfo.UserId = this.user.Id;
             return Request.SuccessResult(helper.Add(iInfo));
+        } 
+        
+        [ResponseType(typeof(APIResult<string>))]
+        [Route("Comments/GetNoti")]
+        [HttpGet]
+        [AllowAnonymous]
+        public HttpResponseMessage GetNoti()
+        {
+
+            return Request.SuccessResult(helper.GetNoti());
         }
 
         /// <summary>
@@ -53,6 +64,8 @@ namespace API.Controllers
         public HttpResponseMessage GetList()
         {
             return Request.SuccessResult(helper.GetList());
-        }
+        } 
+        
+        
     }
 }

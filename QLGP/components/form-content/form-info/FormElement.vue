@@ -406,27 +406,27 @@ export default {
           case FormElementType.select:
             if (!this.GetModelValue() && this.GetModelValue() !== false)
               return `<b>${
-                this.model.label || "This field"
-              }</b> has not picked`;
+                this.model.label || "Trường"
+              }</b> bắt buộc chọn`;
             break;
           case FormElementType.groupCheck:
             if (this.options.multiple) {
               if (!this.GetModelValue().length)
                 return `<b>${
-                  this.model.label || "This field"
-                }</b> has not picked`;
+                  this.model.label || "Trường này"
+                }</b> bắt buộc chọn`;
             } else {
               if (!this.GetModelValue())
                 return `<b>${
-                  this.model.label || "This field"
-                }</b> has not picked`;
+                  this.model.label || "Trường này"
+                }</b> bắt buộc chọn`;
             }
 
             break;
 
           default:
             if (!this.GetModelValue())
-              return `<b>${this.model.label || "This field"}</b> is required`;
+              return `<b>${this.model.label || "Trường này"}</b> yêu cầu nhập`;
             break;
         }
       }

@@ -1,0 +1,51 @@
+25/11/2024 16:27:44.479|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:62008/Giapha/GetFamily?iPerson_id=55
+
+
+25/11/2024 16:27:45.773|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/Giapha/GetFamily?iPerson_id=55
+
+
+25/11/2024 17:11:10.693|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Save_Bome
+FormatException
+ An error occurred while deserializing the year_die property of class MongoDBAccess.Models.Gia_pha: Cannot deserialize a 'UInt32' from BsonType 'Null'.
+ --------------------------------------
+
+25/11/2024 17:12:24.931|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Save_Bome
+MissingMethodException
+ Attempted to access a missing method.
+ --------------------------------------
+
+25/11/2024 17:13:24.165|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Save_Bome
+MissingMethodException
+ Attempted to access a missing method.
+ --------------------------------------
+
+25/11/2024 17:13:51.416|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Save_Bome
+MissingMethodException
+ Attempted to access a missing method.
+ --------------------------------------
+
+25/11/2024 17:14:56.445|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Save_Bome
+MissingMethodException
+ Attempted to access a missing method.
+ --------------------------------------
+
+25/11/2024 17:16:33.202|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Save_Bome
+TargetInvocationException
+ Exception has been thrown by the target of an invocation.
+ --------------------------------------
+
+25/11/2024 22:20:04.707|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+Exception
+ Không tìm thấy thông tin của người thêm bố mẹ!
+ --------------------------------------
+
+25/11/2024 23:16:00.701|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+25/11/2024 23:16:13.197|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+CreateExeption
+ Thông tin đã tồn tại, không thể thêm mới
+ --------------------------------------
+

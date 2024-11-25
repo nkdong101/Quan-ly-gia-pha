@@ -54,7 +54,7 @@
     </div>
     <div id="dang-nhap" class="reigter">
       <div style="text-align: center" class="regiter-wrapper">
-        <h4>{{ isRegit ? "Khởi tạo thông tin dòng họ" : "Đăng nhập" }}</h4>
+        <h4>{{ isRegit ? "Khởi tạo thông tin dòng họ" : user ? `${user.FullName}` : "Đăng nhập" }}</h4>
         <div
           v-if="isRegit"
           style="width: 100%; text-align: center; padding: 0 0 10px 0"
@@ -64,8 +64,11 @@
             mình!</i
           >
         </div>
+
+        <el-button @click="logout()" type="primary" size="medium" v-if="user">Đăng xuất</el-button>
         <transition name="slide-fade" mode="out-in">
           <component
+           v-if="!user"
             @regiter="handleRegister"
             :is="isRegit ? 'Register' : 'Login_form'"
           />
@@ -80,6 +83,7 @@ import API, { ServerAPI } from "~/assets/scripts/API";
 import DefaultForm from "~/assets/scripts/base/DefaultForm";
 import { ShowMessage, validateEmail } from "~/assets/scripts/Functions";
 import GetDataAPI from "~/assets/scripts/GetDataAPI";
+import StoreManager from "~/assets/scripts/StoreManager";
 export default {
   layout: "blank",
   props: {
@@ -115,6 +119,12 @@ export default {
     },
   },
   methods: {
+    logout() {
+      localStorage.clear();
+      StoreManager.SetUser(null)
+          this.$router.push("/Account/Home");
+
+    },
     handleRegister(value) {
       this.isRegit = false;
       // console.log(value);

@@ -1,15 +1,40 @@
 <
 <template lang="">
   <div class="bell">
-    <div class="number-mess"><p>2</p></div>
-    <el-dropdown trigger="click" @command="handleCommand" :hide-on-click="false">
+    <div v-if="data_GP.length > 0 || data_CM.length > 0" class="number-mess"><p>{{data_GP.length > 0? data_GP.length +  data_CM.length: ''}}</p></div>
+    <el-dropdown
+      trigger="click"
+      @command=""
+      :hide-on-click="false"
+    >
       <span class="el-dropdown-link">
         <i style="color: white" class="el-icon-message-solid" />
       </span>
       <el-dropdown-menu class="dd-mess" slot="dropdown">
-        <el-dropdown-item command="a" :icon="isCheck ? 'el-icon-remove' : 'el-icon-success'"
+        <el-dropdown-item v-if="data_GP.length"
           ><div class="title">
-            <p>Ngày 21/11/2024 tới có ngày giỗ của abc (39012 ÂL)</p>
+            <p>Ngày giỗ 7 ngày tới</p>
+          </div></el-dropdown-item
+        >
+        <el-dropdown-item
+          v-for="item in data_GP" :key="item"
+
+          ><div class="title">
+            <span v-html="item"></span>
+          </div></el-dropdown-item
+        >
+
+      <el-dropdown-item v-if="data_CM.length"
+          ><div class="title">
+            <p>Góp ý</p>
+          </div></el-dropdown-item
+        >
+        <el-dropdown-item
+          v-for="item in data_CM" :key="item.Id"
+
+          ><div style="flex: 1" class="title">
+            <span>{{item.Content}}</span>
+            <div style="text-align:right;font-size: 10px;line-height: 8px;"><span>{{item.Email}}</span>   <span>{{ConvertStr.ToDateStr(item.DateCreate)}}</span></div>
           </div></el-dropdown-item
         >
       </el-dropdown-menu>
@@ -17,17 +42,36 @@
   </div>
 </template>
 <script>
+import API from "~/assets/scripts/API";
+import GetDataAPI from "~/assets/scripts/GetDataAPI";
 export default {
-    data() {
-        return {
-            isCheck:true
-        }
-    },
+  data() {
+    return {
+      isCheck: true,
+      data_GP: [],
+      data_CM: [],
+    };
+  },
   methods: {
     handleCommand(command) {
-        this.isCheck = !this.isCheck
-    //   this.$message("click on item " + command);
+      this.isCheck = !this.isCheck;
+      //   this.$message("click on item " + command);
     },
+  },
+  mounted() {
+    GetDataAPI({
+      url: API.Giapha_GetNotify,
+      action: (re) => {
+        this.data_GP = re;
+      },
+    });
+    GetDataAPI({
+      url: API.Comments_GetNoti,
+      action: (re) => {
+        this.data_CM = re;
+        console.log(this);
+      },
+    });
   },
 };
 </script>
@@ -51,7 +95,7 @@ export default {
       width: 15px;
       height: 15px;
       top: -17px;
-      right:0px;
+      right: 0px;
       font-size: 10px;
       font-weight: bold;
       color: white;

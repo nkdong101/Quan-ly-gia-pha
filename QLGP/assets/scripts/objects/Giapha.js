@@ -64,7 +64,7 @@ export default class Giapha {
             label: 'Họ và tên',
             model: 'Name',
             type: 'text',
-
+            required: true,
         }),
         burial_ground
         : new FormElement({
@@ -256,6 +256,11 @@ export default class Giapha {
                 obj: this,
                 // type: 1,
             },
+            isVisible(data){
+                console.log(data);
+                if(data.Hongoai_id == 2 ) return false;
+                else return true;
+            }
             // watch(data,n,o,t,){
             //     console.log('data,n,o,,',data,n,o,t)
             // }

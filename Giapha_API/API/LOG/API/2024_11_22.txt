@@ -1,0 +1,143 @@
+22/11/2024 08:51:40.208|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:62008/Giapha/GetTree
+
+
+22/11/2024 09:22:09.476|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Account/Register
+NotFoundExeption
+ Không tìm thấy thông tin cần sửa
+ --------------------------------------
+
+22/11/2024 09:25:29.416|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Account/Register
+NotFoundExeption
+ Không tìm thấy thông tin cần sửa
+ --------------------------------------
+
+22/11/2024 09:27:01.354|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Account/Register
+NotFoundExeption
+ Không tìm thấy thông tin cần sửa
+ --------------------------------------
+
+22/11/2024 10:18:52.999|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+22/11/2024 10:54:24.101|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/GetTree
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+22/11/2024 10:54:29.985|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/GetTree
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+22/11/2024 10:57:47.977|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Save_Bome
+Exception
+ Thông tin của bố không hợp lệ!
+ --------------------------------------
+
+22/11/2024 10:59:11.366|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Save_Bome
+Exception
+ Thông tin của bố không hợp lệ!
+ --------------------------------------
+
+22/11/2024 11:17:27.677|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_ACE
+InvalidOperationException
+ Cannot call AbortTransaction twice.
+ --------------------------------------
+
+22/11/2024 11:19:42.552|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Add_ACE
+InvalidOperationException
+ Cannot call AbortTransaction twice.
+ --------------------------------------
+
+22/11/2024 11:23:36.326|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Add_ACE
+Exception
+ Dữ liệu quan hệ không đúng, vui lòng liên hệ admin hệ thống!
+ --------------------------------------
+
+22/11/2024 11:23:53.595|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Add_ACE
+Exception
+ Dữ liệu quan hệ không đúng, vui lòng liên hệ admin hệ thống!
+ --------------------------------------
+
+22/11/2024 11:23:57.659|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Add_ACE
+Exception
+ Dữ liệu quan hệ không đúng, vui lòng liên hệ admin hệ thống!
+ --------------------------------------
+
+22/11/2024 11:24:09.604|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Add_ACE
+Exception
+ Dữ liệu quan hệ không đúng, vui lòng liên hệ admin hệ thống!
+ --------------------------------------
+
+22/11/2024 11:25:24.831|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:62008/Giapha/Add_ACE
+Exception
+ Dữ liệu quan hệ không đúng, vui lòng liên hệ admin hệ thống!
+ --------------------------------------
+
+22/11/2024 15:52:40.465|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+22/11/2024 15:53:46.368|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+22/11/2024 15:53:47.421|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+22/11/2024 15:53:48.223|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+22/11/2024 15:54:14.569|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+22/11/2024 15:55:02.856|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+22/11/2024 15:55:07.960|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+22/11/2024 17:17:36.169|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+Exception
+ Không tìm thấy thông tin của người thêm bố mẹ!
+ --------------------------------------
+
+22/11/2024 17:17:59.017|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/42
+Exception
+ Người này đã có con, vui lòng xóa hết danh sách con trước khi xóa thông tin người này!
+ --------------------------------------
+
+22/11/2024 17:20:42.694|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+Exception
+ Không tìm thấy thông tin của người thêm bố mẹ!
+ --------------------------------------
+
+22/11/2024 17:20:52.375|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+Exception
+ Không tìm thấy thông tin của người thêm bố mẹ!
+ --------------------------------------
+
+22/11/2024 22:33:39.528|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/42
+Exception
+ Người này đã có con, vui lòng xóa hết danh sách con trước khi xóa thông tin người này!
+ --------------------------------------
+
+22/11/2024 23:09:57.148|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+

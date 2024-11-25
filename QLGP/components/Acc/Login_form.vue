@@ -185,11 +185,18 @@ export default {
               localStorage.user = JSON.stringify(re);
               // this.Dongho_watching = user.Dongho_id;
               localStorage.Dongho_watching = re.Dongho_id;
-
               StoreManager.SetUser(JSON.parse(localStorage.user));
-              console.log(StoreManager);
+              // console.log(StoreManager);
               _app.$router.push("/");
+              this.loading = false;
+
             },
+            error: (re) => {
+              ShowMessage(re,'error')
+              setTimeout(()=>{this.loading = false;},600)
+              
+
+            }
           });
         })
         .catch((e) => {

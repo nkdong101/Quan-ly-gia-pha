@@ -186,6 +186,7 @@ export default {
             data: "button",
             fix: "right",
             sortable: false,
+            width: 70,
           }),
         ],
       },

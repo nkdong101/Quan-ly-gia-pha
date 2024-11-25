@@ -27,6 +27,17 @@ namespace API.Controllers
                 return _helper;
             }
         }
+
+        ///<summary>
+        ///Lấy thông báo ngày giỗ 7 ngày tới
+        /// </summary>
+        [Route("Giapha/GetNotify")]
+        [HttpGet]
+        public HttpResponseMessage GetNotify()
+        {
+            return Request.SuccessResult(helper.ThongBaoNgayGio());
+        }
+
         /// <summary>
         /// Lấy danh sách gia phả hiển thị dạng tree
         /// </summary>

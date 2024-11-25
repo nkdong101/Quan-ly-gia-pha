@@ -393,12 +393,13 @@
             <param name="iUserId"></param>
             <param name="iClient">Kết nối</param>
         </member>
-        <member name="M:MongoDBAccess.Gia_phaHelper.Doilich(MongoDBAccess.API_Input.Doi_lich)">
+        <member name="M:MongoDBAccess.Gia_phaHelper.ThongBaoNgayGio">
             <summary>
             Đổi ngày âm dương
             </summary>
             <param name="iInfo"></param>
             <returns></returns>
+            
         </member>
         <member name="M:MongoDBAccess.Gia_phaHelper.GetTree">
             <summary>
@@ -844,6 +845,26 @@
             Thông tin mô tả khi đăng ký
             </summary>
         </member>
+        <member name="T:MongoDBAccess.Models.Extend.ThongBao">
+            <summary>
+            Thông tin anh chị em
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.ThongBao.Id">
+            <summary>
+            Thứ tự sắp xếp
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.ThongBao.Name">
+            <summary>
+            Tên đối tượng
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.ThongBao.Childs">
+            <summary>
+            Mối quan hệ anh chị em
+            </summary>
+        </member>
         <member name="T:MongoDBAccess.Models.Extend.Anh_Chi_Em">
             <summary>
             Thông tin anh chị em
@@ -977,6 +998,11 @@
         <member name="P:MongoDBAccess.Models.Extend.Family_Person.Date_of_death">
             <summary>
             Ngày mất
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Family_Person.Date_of_death_Lunar">
+            <summary>
+            Ngày mất ÂL
             </summary>
         </member>
         <member name="P:MongoDBAccess.Models.Extend.Family_Person.Index">
@@ -1392,6 +1418,13 @@
             ID họ
             </summary>
         </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.Hongoai_id">
+            <summary>
+            ID họ ngoại (chỉ áp dụng với nữ)
+            Khi nữ lấy chồng thì họ sẽ theo nhà chồng và chuyển họ của mình thành họ ngoại
+            Làm như thế để tạo mối liên hệ giữa 2 họ
+            </summary>
+        </member>
         <member name="P:MongoDBAccess.Models.Gia_pha.Name">
             <summary>
             Họ tên
@@ -1474,7 +1507,12 @@
         </member>
         <member name="P:MongoDBAccess.Models.Gia_pha.Date_of_death">
             <summary>
-            Ngày giỗ theo âm lịch
+            Ngày mất ÂL
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.year_die">
+            <summary>
+            Năm mất ÂL
             </summary>
         </member>
         <member name="P:MongoDBAccess.Models.Gia_pha.burial_ground">
