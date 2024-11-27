@@ -29,6 +29,18 @@ namespace API.Controllers
         }
 
         ///<summary>
+        ///Thêm tiểu sử
+        /// </summary>
+        [Route("Giapha/AddTieuSu")]
+        [ResponseType(typeof(APIResult<string>))]
+
+        [HttpPost]
+        public HttpResponseMessage AddTieuSu([FromBody] MongoDBAccess.Models.Gia_pha person)
+        {
+            return Request.SuccessResult(helper.AddTieuSu(person));
+        }
+
+        ///<summary>
         ///Lấy thông báo ngày giỗ 7 ngày tới
         /// </summary>
         [Route("Giapha/GetNotify")]
@@ -61,14 +73,6 @@ namespace API.Controllers
         {
             return Request.SuccessResult(helper.GetFamily(iPerson_id));
         }
-        [ResponseType(typeof(APIResult<List<int>>))]
-        [Route("Giapha/Doilich")]
-        [HttpGet]
-        [AllowAnonymous]
-        public HttpResponseMessage Doilich([FromUri] MongoDBAccess.API_Input.Doi_lich iInfo)
-        {
-            return Request.SuccessResult(helper.Doilich(iInfo));
-        }
         /// <summary>
         /// Lấy thông tin của 1 thành viên trong gia phả
         /// </summary>
@@ -80,6 +84,10 @@ namespace API.Controllers
             var find = helper.FindById(id);
             if (find == null)
                 throw new System.Exception("Không tìm thấy thông tin");
+            if(find.Date_of_death != null)
+            {
+                find.Date_of_death = new Gia_phaHelper(this.user.Id).DoilichAM_DUONG(find.Date_of_death.Value);
+            }
             return Request.SuccessResult(find);
         }
         /// <summary>

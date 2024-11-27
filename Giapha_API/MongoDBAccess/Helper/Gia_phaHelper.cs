@@ -38,7 +38,7 @@ namespace MongoDBAccess
                     for (int i = 0; i <= 7; i++) // Kiểm tra trong vòng 7 ngày tới
                     {
                         DateTime checkDate = today.AddDays(i);
-                        DateTime NgayAM = DoilichAM_DUONG(checkDate);
+                        DateTime NgayAM = DoilichDUONG_AM(checkDate);
 
                         // So sánh ngày giỗ (Date_of_death) với ngày âm lịch
                         if (item.Date_of_death.Value.Month == NgayAM.Month &&
@@ -837,50 +837,62 @@ namespace MongoDBAccess
                     iInfo.Con_Info.Level = (byte)(vCheck.Level + 1);
                     iInfo.Con_Info.Parent = vPhahe;
                     Validate(iInfo.Con_Info, session);
-                    uint vId = this.Create(iInfo.Con_Info, session);
-                    //2. Cập nhật thông tin con vào bản ghi của bố mẹ
-                    var vChild = new Models.Extend.Level() { Cognition = iInfo.Conrieng, Id = vId, Index = iInfo.Con_Info.Index };
-                    //2.1 Bản ghi của mẹ
-                    if (vCheck.Childs == null) vCheck.Childs = new List<Models.Extend.Level>();
-                    vListACE_Me = vCheck.Childs.Select(p => p.Id).ToList();
-                    vCheck.Childs.Add(vChild);
-                    this.Update(vCheck.Id, p => p.Set(a => a.Childs, vCheck.Childs), session);
-                    //2.2 bả ghi của bố
-                    var vParent = this.FindById((uint)vPhahe.Father_id);
-                    if (vParent == null)
+
+                    var vCheckCon = this.FindById(iInfo.Con_Info.Id);
+                    if (vCheckCon != null)
                     {
-                        session.AbortTransaction();
-                        throw new Exception("Không tìm thấy thông tin của người bố!");
+                        this.Update(vCheckCon.Id, iInfo.Con_Info.DefaultUpdateDefine(), session, null);
                     }
-                    if (vParent.Childs == null) vParent.Childs = new List<Models.Extend.Level>();
-                    vListACE_Cha = vCheck.Childs.Select(p => p.Id).ToList();
-                    vParent.Childs.Add(vChild);
-                    this.Update(vParent.Id, p => p.Set(a => a.Childs, vParent.Childs), session);
-                    //3. Kiểm tra những anh chị em khác trong gia đình, add thêm vào danh sách
-                    var vACE = this.Find(p => vListACE_Cha.Contains(p.Id) || vListACE_Me.Contains(p.Id)).ToList();
-                    foreach (var Item in vACE)
+                    else
                     {
-                        bool vCheck_Cha = vListACE_Cha.Contains(Item.Id);
-                        bool vCheck_Me = vListACE_Me.Contains(Item.Id);
-                        Models.Enums.eQuanhe_ACE vQuanhe = (vCheck_Cha && vCheck_Me) ? Models.Enums.eQuanhe_ACE.ACE_Ruot :
-                                                           vCheck_Cha ? Models.Enums.eQuanhe_ACE.Cung_Cha : Models.Enums.eQuanhe_ACE.Cung_me;
-                        // Bản ghi hiện tại mới thêm
-                        iInfo.Con_Info.siblings.Add(new Models.Extend.Anh_Chi_Em()
+
+                        uint vId = this.Create(iInfo.Con_Info, session);
+                        //2. Cập nhật thông tin con vào bản ghi của bố mẹ
+                        var vChild = new Models.Extend.Level() { Cognition = iInfo.Conrieng, Id = vId, Index = iInfo.Con_Info.Index };
+                        //2.1 Bản ghi của mẹ
+                        if (vCheck.Childs == null) vCheck.Childs = new List<Models.Extend.Level>();
+                        vListACE_Me = vCheck.Childs.Select(p => p.Id).ToList();
+                        vCheck.Childs.Add(vChild);
+                        this.Update(vCheck.Id, p => p.Set(a => a.Childs, vCheck.Childs), session);
+                        //2.2 bả ghi của bố
+                        var vParent = this.FindById((uint)vPhahe.Father_id);
+                        if (vParent == null)
                         {
-                            Id = Item.Id,
-                            Index = Item.Index,
-                            Quanhe = vQuanhe
-                        });
-                        // Bản ghi của anh chị em
-                        Item.siblings.Add(new Models.Extend.Anh_Chi_Em()
+                            session.AbortTransaction();
+                            throw new Exception("Không tìm thấy thông tin của người bố!");
+                        }
+                        if (vParent.Childs == null) vParent.Childs = new List<Models.Extend.Level>();
+                        vListACE_Cha = vCheck.Childs.Select(p => p.Id).ToList();
+                        vParent.Childs.Add(vChild);
+                        this.Update(vParent.Id, p => p.Set(a => a.Childs, vParent.Childs), session);
+                        //3. Kiểm tra những anh chị em khác trong gia đình, add thêm vào danh sách
+                        var vACE = this.Find(p => vListACE_Cha.Contains(p.Id) || vListACE_Me.Contains(p.Id)).ToList();
+                        foreach (var Item in vACE)
                         {
-                            Id = vId,
-                            Index = iInfo.Con_Info.Index,
-                            Quanhe = vQuanhe
-                        });
-                        this.Update(Item.Id, p => p.Set(a => a.siblings, Item.siblings), session);
+                            bool vCheck_Cha = vListACE_Cha.Contains(Item.Id);
+                            bool vCheck_Me = vListACE_Me.Contains(Item.Id);
+                            Models.Enums.eQuanhe_ACE vQuanhe = (vCheck_Cha && vCheck_Me) ? Models.Enums.eQuanhe_ACE.ACE_Ruot :
+                                                               vCheck_Cha ? Models.Enums.eQuanhe_ACE.Cung_Cha : Models.Enums.eQuanhe_ACE.Cung_me;
+                            // Bản ghi hiện tại mới thêm
+                            iInfo.Con_Info.siblings.Add(new Models.Extend.Anh_Chi_Em()
+                            {
+                                Id = Item.Id,
+                                Index = Item.Index,
+                                Quanhe = vQuanhe
+                            });
+                            // Bản ghi của anh chị em
+                            Item.siblings.Add(new Models.Extend.Anh_Chi_Em()
+                            {
+                                Id = vId,
+                                Index = iInfo.Con_Info.Index,
+                                Quanhe = vQuanhe
+                            });
+                            this.Update(Item.Id, p => p.Set(a => a.siblings, Item.siblings), session);
+                        }
+                        this.Update(vId, p => p.Set(a => a.siblings, iInfo.Con_Info.siblings), session);
+
                     }
-                    this.Update(vId, p => p.Set(a => a.siblings, iInfo.Con_Info.siblings), session);
+
 
                     session.CommitTransaction();
                 }
@@ -944,16 +956,29 @@ namespace MongoDBAccess
                             //this.Update(vCheck.Id, p => p.Set(a => a.Dongho_id, vHo_id).Set(a => a.Hongoai_id, vCheck.Dongho_id), session, null);
                         }
                     }
-                    uint vVoId = this.Create(iInfo.Vo_Info, session);
-                    //2. Cập nhật lại quan hệ của vợ chồng ở bản ghi người chồng
-                    if (vCheck.Couple == null) vCheck.Couple = new List<Models.Extend.Level>();
-                    vCheck.Couple.Add(new Models.Extend.Level()
+
+                    var vCheckVo = this.FindById(iInfo.Vo_Info.Id);
+                    if(vCheckVo != null)
                     {
-                        Cognition = false,
-                        Id = vVoId,
-                        Index = iInfo.Vo_Info.Index
-                    });
-                    this.Update(vCheck.Id, p => p.Set(a => a.Couple, vCheck.Couple), session, null);
+                        this.Update(vCheckVo.Id, iInfo.Vo_Info.DefaultUpdateDefine(), session, null);
+                    }
+                    else
+                    {
+                        uint vVoId = this.Create(iInfo.Vo_Info, session);
+                        //2. Cập nhật lại quan hệ của vợ chồng ở bản ghi người chồng
+                        if (vCheck.Couple == null) vCheck.Couple = new List<Models.Extend.Level>();
+                        vCheck.Couple.Add(new Models.Extend.Level()
+                        {
+                            Cognition = false,
+                            Id = vVoId,
+                            Index = iInfo.Vo_Info.Index
+                        });
+                        this.Update(vCheck.Id, p => p.Set(a => a.Couple, vCheck.Couple), session, null);
+
+                    }
+
+
+
                     session.CommitTransaction();
                 }
                 catch (Exception ex)
@@ -980,7 +1005,7 @@ namespace MongoDBAccess
             {
                 if(iInfo.year_die != null)
                 {
-                    iInfo.Date_of_death = DoilichAM_DUONG((DateTime)iInfo.Date_of_death);
+                    iInfo.Date_of_death = DoilichDUONG_AM((DateTime)iInfo.Date_of_death);
 
                 }
             }
@@ -1217,10 +1242,16 @@ namespace MongoDBAccess
         /// <param name="iperson1"></param>
         /// <param name="person2"></param>
         /// <returns></returns>
-        public Gia_pha To_tien_chung(Gia_pha iperson1, Gia_pha person2)
+        public Gia_pha AddTieuSu(Gia_pha iperson)
         {
             Gia_pha vResult = new Gia_pha();
+            var vCheck = this.FindById(iperson.Id);
+            if(vCheck == null)
+            {
+                throw new Exception("Không tìm thấy thông tin người thêm tiểu sử");
+            }
 
+            this.Update(vCheck.Id, iperson.DefaultUpdateDefine(),null,null);
             return vResult;
         }
     }

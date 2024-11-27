@@ -149,7 +149,7 @@
         <FormInfo
           :style="{ width: !isAdd ? '30%' : '100%' }"
           ref="form"
-          :model="isAdd ? form.obj.form() : form.obj.form2()"
+          :model="isAdd ? form.obj.form() : form.obj.form3()"
         />
         <div class="tieusu" v-if="!isAdd">
           <p class="title">Tiểu sử</p>
@@ -172,7 +172,7 @@
             > -->
             <QEditor
               ref="entry"
-              v-model.lazy="tieusu"
+              v-model.lazy="form.obj.tieusu"
               class="quill-container"
             />
           </div>
@@ -282,14 +282,22 @@ export default {
         noSave: true,
         fullscreen: true,
         ShowForm: (title, obj, isAdd) => {
-          if (this.user.userLevel !== 1) {
-            this.form.type = "dialog";
-          } else {
-            this.form.type = "";
-          }
-          this.isAdd = isAdd;
           var _app = this;
-          this.form.title = title;
+
+          // if()
+          if (_app.user.AccountSerial === obj.User_id) {
+            _app.form.type = "";
+          } else {
+            if (_app.user.userLevel == 1) {
+              _app.form.type = "";
+
+            }else{
+              _app.form.type = "dialog";
+
+            }
+          }
+          _app.isAdd = isAdd;
+          _app.form.title = title;
           // if (!isAdd) {
           //   obj = obj;
           //   if (!obj) {
@@ -307,14 +315,14 @@ export default {
               action: (re) => {
                 this.form.obj = new Giapha({
                   ...re,
-                  Hongoai_id: obj.Hongoai_id
+                  Hongoai_id: obj.Hongoai_id,
                 });
                 this.form.visible = true;
               },
             });
           } else {
             APIHelper.Giapha.getInfor(obj.id).then((re) => {
-                console.log(obj);
+              console.log(obj);
               this.form.obj = new Giapha({ ...re, Hongoai_id: obj.Hongoai_id });
               this.form.noSave = false;
               this.form.visible = true;
@@ -323,6 +331,31 @@ export default {
         },
         Save: () => {
           console.log("save", this.tieusu);
+          this.$refs.form.getValidate().then((re) => {
+            if (!re) {
+              ShowMessage("Vui lòng nhập đầy đủ thông tin", MessageType.error);
+              return;
+            } else {
+              this.$refs.form
+                .getEntry("URL")
+                .submitUpload()
+                .then((result) => {
+                  this.form.obj.URL = result;
+                  // this.form.obj.tieusu = this.tieusu
+                  // console.log(this);
+                  GetDataAPI({
+                    url: API.AddTieuSu,
+                    params: this.form.obj.toJSON(),
+                    method: "post",
+                    action: (re) => {
+                      ShowMessage("Thêm thành công", "success");
+                      this.GetNodeData();
+                      this.form.visible = false;
+                    },
+                  });
+                });
+            }
+          });
         },
       }),
       formCrAcc: new DefaultForm({
@@ -384,7 +417,6 @@ export default {
                     Email: this.formCrAcc.objUser.Email,
                     FullName: this.formCrAcc.objUser.Name,
                     Giapha_id: this.formCrAcc.objUser.Id,
-
                   },
                 },
                 action: (re) => {

@@ -7092,10 +7092,17 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-moment@^2.29.1:
-  version "2.29.4"
-  resolved "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
-  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+moment-lunar@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/moment-lunar/-/moment-lunar-0.0.4.tgz#7718594d8b19aea612f42c2b9149d7b1242f6f2e"
+  integrity sha512-8+20OOe4+4qpW6E74TqNYLW1Ri8C1BvJjrwsv5tm49SfQzh+b6YcPPn25xXb3JHIhYVAEwc5hvu0B7X8VdQukw==
+  dependencies:
+    moment "^2.17.1"
+
+moment@^2.17.1, moment@^2.30.1:
+  version "2.30.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
+  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
 
 move-concurrently@^1.0.1:
   version "1.0.1"

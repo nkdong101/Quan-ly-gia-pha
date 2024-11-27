@@ -1,4 +1,4 @@
-import { DateFormated } from "./Functions";
+import { DateFormated,DateLunarFormated,lunarDate } from "./Functions";
 let intlLocale = 'en-us'
 export default {
   convertToRoman :function (num){
@@ -28,8 +28,18 @@ export default {
     }
   
     return result;
-  }
-,
+  },
+
+  toSolarDate: (date)=> {
+    solarDate(date)
+  },
+
+  toLunarStr: (str, format) => {
+    if (!str) return "";
+    str = str || new Date();
+    format = format || "DD/MM/YYYY";
+    return DateLunarFormated(format, str);
+  },
 
   ToDateStr: function (str, format) {
     if (!str) return "";

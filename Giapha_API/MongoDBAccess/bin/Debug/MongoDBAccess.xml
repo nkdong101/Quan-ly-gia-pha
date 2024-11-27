@@ -502,7 +502,7 @@
             </summary>
             <param name="iInfo"></param>
         </member>
-        <member name="M:MongoDBAccess.Gia_phaHelper.To_tien_chung(MongoDBAccess.Models.Gia_pha,MongoDBAccess.Models.Gia_pha)">
+        <member name="M:MongoDBAccess.Gia_phaHelper.AddTieuSu(MongoDBAccess.Models.Gia_pha)">
             <summary>
             Tìm tổ tiên chung của 2 người
             </summary>
@@ -1493,6 +1493,11 @@
         <member name="P:MongoDBAccess.Models.Gia_pha.URL">
             <summary>
             Đường link tư liệu mô tả về người này
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Gia_pha.tieusu">
+            <summary>
+            tiểu sử 
             </summary>
         </member>
         <member name="P:MongoDBAccess.Models.Gia_pha.Gender">

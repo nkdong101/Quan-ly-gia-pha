@@ -32,6 +32,7 @@ export default {
   GetTree : linkAPI + "Giapha/GetTree",
   GetFamily : linkAPI + "Giapha/GetFamily",
   Save_Bome : linkAPI + "Giapha/Save_Bome",
+  AddTieuSu : linkAPI + "Giapha/AddTieuSu",
   Add_ACE : linkAPI + "Giapha/Add_ACE",
   Add_Con : linkAPI + "Giapha/Add_Con",
   Add_Vo : linkAPI + "Giapha/Add_Vo",

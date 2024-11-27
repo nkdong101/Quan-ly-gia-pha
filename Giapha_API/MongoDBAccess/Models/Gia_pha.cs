@@ -85,6 +85,13 @@ namespace MongoDBAccess.Models
         /// Đường link tư liệu mô tả về người này
         /// </summary>
         public List<string> URL { get; set; }
+
+
+        /// <summary>
+        /// tiểu sử 
+        /// </summary>
+        public string tieusu { get; set; }
+
         /// <summary>
         /// Giới tính
         /// </summary>

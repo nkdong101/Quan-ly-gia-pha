@@ -177,6 +177,18 @@ export default class Giapha {
                 // limit: 1
               }),
         }),
+        URL: new FormElement({
+            label: 'Tư liệu mô tả',
+            id: "URL",
+            model: 'URL',
+            type: 'file',
+            options: new InputFileModel({
+                type: InputFileType.default,
+                baseUrl: '/Images/tieusu/',
+                accept: InputFileAccept.all,
+                // limit: 1
+              }),
+        }),
         Gender: new FormElement({
             label: 'Giới tính',
             model: 'Gender',
@@ -397,15 +409,96 @@ export default class Giapha {
                             label: '',
                             type: 'label',
                             child: [
-                                this._formElements.Date_of_death.set(p => p.col = 10),
-                                this._formElements.death_year
-                                
+                                this._formElements.Date_of_death,
+                                this._formElements.death_year.set(p=> p.col = 8),
+                                new FormElement({
+                                    type: 'NgayMatAL',
+                                    attr:{
+                                        obj: this,
+                                    }
+                                })
                             ]
                         }),
 
                     ]
                 }),
                 this._formElements.burial_ground,
+
+
+            ]
+        });
+    }
+
+    form3() {
+        return new FormInfo({
+            labelWidth: 100,
+            formData: this,
+            elements: [
+                this._formElements.Avatar,
+                new FormElement({
+                    direction: FormDirectionType.horizontal,
+                    child: [
+
+                        this._formElements.Index.set(p => p.col = 12),
+                        this._formElements.Name,
+                    ]
+                }),
+                this._formElements.Other_Name,
+                new FormElement({
+                    col: 24,
+                    direction: FormDirectionType.horizontal,
+                    child: [
+
+                        this._formElements.Birthday.set(p => p.col = 10),
+                        this._formElements.Year_Of_Birth.set(p => p.col = 5),
+                        this._formElements.Gender.set(p => p.col = 10).set(p=>p.isVisible = this.type === 4 ),
+
+                    ]
+                }),
+
+                this._formElements.CCCD,
+                this._formElements.Phone,
+
+
+                this._formElements.Place_of_birth.set(p => p.col = 24),
+                this._formElements.Address.set(p => p.col = 24),
+                this._formElements.State,
+                // new FormElement({
+                //     direction: FormDirectionType.horizontal,
+                //     child: [
+
+                //         this._formElements.Birthday,
+                //         this._formElements.Year_Of_Birth,
+
+                //     ]
+                // }),
+
+             
+                new FormElement({
+                    isVisible(data) {
+                        return data.State == 2;
+                    },
+                    child: [
+
+                        new FormElement({
+                            label: '',
+                            type: 'label',
+                            child: [
+                                this._formElements.Date_of_death,
+                                this._formElements.death_year.set(p=> p.col = 8),
+                                new FormElement({
+                                    type: 'NgayMatAL',
+                                    attr:{
+                                        obj: this,
+                                    }
+                                })
+                            ]
+                        }),
+
+                    ]
+                }),
+                this._formElements.burial_ground,
+                this._formElements.URL,
 
 
             ]

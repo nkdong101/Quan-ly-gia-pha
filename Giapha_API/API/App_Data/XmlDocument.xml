@@ -640,6 +640,11 @@
             API các quản lý gia phả
             </summary>
         </member>
+        <member name="M:API.Controllers.GiaphaController.AddTieuSu(MongoDBAccess.Models.Gia_pha)">
+            <summary>
+            Thêm tiểu sử
+             </summary>
+        </member>
         <member name="M:API.Controllers.GiaphaController.GetNotify">
             <summary>
             Lấy thông báo ngày giỗ 7 ngày tới

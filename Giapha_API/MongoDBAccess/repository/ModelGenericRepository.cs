@@ -33,7 +33,7 @@ namespace MongoDBAccess.DataAccess.MongoDB
 
             Collection = _dbContext.DbSet<T>();
         }
-        public DateTime DoilichAM_DUONG(DateTime day)
+        public DateTime DoilichDUONG_AM(DateTime day)
         {
             var vLich = new Tuvi.Lichvannien();
             int[] result = vLich.Duonglich_Amlich(day.Day, day.Month, day.Year);
@@ -53,7 +53,22 @@ namespace MongoDBAccess.DataAccess.MongoDB
                 throw new InvalidOperationException("Ngày âm lịch không thể chuyển đổi thành DateTime.");
             }
         }
+        public DateTime DoilichAM_DUONG(DateTime day)
+        {
+            var vLich = new Tuvi.Lichvannien();
+            int[] result = vLich.Amlich_Duonglich(day.Day, day.Month, day.Year, 0);
 
+            try
+            {
+
+                return new DateTime(result[2], result[1], result[0]);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+                throw new InvalidOperationException("Ngày âm lịch không thể chuyển đổi thành DateTime.");
+            }
+        }
         public ModelGenericRepository(uint? UserId, MongoClient iClient = null)
         {
             this._dbContext = new MongoDBContext(iClient);

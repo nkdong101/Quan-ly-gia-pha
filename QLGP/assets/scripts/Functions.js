@@ -1,5 +1,7 @@
 import ElementUI from "element-ui";
 import moment from "moment";
+import 'moment-lunar';
+
 import ConvertStr from "./ConvertStr";
 
 export var Global = {
@@ -13,17 +15,15 @@ export function validateEmail(email) {
     );
 };
 
+// Example: Convert a Gregorian date to Lunar
+// const gregorianDate = moment();
+const lunarDate1 = moment('2000-10-28T17:00:00.000+00:00'); // Convert to lunar
+
+console.log('solar date:',lunarDate1.solar().format('YYYY-MM-DD'));
 
 export function GetGlobalId() {
   Global.counter++;
   return Global.counter;
-}
-
-if (location.host ==
-  'procurement.wwf.org.vn') {
-  console.log = () => { };
-  console.error = () => { };
-  console.warn = () => { };
 }
 
 export function SearchTree(obj, query, tag) {
@@ -127,6 +127,31 @@ export function DateFormated(format, date) {
   if (moment(date).year() < 1900) return "";
   return moment(date).format(format);
 }
+export function DateLunarFormated(format, date) {
+  format = format || "DD/MM/YYYY";
+  if (!date) return "";
+  date = date || new Date();
+  if (moment(date).year() < 1900) return "";
+  return moment(date).lunar().format(format);
+}
+
+export function lunarDate(date) {
+  if (!date) return "";
+  date = date || new Date();
+  if (moment(date).year() < 1900) return "";
+  return moment(date).lunar()
+}
+
+
+export function solarDate(date) {
+  if (!date) return "";
+  date = date || new Date();
+  if (moment(date).year() < 1900) return "";
+  return moment(date).solar()
+}
+
+
+
 
 
 

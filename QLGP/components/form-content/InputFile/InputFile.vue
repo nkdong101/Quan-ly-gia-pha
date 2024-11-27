@@ -51,7 +51,7 @@
 
         <InputContainer
           v-if="isShowChoose()"
-          label="Attach file"
+          label="Đính kèm tệp"
           :labelWidth="labelWidth"
         >
           <el-input :value="placeholder" disabled></el-input>
@@ -642,7 +642,7 @@ export default {
     placeholder: function () {
       let str;
       if (this.model.type == InputFileType.OneFile) {
-        str = `Selected ${this.totalsFile} files ${
+        str = ` ${this.totalsFile} tệp ${
           this.uploadFileList[0]
             ? this.uploadFileList[0].getNameDownload
               ? this.uploadFileList[0].getNameDownload()
@@ -653,7 +653,7 @@ export default {
             : ""
         }`;
       } else {
-        str = `Selected ${this.totalsFile} files`;
+        str = ` ${this.totalsFile} tệp`;
       }
 
       if (this.model.limit && this.model.limit > 1)

@@ -1,0 +1,75 @@
+26/11/2024 10:51:09.995|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/GroupPermission
+OperationCanceledException
+ The operation was canceled.
+ --------------------------------------
+
+26/11/2024 14:42:33.918|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+26/11/2024 14:48:46.204|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+26/11/2024 14:49:31.819|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+26/11/2024 14:54:13.439|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+26/11/2024 14:54:13.450|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Vo
+CreateExeption
+ Thông tin đã tồn tại, không thể thêm mới
+ --------------------------------------
+
+26/11/2024 14:55:38.770|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+26/11/2024 14:55:38.978|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Vo
+CreateExeption
+ Thông tin đã tồn tại, không thể thêm mới
+ --------------------------------------
+
+26/11/2024 14:55:54.004|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Vo
+CreateExeption
+ Thông tin đã tồn tại, không thể thêm mới
+ --------------------------------------
+
+26/11/2024 15:27:26.532|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+26/11/2024 15:29:28.606|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+26/11/2024 15:34:19.054|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+26/11/2024 15:37:19.514|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+CreateExeption
+ Thông tin đã tồn tại, không thể thêm mới
+ --------------------------------------
+
+26/11/2024 16:00:03.887|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/50
+Exception
+ Người này đã có con, vui lòng xóa hết danh sách con trước khi xóa thông tin người này!
+ --------------------------------------
+
+26/11/2024 22:58:45.844|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
