@@ -1,10 +1,10 @@
 <template lang="">
-  <g  :filter="data.id === user.AccountSerial ? 'url(#dropShadow)'  : ''"
+  <g  :filter="data.User_id == user.AccountSerial ? 'url(#dropShadow)'  : ''"
        ref="node"
     style="pointer-events: bounding-box"
     :transform="transform"
     @click="handleClick"
-      :style="{userSelect: 'none' }"
+      :style="{userSelect: 'none', filter: isSearch? 'drop-shadow(0 10px 10px rgba(151, 153, 12)) ' : user.AccountSerial === data.User_id ? 'drop-shadow(0 0 20px rgba(70, 72, 240, 0.8))' : 'none', }"
   >
     <rect
       :x="0"
@@ -151,6 +151,7 @@
 // import Functions from '~/assets/scripts/Functions'
 export default {
   props: {
+    isSearch: {},
     data: {},
     config: {},
     transform: {
@@ -181,7 +182,10 @@ export default {
   },
 
   mounted() {
-    // console.log(this.data)
+    // if(this.data.id == 10 ){
+    // console.log(this.user.AccountSerial)
+    // console.log(this.data.id )
+    // }
   },
 };
 </script>

@@ -1,5 +1,7 @@
 ﻿using MongoDB.Driver;
 using MongoDBAccess.Models;
+using MongoDBAccess.Models.Extend;
+using MongoDBAccess.Models.Extend;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,13 @@ namespace MongoDBAccess
         /// <returns></returns>
         /// 
 
+        public List<Dasboad> GetDashboad() {
+        
+            var vRe = new List<Dasboad>();
+                
+            return vRe;
+
+        }
         public List<string> ThongBaoNgayGio()
         {
             List<string> notifications = new List<string>(); List<Gia_pha> vResult = new List<Gia_pha>();

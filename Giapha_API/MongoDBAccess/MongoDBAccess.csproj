@@ -161,6 +161,7 @@
     <Compile Include="Models\Extend\Level.cs" />
     <Compile Include="Models\Extend\LevelName.cs" />
     <Compile Include="Models\Extend\Location.cs" />
+    <Compile Include="Models\Extend\Dasboad.cs" />
     <Compile Include="Models\Extend\Tree_Box.cs" />
     <Compile Include="Models\Gia_pha.cs" />
     <Compile Include="Models\Menu\GroupPermission.cs" />

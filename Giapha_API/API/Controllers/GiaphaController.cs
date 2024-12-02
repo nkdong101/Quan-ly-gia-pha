@@ -41,6 +41,16 @@ namespace API.Controllers
         }
 
         ///<summary>
+        ///Thông ke
+        /// </summary>
+        [Route("Giapha/GetNotify")]
+        [HttpGet]
+        public HttpResponseMessage GetDashboad()
+        {
+            return Request.SuccessResult(helper.GetDashboad());
+        }
+        
+        ///<summary>
         ///Lấy thông báo ngày giỗ 7 ngày tới
         /// </summary>
         [Route("Giapha/GetNotify")]
@@ -51,7 +61,7 @@ namespace API.Controllers
         }
 
         /// <summary>
-        /// Lấy danh sách gia phả hiển thị dạng tree
+        /// Lấy danh sách gia phả hiển thị dạng tree\
         /// </summary>
         /// <returns></returns>
         [ResponseType(typeof(APIResult<List<MongoDBAccess.Models.Extend.Giapha_Tree>>))]

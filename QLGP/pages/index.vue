@@ -18,6 +18,14 @@
         position: relative;
       "
     >
+      <div style="position: absolute; right: 0">
+        <InputSelect
+          @input="searchGiapha"
+          :model="Para.Giapha"
+          ref="entry"
+          v-model.lazy="filterId"
+        />
+      </div>
       <!-- -->
       <svg
         @mousedown="startPan"
@@ -33,10 +41,15 @@
         style="height: 100%; width: 100%; overflow-x: auto; overflow-y: auto"
       >
         <defs>
+          <filter id="shadow2">
+            <feDropShadow dx="0" dy="0" stdDeviation="0.5" flood-color="cyan" />
+          </filter>
+
           <filter id="dropShadow" x="0" y="0" width="200%" height="200%">
-            <feOffset result="offOut" in="SourceGraphic" dx="5" dy="5" />
-            <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
-            <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+            <!-- <feOffset result="offOut" in="SourceGraphic" dx="5" dy="5" /> -->
+            <!-- <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" /> -->
+            <!-- <feBlend in="SourceGraphic" in2="blurOut" mode="normal" /> -->
+            <feDropShadow dx="0" dy="0" stdDeviation="0.5" flood-color="cyan" />
           </filter>
 
           <g id="base_node_menu" style="cursor: pointer">
@@ -117,6 +130,7 @@
           :key="item.id"
           :data="item"
           :config="nodes.Config"
+          :isSearch="index === nodes.Data.findIndex((p) => p.id == filterId)"
           :transform="`translate(${item.Box.X}, ${item.Box.Y})`"
           @dotClick="dotClick"
           @nameClick="nameClick"
@@ -224,6 +238,7 @@ import { EventBus } from "~/assets/scripts/EventBus.js";
 import APIHelper from "~/assets/scripts/API/APIHelper";
 import User from "~/assets/scripts/objects/User";
 import ConvertStr from "~/assets/scripts/ConvertStr";
+import { Para } from "~/assets/scripts/Para";
 export default {
   // layout: this.user.ChucVu === "Administrator" ? 'default' : "UserLayout",
   computed: {
@@ -238,6 +253,7 @@ export default {
   data() {
     return {
       tieusu: "",
+      filterId: "",
       isAddTs: false,
       isAdd: null,
       tsArr: [],
@@ -290,10 +306,8 @@ export default {
           } else {
             if (_app.user.userLevel == 1) {
               _app.form.type = "";
-
-            }else{
+            } else {
               _app.form.type = "dialog";
-
             }
           }
           _app.isAdd = isAdd;
@@ -436,6 +450,18 @@ export default {
     };
   },
   methods: {
+    searchGiapha() {
+      let index = this.nodes.Data.findIndex((p) => p.id == this.filterId);
+      // console.log(index)
+      if (index >= 0) {
+        this.moveScreenTo(index);
+      }
+      // console.log(this.$refs.node[index])
+      // if( this.$refs.node[index]){
+      //   this.$refs.node[index].$el.style.filter = 'drop-shadow(0 0 20px rgba(70, 72, 240, 0.8))'
+
+      // }
+    },
     CreateAcc(data) {
       console.log(data);
       this.formCrAcc.ShowForm(
@@ -515,11 +541,22 @@ export default {
       this.startPoint = { x: clientX, y: clientY };
 
       const viewBoxValues = this.viewBox.split(" ").map(Number);
+      
       this.startViewBox = {
         x: viewBoxValues[0],
         y: viewBoxValues[1],
         width: viewBoxValues[2],
         height: viewBoxValues[3],
+      };
+
+      // Lấy kích thước và giới hạn của nội dung SVG
+      const svgBounds = this.$refs.svgElement.getBBox(); // Lấy giới hạn nội dung
+      
+      this.panLimits = {
+        minX: svgBounds.x,
+        minY: svgBounds.y - 100,
+        maxX: svgBounds.x + svgBounds.width - this.startViewBox.width,
+        maxY: svgBounds.y + svgBounds.height - this.startViewBox.height + 100,
       };
     },
     pan(event) {
@@ -537,16 +574,21 @@ export default {
         (this.startPoint.y - clientY) *
         ((this.startViewBox.height + 1) / this.$refs.svgElement.clientHeight);
 
+      // Tính toán giá trị mới của x và y
       let newX = this.startViewBox.x + dx;
-      // if (this.startViewBox.x + dx < 0) return;
+      let newY = this.startViewBox.y + dy;
 
-      this.viewBox = `${newX} ${this.startViewBox.y + dy} ${
-        this.startViewBox.width
-      } ${this.startViewBox.height}`;
+      // Áp dụng giới hạn pan
+      newX = Math.max(this.panLimits.minX, Math.min(this.panLimits.maxX, newX));
+      newY = Math.max(this.panLimits.minY, Math.min(this.panLimits.maxY, newY));
+
+      // Cập nhật viewBox
+      this.viewBox = `${newX} ${newY} ${this.startViewBox.width} ${this.startViewBox.height}`;
     },
     endPan() {
       this.isPanning = false;
     },
+
     nodePosition(item, index) {
       // console.log(item);
       if (item.fid && item.mid) {
@@ -598,35 +640,39 @@ export default {
           this.nodes = re;
           console.log(this.nodes);
           this.$nextTick(() => {
-            this.moveScreenTo();
+            this.moveScreenTo(0);
           });
         },
       });
     },
 
-    moveScreenTo() {
-      const node = this.$refs.node[0].$el.getBoundingClientRect();
+    moveScreenTo(index) {
+      const node = this.$refs.node[index].$el.getBoundingClientRect();
       const svg = this.$refs.svgElement.getBoundingClientRect();
 
-      // Lấy kích thước của node và svg
+      // Dimensions of the SVG
       const svgWidth = svg.width;
       const svgHeight = svg.height;
 
+      // Calculate the position of the node relative to the SVG
       const nodeX = node.left + node.width / 2 - svg.left;
       const nodeY = node.top + node.height / 2 - svg.top;
 
-      // Tính toán để node nằm giữa SVG
+      // Calculate the new center for the viewBox
       const centerX = nodeX - svgWidth / 2;
       const centerY = nodeY - svgHeight / 2;
 
-      // Cập nhật viewBox
+      // Update the viewBox to center on the node
+      const currentViewBox = this.viewBox.split(" ").map(Number);
+      const [x, y, w, h] = currentViewBox;
 
-      this.viewBox = `${centerX} ${centerY} ${svgWidth} ${svgHeight}`;
+      // Recalculate viewBox to reflect new center
+      const newViewBoxX = x + centerX * (w / svgWidth);
+      const newViewBoxY = y + centerY * (h / svgHeight);
+
+      this.viewBox = `${newViewBoxX} ${newViewBoxY} ${w} ${h}`;
     },
-
     onWheel(e) {
-      // console.log(e);
-      // this.$refs.pop.doDestroy();
       if (e.ctrlKey) {
         e.preventDefault();
         const svgElement = this.$refs.svgElement;
@@ -639,28 +685,24 @@ export default {
         const viewBoxValues = this.viewBox.split(" ").map(Number);
         const [x, y, viewBoxWidth, viewBoxHeight] = viewBoxValues;
 
+        // Giới hạn zoom
+        const minZoom = 200; // Kích thước nhỏ nhất cho viewBoxWidth
+        const maxZoom = 1700; // Kích thước lớn nhất cho viewBoxWidth
+
         const newWidth = viewBoxWidth * zoomFactor;
         const newHeight = viewBoxHeight * zoomFactor;
+
+        // Kiểm tra giới hạn zoom
+        if (newWidth > maxZoom || newWidth < minZoom) return;
 
         const dx = (mouseX / width) * (viewBoxWidth - newWidth);
         const dy = (mouseY / height) * (viewBoxHeight - newHeight);
 
-        if (newWidth > 1700 || newWidth < 135) return;
-
+        // Cập nhật viewBox
         this.viewBox = `${x + dx} ${y + dy} ${newWidth} ${newHeight}`;
-        // if (this.nodeClicked) {
-        //   const node = this.nodeClicked.$el;
-
-        //   if (node) {
-        //     const rect = node.getBoundingClientRect();
-
-        //     this.nodePoperStyles = `transform: translate(${rect.x}px,${rect.y}px)`;
-        //     // this.showPopover(rect.top + window.scrollY, rect.left + window.scrollX);
-        //   }
-        // this.$refs.pop.doDestroy();
-        // this.updatePopoverPosition();
       }
     },
+
     // updatePopoverPosition() {
     //   const { x, y } = this.lastClickPosition;
     //   // Convert coordinates to viewBox-relative coordinates
@@ -712,7 +754,23 @@ export default {
     // console.log(this)
     // this.$refs.svgContainer.querySelector('g').addEventListener("click", this.nodeClick);
     this.dongho_id = this.user.Dongho_id;
-    this.GetNodeData();
+    GetDataAPI({
+      url: API.GetTree,
+      params: {
+        iDongho_id: this.dongho_id || this.user.Dongho_id,
+      },
+      action: (re) => {
+        this.nodes = re;
+        Para.Giapha.data = re.Data;
+        this.$nextTick(() => {
+          this.moveScreenTo(
+            this.nodes.Data.findIndex(
+              (p) => p.User_id == this.user.AccountSerial
+            )
+          );
+        });
+      },
+    });
     console.log(this);
 
     // <
@@ -794,10 +852,18 @@ export default {
   justify-content: center;
 }
 
-.svgContainer .btn-p {
-  position: absolute;
-  top: 0;
-  left: 0;
+.svgContainer {
+  .btn-p {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  ::v-deep .el-select {
+    .el-input--mini .el-input__inner {
+      height: 40px;
+    }
+  }
 }
 
 @media only screen and (max-width: 800px) {

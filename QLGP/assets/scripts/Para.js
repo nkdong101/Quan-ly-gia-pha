@@ -22,10 +22,11 @@ export var Para = {
 
     ]
   }),
-  Donvihanhchinh: new SelectOption({
-    data: API.DonviHanhchinh_Get_Tinh,
-    // method:"post",
-    multiple: true,
+  Giapha: new SelectOption({
+    data: [],
+    value: 'id',
+    label: 'name',
+    placeholder: 'Tìm kiếm'
   }),
   dong_ho: new SelectOption({
     data: API.HoVietNam,

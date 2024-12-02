@@ -108,7 +108,7 @@
             type="warning"
             v-if="node.level === 2"
             @click="
-              form.ShowForm(`Sửa thông tin ${data.Name}`, data, false, false)
+              form.ShowForm(`Sửa thông tin ${data.Name}`, data, false, false,node)
             "
             style="padding: 4px; margin-right: 7px"
           >
@@ -196,34 +196,41 @@ export default {
         width: "450px",
         // noSave: true,
         // fullscreen: true,
-        ShowForm: (title, obj, isAdd, isEditWife) => {
+        ShowForm: (title, obj, isAdd, isEditWife,node) => {
+          // var _app = this
           if (this.user.userLevel !== 1) {
             this.form.type = "dialog";
           } else {
             this.form.type = "";
           }
+
+          console.log(node)
           this.isAdd = isAdd;
           var _app = this;
           this.form.title = title;
           // console.log(obj);
           this.isEditWife = isEditWife;
+          if(!isEditWife){
+            this.mother = node.parent.data;
+          }
           if (!isAdd) {
             APIHelper.Giapha.getInfor(obj.Id).then((re) => {
               //   console.log(re);
               this.form.obj = new Giapha({ ...re, type: 4 });
-
+              // if()
               this.form.visible = true;
             });
           } else {
-            this.mother = obj;
-            this.form.visible = true;
-            this.form.obj = new Giapha({
+            // _app.mother = obj;
+            _app.form.visible = true;
+            _app.form.obj = new Giapha({
               type: 4,
             });
           }
         },
         Save: () => {
           this.form.obj.Dongho_id = this.user.Dongho_id;
+          var _app = this;
 
           this.$refs.form.getValidate().then((re) => {
             if (!re) {
@@ -258,36 +265,37 @@ export default {
                         EventBus.$emit("reloadFormFam", this.obj.Curent.Id);
                       },
                     });
+                  } else {
+                    console.log(_app);
+                    const meInfo =
+                      this.obj.Curent.Gender == 1
+                        ? this.mother
+                        : new Giapha(this.obj.Curent).toJSON();
+                    // return;
+                    GetDataAPI({
+                      method: "post",
+                      url: API.Add_Con,
+                      params: {
+                        Con_Info: this.form.obj.toJSON(),
+                        Me_Info: meInfo,
+                        Father_id:
+                          this.obj.Curent.Gender == 1
+                            ? this.obj.Curent.Id
+                            : this.mother.Id,
+                        Conrieng: this.conrieng,
+                      },
+                      action: (re) => {
+                        //   this.LoadData();
+                        //   if (this.isAdd) {
+                        //     this.form.obj.Project_id = re;
+                        //   }
+                        //   this.$refs.form.getEntry("formProjectSave").LoadData();
+                        ShowMessage("Đã lưu thành công", "success");
+                        this.form.visible = false;
+                        EventBus.$emit("reloadFormFam", this.obj.Curent.Id);
+                      },
+                    });
                   }
-
-                  console.log(this);
-                  // return;
-                  GetDataAPI({
-                    method: "post",
-                    url: API.Add_Con,
-                    params: {
-                      Con_Info: this.form.obj.toJSON(),
-                      Me_Info:
-                        this.obj.Curent.Gender == 1
-                          ? this.mother
-                          : new Giapha(this.obj.Curent).toJSON(),
-                      Father_id:
-                        this.obj.Curent.Gender == 1
-                          ? this.obj.Curent.Id
-                          : this.mother.Id,
-                      Conrieng: this.conrieng,
-                    },
-                    action: (re) => {
-                      //   this.LoadData();
-                      //   if (this.isAdd) {
-                      //     this.form.obj.Project_id = re;
-                      //   }
-                      //   this.$refs.form.getEntry("formProjectSave").LoadData();
-                      ShowMessage("Đã lưu thành công", "success");
-                      this.form.visible = false;
-                      EventBus.$emit("reloadFormFam", this.obj.Curent.Id);
-                    },
-                  });
                 });
             }
           });
@@ -296,8 +304,8 @@ export default {
           // }
         },
         Delete: (obj) => {
-          console.log(obj);
-          return;
+          //console.log(obj);
+          //return;
           ShowConfirm({
             message: "Xóa thông tin của <b>" + obj.Name + "</b>",
             title: "Cảnh báo",
@@ -308,7 +316,7 @@ export default {
                 method: "delete",
                 url: API.Giapha + "/" + obj.Id,
                 // params: Ơ,
-                action: function (re) {
+                action: (re) => {
                   ShowMessage("Xóa thành công");
                   this.form.visible = false;
                   EventBus.$emit("reloadFormFam", this.obj.Curent.Id);

@@ -1,0 +1,5 @@
+27/11/2024 09:00:16.201|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
