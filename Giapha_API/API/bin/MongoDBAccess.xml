@@ -393,7 +393,7 @@
             <param name="iUserId"></param>
             <param name="iClient">Kết nối</param>
         </member>
-        <member name="M:MongoDBAccess.Gia_phaHelper.ThongBaoNgayGio">
+        <member name="M:MongoDBAccess.Gia_phaHelper.GetDashboad">
             <summary>
             Đổi ngày âm dương
             </summary>
@@ -800,11 +800,6 @@
             Nội dung mô tả
             </summary>
         </member>
-        <member name="P:MongoDBAccess.Models.Events.Files">
-            <summary>
-            Danh sách file đính kèm
-            </summary>
-        </member>
         <member name="P:MongoDBAccess.Models.Events.DateBegin">
             <summary>
             Thời điểm bắt đầu
@@ -813,16 +808,6 @@
         <member name="P:MongoDBAccess.Models.Events.DateEnd">
             <summary>
             Thời điểm kết thúc
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.Models.Events.DateRegister">
-            <summary>
-            Thời điểm cuối cùng được phép đăng ký
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.Models.Events.State">
-            <summary>
-            Trạng thái sự kiện
             </summary>
         </member>
         <member name="M:MongoDBAccess.Models.Events.Validate">
@@ -1311,6 +1296,21 @@
             Kinh độ
             </summary>
         </member>
+        <member name="T:MongoDBAccess.Models.Extend.Dasboad">
+            <summary>
+            Tham số cấu hình
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Dasboad.label">
+            <summary>
+            Tọa độ bắt đầu vẽ
+            </summary>
+        </member>
+        <member name="P:MongoDBAccess.Models.Extend.Dasboad.value">
+            <summary>
+            Tọa độ bắt đầu vẽ
+            </summary>
+        </member>
         <member name="T:MongoDBAccess.Models.Extend.Tree_box_Config">
             <summary>
             Tham số cấu hình
@@ -1490,11 +1490,6 @@
             Ảnh đại diện
             </summary>
         </member>
-        <member name="P:MongoDBAccess.Models.Gia_pha.URL">
-            <summary>
-            Đường link tư liệu mô tả về người này
-            </summary>
-        </member>
         <member name="P:MongoDBAccess.Models.Gia_pha.tieusu">
             <summary>
             tiểu sử 
@@ -1518,16 +1513,6 @@
         <member name="P:MongoDBAccess.Models.Gia_pha.year_die">
             <summary>
             Năm mất ÂL
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.Models.Gia_pha.burial_ground">
-            <summary>
-            Nơi chôn cất sau khi mất
-            </summary>
-        </member>
-        <member name="P:MongoDBAccess.Models.Gia_pha.Burial_GPS">
-            <summary>
-            Tọa độ nơi chôn cất
             </summary>
         </member>
         <member name="P:MongoDBAccess.Models.Gia_pha.Parent">

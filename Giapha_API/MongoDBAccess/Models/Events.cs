@@ -20,10 +20,7 @@ namespace MongoDBAccess.Models
         /// Nội dung mô tả
         /// </summary>
         public string Content { get; set; }
-        /// <summary>
-        /// Danh sách file đính kèm
-        /// </summary>
-        public List<string> Files { get; set; }
+       
         /// <summary>
         /// Thời điểm bắt đầu
         /// </summary>
@@ -32,18 +29,7 @@ namespace MongoDBAccess.Models
         /// Thời điểm kết thúc
         /// </summary>
         public DateTime DateEnd { get; set; }
-        /// <summary>
-        /// Thời điểm cuối cùng được phép đăng ký
-        /// </summary>
-        public DateTime? DateRegister { get; set; }
-        ///// <summary>
-        ///// Danh sách ban tổ chức
-        ///// </summary>
-        //public List<Event_Organizers> Organizers { get; set; }
-        /// <summary>
-        /// Trạng thái sự kiện
-        /// </summary>
-        public Enums.EventState State { get; set; }
+        
         ///// <summary>
         ///// ID dòng họ
         ///// </summary>

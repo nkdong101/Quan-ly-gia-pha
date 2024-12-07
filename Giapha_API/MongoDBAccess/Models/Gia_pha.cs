@@ -81,10 +81,7 @@ namespace MongoDBAccess.Models
         /// Ảnh đại diện
         /// </summary>
         public string Avatar { get; set; }
-        /// <summary>
-        /// Đường link tư liệu mô tả về người này
-        /// </summary>
-        public List<string> URL { get; set; }
+       
 
 
         /// <summary>
@@ -110,14 +107,7 @@ namespace MongoDBAccess.Models
         /// Năm mất ÂL
         /// </summary>
         public uint? year_die { get; set; }
-        /// <summary>
-        /// Nơi chôn cất sau khi mất
-        /// </summary>
-        public string burial_ground { get; set; }
-        /// <summary>
-        /// Tọa độ nơi chôn cất
-        /// </summary>
-        public Extend.Location Burial_GPS { get; set; }
+      
         #endregion
         #region Thông tin phả hệ
         /// <summary>
@@ -193,7 +183,7 @@ namespace MongoDBAccess.Models
                 Number_Couple = (byte)this.Couple.Count(),
                 Number_Siblings = (byte)(this.siblings.Count() + 1),
                 Address = this.Address,
-                burial_ground = this.burial_ground
+               
             };
         }
         /// <summary>

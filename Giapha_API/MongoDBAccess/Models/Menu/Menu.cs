@@ -86,62 +86,8 @@ namespace MongoDBAccess.Models
             this.ListMenuButton = new List<MenuButton>();
             this.ListButton = new List<MenuButton>();
         }
-        public Menu Copy(string iListButton)
-        {
-            Menu vResult = (Menu)this.MemberwiseClone();
-            if (iListButton != null && iListButton.Trim() != "")
-                vResult.ListButton = this.ListMenuButton.Where(p => iListButton.Contains(string.Format(",{0},", p.Id))).ToList();
-            return vResult;
-        }
-        public void AddButton(MenuButton iItem)
-        {
-            if (this.ListMenuButton.Where(p => p.Id == iItem.Id).Count() == 0)
-                this.ListMenuButton.Add(iItem);
-            else
-            {
-                for (int i = 0; i < this.ListMenuButton.Count; i++)
-                {
-                    if (this.ListMenuButton[i].Id == iItem.Id)
-                    {
-                        this.ListMenuButton[i] = iItem;
-                        break;
-                    }
-                }
-            }
-        }
-        public string SaveMenuButton(MenuButton iInfo)
-        {
-            try
-            {
-                //if (iInfo.Id == 0)
-                //{
-                //    string vResult = iInfo.SaveInfo(true);
-                //    ushort vID = 0;
-                //    ushort.TryParse(vResult, out vID);
-                //    if (vID > 0)
-                //    {
-                //        iInfo.Id = vID;
-                //        ListMenuButton.Add(iInfo);
-                //        return "OK";
-                //    }
-                //    return vResult;
-                //}
-                //else
-                //{
-                //    if (ListMenuButton.Where(p => p.Id == iInfo.Id).Count() == 0)
-                //        return "Nút lệnh này không còn tồn tại trong hệ thống!";
-                //    string vResult = iInfo.SaveInfo(false);
-                //    if (vResult == "OK")
-                //        ListMenuButton[iInfo.Id] = iInfo;
-                //    return vResult;
-                //}
-                return "";
-            }
-            catch (Exception Ex)
-            {
-                return Ex.Message;
-            }
-        }
+       
+      
         public MenuResult ToResult()
         {
             MenuResult vResult = new MenuResult();
@@ -222,23 +168,6 @@ namespace MongoDBAccess.Models
             this.Type_id = iNew.Type_id;
         }
         #endregion
-        public void UpdateInfo(Menu iNew)
-        {
-            this.Controller = iNew.Controller;
-            this.Element_class = iNew.Element_class;
-            this.Element_id = iNew.Element_id;
-            this.Fullname = iNew.Fullname;
-            this.Icon = iNew.Icon;
-            this.Action = iNew.Action;
-            this.Name = iNew.Name;
-            this.Other_class = iNew.Other_class;
-            this.Parent_id = iNew.Parent_id;
-            this.Stt = iNew.Stt;
-            this.Systemkey = iNew.Systemkey;
-            this.Tag = iNew.Tag;
-            this.Title_class = iNew.Title_class;
-            this.Viewall = iNew.Viewall;
-            this.Type_id = iNew.Type_id;
-        }
+        
     }
 }

@@ -62,11 +62,11 @@ namespace MongoDBAccess.Helper
         public string Cancel_Pending(Models.Events iInfo)
         {
             var vInfo = this.FindById(iInfo.Id);
-            if (vInfo == null)
-                throw new Exception("Không tìm thấy thông tin sự kiện!");
-            if (iInfo.UserCreate != this.UserId)
-                throw new Exception("Chỉ người tạo ra sự kiện mới được quyền thực hiện!");
-            this.Update(iInfo.Id, p => p.Set(a => a.State, iInfo.State), null);
+            //if (vInfo == null)
+            //    throw new Exception("Không tìm thấy thông tin sự kiện!");
+            //if (iInfo.UserCreate != this.UserId)
+            //    throw new Exception("Chỉ người tạo ra sự kiện mới được quyền thực hiện!");
+            //this.Update(iInfo.Id, p => p.Set(a => a.State, iInfo.State), null);
             return "OK";
         }
         /// <summary>
