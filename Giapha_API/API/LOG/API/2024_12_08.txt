@@ -1,0 +1,10 @@
+08/12/2024 15:17:02.507|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+08/12/2024 15:29:51.771|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/42
+Exception
+ Người này đã có con, vui lòng xóa hết danh sách con trước khi xóa thông tin người này!
+ --------------------------------------
+

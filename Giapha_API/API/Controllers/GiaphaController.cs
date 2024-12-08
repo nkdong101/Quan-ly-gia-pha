@@ -40,15 +40,7 @@ namespace API.Controllers
             return Request.SuccessResult(helper.AddTieuSu(person));
         }
 
-        ///<summary>
-        ///Thông ke
-        /// </summary>
-        [Route("Giapha/GetNotify")]
-        [HttpGet]
-        public HttpResponseMessage GetDashboad()
-        {
-            return Request.SuccessResult(helper.GetDashboad());
-        }
+        
         
         ///<summary>
         ///Lấy thông báo ngày giỗ 7 ngày tới
