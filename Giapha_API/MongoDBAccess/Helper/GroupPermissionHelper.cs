@@ -25,7 +25,7 @@ namespace MongoDBAccess
 
             AccountHelper accountHelper = new AccountHelper(1);
             //Update user với nhóm quyền cũ về mới
-            accountHelper.Collection.UpdateMany(p => p.GroupPermission_Id == id, Builders<User>.Update.Set(p => p.Buttons, value.Permission));
+            //accountHelper.Collection.UpdateMany(p => p.GroupPermissi);on_Id == id, Builders<User>.Update.Set(p => p.Buttons, value.Permission)
             //Load lại cache
             return "OK";
         }
@@ -34,11 +34,11 @@ namespace MongoDBAccess
         {
 
             AccountHelper accountHelper = new AccountHelper(1);
-            var total = accountHelper.Find(p => p.GroupPermission_Id == id).ToList();
-            if (total.Count > 0)
-            {
-                throw new Exception("Bạn không thể xóa nhóm quyền vì đang có tài khoản sử dụng nhóm quyền này: " + string.Join(",", total.Select(p => p.FullName + " - " + p.CMND)));
-            }
+            //var total = accountHelper.Find(p => p.GroupPermission_Id == id).ToList();
+            //if (total.Count > 0)
+            //{
+            //    throw new Exception("Bạn không thể xóa nhóm quyền vì đang có tài khoản sử dụng nhóm quyền này: " + string.Join(",", total.Select(p => p.FullName + " - " + p.CMND)));
+            //}
 
             return this.Delete(id);
         }

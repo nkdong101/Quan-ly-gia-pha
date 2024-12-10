@@ -121,33 +121,19 @@
     <Compile Include="ExeptionHandler\DeleteException.cs" />
     <Compile Include="ExeptionHandler\PermissionException.cs" />
     <Compile Include="ExeptionHandler\NotFoundExeption.cs" />
-    <Compile Include="Google\GoogleAuthPortal.cs" />
-    <Compile Include="Google\LoginSocial.cs" />
-    <Compile Include="Google\TokenInfo.cs" />
     <Compile Include="Helper\AccountHelper.cs" />
     <Compile Include="Helper\CommentHelper.cs" />
-    <Compile Include="Helper\DonviHanhchinhHelper.cs" />
-    <Compile Include="Helper\DonghoHelper.cs" />
-    <Compile Include="Helper\Thuchi_Helper.cs" />
-    <Compile Include="Helper\Event_Registers_Helper.cs" />
     <Compile Include="Helper\Event_Helper.cs" />
-    <Compile Include="Helper\Ho_VietNamHelper.cs" />
     <Compile Include="Helper\GroupPermissionHelper.cs" />
-    <Compile Include="Helper\MenuButtonHelper.cs" />
     <Compile Include="Helper\Gia_phaHelper.cs" />
-    <Compile Include="Helper\MenuHelper.cs" />
     <Compile Include="Global.cs" />
-    <Compile Include="Helper\UserLoginSocialHelper.cs" />
     <Compile Include="Models\Comments.cs" />
-    <Compile Include="Models\Danhmuc\Ho_VietNam.cs" />
-    <Compile Include="Models\Dong_ho.cs" />
     <Compile Include="Models\Enums\eQuanhe_ACE.cs" />
     <Compile Include="Models\Enums\EventState.cs" />
     <Compile Include="Models\Enums\Gender.cs" />
     <Compile Include="Models\Enums\Quanhe.cs" />
     <Compile Include="Models\Enums\State.cs" />
     <Compile Include="Models\Events.cs" />
-    <Compile Include="Models\Event_Registers.cs" />
     <Compile Include="Models\Extend\ThongBao.cs" />
     <Compile Include="Models\Extend\Anh_Chi_Em.cs" />
     <Compile Include="Models\Extend\DLQG_Huyen.cs" />
@@ -165,14 +151,8 @@
     <Compile Include="Models\Extend\Tree_Box.cs" />
     <Compile Include="Models\Gia_pha.cs" />
     <Compile Include="Models\Menu\GroupPermission.cs" />
-    <Compile Include="Models\Menu\Menu.cs" />
-    <Compile Include="Models\Menu\MenuButton.cs" />
-    <Compile Include="Models\Menu\MenuResult.cs" />
     <Compile Include="Models\Extend\Pha_he.cs" />
-    <Compile Include="Models\Danhmuc\Donvi_Hanhchinh.cs" />
-    <Compile Include="Models\Thu_Chi.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserLoginSocial.cs" />
     <Compile Include="Objects\CustomObjectAttr.cs" />
     <Compile Include="Objects\ObjectBase.cs" />
     <Compile Include="Objects\ExtendMethods.cs" />
@@ -210,6 +190,9 @@
       <Project>{53d6df6d-5213-42c6-8e2f-bf140c8c9978}</Project>
       <Name>Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Danhmuc\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets')" />

@@ -167,17 +167,17 @@ namespace API.Controllers
         {
             return Request.SuccessResult(helper.Remove(id));
         }
-        /// <summary>
-        /// Sắp xếp lại các đời của dòng họ
-        /// </summary>
-        /// <param name="iDongho_id"></param>
-        /// <returns></returns>
-        [ResponseType(typeof(APIResult<string>))]
-        [HttpGet]
-        [Route("Giapha/RecheckLevel")]
-        public HttpResponseMessage RecheckLevel(int iDongho_id)
-        {
-            return Request.SuccessResult(helper.CheckLevel(iDongho_id));
-        }
+        ///// <summary>
+        ///// Sắp xếp lại các đời của dòng họ
+        ///// </summary>
+        ///// <param name="iDongho_id"></param>
+        ///// <returns></returns>
+        //[ResponseType(typeof(APIResult<string>))]
+        //[HttpGet]
+        //[Route("Giapha/RecheckLevel")]
+        //public HttpResponseMessage RecheckLevel(int iDongho_id)
+        //{
+        //    return Request.SuccessResult(helper.CheckLevel(iDongho_id));
+        //}
     }
 }

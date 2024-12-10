@@ -6,7 +6,7 @@
     ]"
   >
     <div class="header-logo"></div>
-   
+
     <div class="header-menu">
       <!-- <i class="el-icon-s-fold slide-in-top" @click="toggleMenu"></i> -->
       <el-menu
@@ -31,9 +31,7 @@
           @click="menuClick"
           index="/Account/Home/dang-nhap"
         >
-      
           <nuxt-link to="/Account/Home/dang-nhap">Đăng nhập</nuxt-link>
-     
         </el-menu-item>
         <el-menu-item
           v-if="!user"
@@ -47,12 +45,13 @@
           <template slot="title">Mở rộng</template>
 
           <el-menu-item
-            v-for="item in menu"
-            :key="item.index"
+            v-if="(user.userLevel == 1)"
+            v-for="(item, index) in menu"
+            :key="index"
             :index="item.path"
             >{{ item.banner }}</el-menu-item
           >
-  
+          <el-menu-item v-if="(user.userLevel >  1)" :index="'/Manage/Events'">Sự kiện</el-menu-item>
         </el-submenu>
         <el-menu-item
           style="display: flex; align-items: center"
@@ -70,24 +69,27 @@
           <bell_notify />
         </el-menu-item>
       </el-menu>
-
     </div>
   </div>
 </template>
 <script>
-import StoreManager from "~/assets/scripts/StoreManager";
+// import StoreManager from "~/assets/scripts/StoreManager";
 
 export default {
   data() {
     return {
       menuVisible: false,
+      menu: [{ path: "/Manage/permision", banner: "Loại tài khoản" },
+      { path: "/Manage/Users", banner: "Tài khoản" },
+      { path: "/Manage/Events", banner: "Sự kiện" },
+      ],
     };
   },
-  computed: {
-    menu() {
-      return StoreManager.GetMenu();
-    },
-  },
+  // computed: {
+  //   menu() {
+  //     return StoreManager.GetMenu();
+  //   },
+  // },
   methods: {
     // isMoble() {
     //  return window.innerWidth <= 610;
@@ -104,8 +106,8 @@ export default {
     },
   },
   mounted() {
-    console.log("topmenu", this);
-    console.log("topmenu", StoreManager.GetMenu());
+    // console.log("topmenu", this);
+    // console.log("topmenu", StoreManager.GetMenu());
   },
 };
 </script>

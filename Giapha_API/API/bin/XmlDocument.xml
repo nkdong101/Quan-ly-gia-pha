@@ -530,14 +530,6 @@
             <param name="value">Thông tin người dùng mới</param>
             <returns></returns>
         </member>
-        <member name="M:API.Controllers.AccountController.SetPermission(System.UInt32,MongoDBAccess.Models.GroupPermission)">
-            <summary>
-            Cấp quyền người dùng
-            </summary>
-            <param name="id">ID đơn vị cần sửa</param>
-            <param name="value">Thông tin người dùng mới</param>
-            <returns></returns>
-        </member>
         <member name="M:API.Controllers.AccountController.Delete(System.UInt32)">
             <summary>
             Xóa thông tin người dùng
@@ -713,13 +705,6 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:API.Controllers.GiaphaController.RecheckLevel(System.Int32)">
-            <summary>
-            Sắp xếp lại các đời của dòng họ
-            </summary>
-            <param name="iDongho_id"></param>
-            <returns></returns>
-        </member>
         <member name="T:API.Controllers.GroupPermissionController">
             <summary>
             API Quản lý nhóm quyền
@@ -783,61 +768,6 @@
         <member name="M:API.Controllers.EventsController.Delete(System.UInt32)">
             <summary>
             Xóa thông tin Events
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.MenuButtonController.Post(MongoDBAccess.Models.MenuButton)">
-            <summary>
-            Thêm MenuButton
-            </summary>
-            <param name="value"></param>
-        </member>
-        <member name="M:API.Controllers.MenuButtonController.Put(System.UInt32,MongoDBAccess.Models.MenuButton)">
-            <summary>
-            Sửa thông tin MenuButton
-            </summary>
-            <param name="id"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.MenuButtonController.Delete(System.UInt32)">
-            <summary>
-            Xóa thông tin MenuButton
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.MenuController.GetMenu">
-            <summary>
-            Lấy danh sách Menu
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.MenuController.Get(System.UInt32)">
-            <summary>
-            Lấy thông tin của 1 Menu theo ID
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.MenuController.Post(MongoDBAccess.Models.Menu)">
-            <summary>
-            Thêm Menu
-            </summary>
-            <param name="value"></param>
-        </member>
-        <member name="M:API.Controllers.MenuController.Put(System.UInt32,MongoDBAccess.Models.Menu)">
-            <summary>
-            Sửa thông tin Menu
-            </summary>
-            <param name="id"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.MenuController.Delete(System.UInt32)">
-            <summary>
-            Xóa thông tin menu
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -1301,7 +1231,7 @@
             ID dòng họ
             </summary>
         </member>
-        <member name="P:API.Models.LoginResult.Menu">
+        <member name="P:API.Models.LoginResult.GroupPermission_Id">
             <summary>
             Menu đăng nhập
             </summary>

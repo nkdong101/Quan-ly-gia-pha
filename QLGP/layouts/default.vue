@@ -107,7 +107,7 @@ export default {
     },
     InitStuff() {
       return new Promise((rs) => {
-        Promise.all([this.InitMenu(), this.InitPara()]).then((result) => {
+        Promise.all([ this.InitPara()]).then((result) => {
           rs();
         });
         // GetDataAPI({

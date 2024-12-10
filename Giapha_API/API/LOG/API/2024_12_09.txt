@@ -1,0 +1,15 @@
+09/12/2024 16:43:10.185|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+09/12/2024 16:43:12.006|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+09/12/2024 20:38:51.324|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+

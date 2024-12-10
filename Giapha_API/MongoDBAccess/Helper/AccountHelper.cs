@@ -72,7 +72,7 @@ namespace MongoDBAccess
                         Gender = iInfo.User_Info.Gender,
                         Phone = iInfo.User_Info.Phone,
                         Year_Of_Birth = iInfo.User_Info.BirthDay.Year,
-                        Use = true,
+                       
                         User_id = vUser_id,
                         State = Models.Enums.State.Live,
                     };
@@ -154,23 +154,23 @@ namespace MongoDBAccess
         /// <param name="iPermission"></param>
         /// <param name="iId"></param>
         /// <returns></returns>
-        public string SetPermission(GroupPermission iInfo, uint iId)
-        {
-            var vFind = this.FindById(iId);
-            if (vFind != null)
-            {
-                vFind.Buttons = iInfo.Permission;
-                List<UpdateDefinition<User>> vListUpdate = new List<UpdateDefinition<User>>();
-                vListUpdate.Add(Builders<User>.Update.Set(p => p.Buttons, iInfo.Permission));
-                vListUpdate.Add(Builders<User>.Update.Set(p => p.GroupPermission_Id, iInfo.Id));
+        //public string SetPermission(GroupPermission iInfo, uint iId)
+        //{
+        //    var vFind = this.FindById(iId);
+        //    if (vFind != null)
+        //    {
+        //        vFind.Buttons = iInfo.Permission;
+        //        List<UpdateDefinition<User>> vListUpdate = new List<UpdateDefinition<User>>();
+        //        vListUpdate.Add(Builders<User>.Update.Set(p => p.Buttons, iInfo.Permission));
+        //        vListUpdate.Add(Builders<User>.Update.Set(p => p.GroupPermission_Id, iInfo.Id));
 
-                var vResult = this.Update(iId, vListUpdate, null);
+        //        var vResult = this.Update(iId, vListUpdate, null);
 
-                return vResult;
-            }
-            else
-                return "Không tìm thấy thông tin tài khoản trong hệ thống!";
-        }
+        //        return vResult;
+        //    }
+        //    else
+        //        return "Không tìm thấy thông tin tài khoản trong hệ thống!";
+        //}
 
 
         /// <summary>
@@ -258,6 +258,14 @@ namespace MongoDBAccess
         /// <returns></returns>
         public string CheckDelete(uint iId, User iUser)
         {
+
+            var userDelete = this.FindById(iId);
+            var giaphaInfo = new Gia_phaHelper().FindById(userDelete.Giapha_id);
+            if (giaphaInfo != null)
+            {
+
+                new Gia_phaHelper().Update(giaphaInfo.Id, p => p.Set(a => a.User_id, (uint)0), null, null); ;
+            }
             var result = this.Delete(iId);
             return result;
         }

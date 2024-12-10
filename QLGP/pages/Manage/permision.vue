@@ -4,7 +4,7 @@
         <template slot="column-header-button">
           <el-button
             class="icon-btn icon-btn"
-            v-if="pagePermission.add"
+         
             type="primary"
             @click="Add()"
           >
@@ -14,14 +14,14 @@
         <template slot="column-content-button" slot-scope="{ row }">
           <div style="display:flex">
             <el-button
-            v-if="pagePermission.Edit"
+        
             type="primary"
             icon="fa fa-edit"
             class="icon-btn"
             @click="Edit(row)"
           ></el-button>
           <el-button
-            v-if="pagePermission.delete"
+         
             type="danger"
             icon="fa fa-times"
             class="icon-btn"

@@ -1,8 +1,8 @@
 <
 <template lang="">
   <div class="bell">
-    <div v-if="data_GP.length > 0 || data_CM.length > 0" class="number-mess">
-      <p>{{ data_GP.length > 0 ? data_GP.length + data_CM.length : "" }}</p>
+    <div v-if="isShownoti" class="number-mess">
+      <p>{{ totalNoti }}</p>
     </div>
     <el-dropdown trigger="click" @command="" :hide-on-click="false">
       <span class="el-dropdown-link">
@@ -41,6 +41,14 @@
 import API from "~/assets/scripts/API";
 import GetDataAPI from "~/assets/scripts/GetDataAPI";
 export default {
+  computed:{
+    isShownoti(){
+      return this.data_GP.length +  this.data_CM.length  > 0   
+    },
+    totalNoti(){
+      return this.data_GP.length +  this.data_CM.length     
+    }
+  },
   data() {
     return {
       isCheck: true,

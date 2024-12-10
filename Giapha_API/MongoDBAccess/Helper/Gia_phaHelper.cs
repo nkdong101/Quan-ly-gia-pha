@@ -21,6 +21,11 @@ namespace MongoDBAccess
         public Gia_phaHelper(uint? iUserId, MongoClient iClient = null) : base(iUserId, iClient)
         {
         }
+
+        public Gia_phaHelper()
+        {
+        }
+
         /// <summary>
         /// Đổi ngày âm dương
         /// </summary>
@@ -1144,108 +1149,108 @@ namespace MongoDBAccess
             }
         }
         #endregion
-        /// <summary>
-        /// Xác định lại level của dòng họ
-        /// </summary>
-        /// <returns></returns>
-        public string CheckLevel(int iDongho_id)
-        {
-            var vHo = new DonghoHelper(1).Find(p => p.Id == iDongho_id).ToList();
-            foreach (var Item in vHo)
-            {
-                //1. Update tất cả level của dòng họ = 0
-                var filter = Builders<Gia_pha>.Filter.Eq(p => p.Dongho_id, Item.Id);
-                var update = Builders<Gia_pha>.Update.Set(p => p.Level, 0);
-                this.Collection.UpdateMany(filter, update, null);
-                //2. Kiểm tra cập nhật lại level cho từng đời
-                var vData = this.Find(p => p.Dongho_id == Item.Id && p.Level == 0 && p.Gender == Models.Enums.Gender.male && (p.Parent == null || (p.Parent.Father_id == null || p.Parent.Mother_id == null))).FirstOrDefault();
-                while (vData != null)
-                {
-                    UpdateLevel(vData, -1);
-                    vData = this.Find(p => p.Dongho_id == Item.Id && p.Level == 0 && p.Gender == Models.Enums.Gender.male && (p.Parent == null || (p.Parent.Father_id == null || p.Parent.Mother_id == null))).FirstOrDefault();
-                }
-            }
-            return "OK";
-        }
-        private bool UpdateLevel(Gia_pha iPerson, int iFather_Level)
-        {
-            iPerson.Level = (byte)(iFather_Level + 1);
-            this.Update(iPerson.Id, p => p.Set(a => a.Level, iPerson.Level), null, null);
-            if (iPerson.Childs != null && iPerson.Childs.Count > 0)
-            {
-                for (int i = 0; i < iPerson.Childs.Count; i++)
-                {
-                    var Item = iPerson.Childs[i];
-                    var vInfo = this.FindById(Item.Id);
-                    if (vInfo != null && vInfo.Dongho_id == iPerson.Dongho_id)
-                    {
-                        //this.Update(Item.Id, p => p.Set(a => a.Level, iPerson.Level + 1), null, null);
-                        UpdateLevel(vInfo, iPerson.Level);
-                    }
-                    else
-                    {
-                        //iPerson.Childs.Remove(Item);
-                        //this.Update(iPerson.Id, p => p.Set(a => a.Childs, iPerson.Childs), null, null);
-                        //i--;
-                    }
-                }
-            }
-            if (iPerson.Couple != null && iPerson.Couple.Count > 0)
-            {
-                foreach (var Item in iPerson.Couple)
-                    this.Update(Item.Id, p => p.Set(a => a.Level, iPerson.Level), null, null);
-            }
-            return true;
-        }
-        /// <summary>
-        /// Gửi thông tin tài khoản cho người này
-        /// </summary>
-        /// <param name="iInfo"></param>
-        public string SendAccount(Gia_pha iInfo)
-        {
-            var vInfo = this.FindById(iInfo.Id);
-            if (vInfo == null)
-                throw new Exception("Người này không có trong hệ thống, vui lòng kiểm tra lại hoặc liên hệ với hotline!");
-            if (string.IsNullOrEmpty(vInfo.Phone))
-                throw new Exception("Hệ thống đăng nhập bằng số điện thoại. Hãy cập nhật số điện thoại của " + vInfo.Name + " trước khi gửi!");
-            var vRandom = new Random();
-            var vUser = new User()
-            {
-                Images = vInfo.Avatar,
-                BirthDay = vInfo.Birthday,
-                CMND = vInfo.CCCD,
-                //Dongho_id = vInfo.Dongho_id,
-                Email = vInfo.Email,
-                FullName = vInfo.Name,
-                Phone = vInfo.Phone,
-                UserCreate = (uint)this.UserId,
-                Gender = vInfo.Gender,
-                UserName = vInfo.Phone,
-                Address = vInfo.Address,
-                GroupPermission_Id = 3,
-                Password = "VT" + vRandom.Next(100000, 999999),
-                Giapha_id = vInfo.Id
-            };
-            using (var session = this.MongoClient.StartSession())
-            {
-                try
-                {
-                    session.StartTransaction();
-                    // Khởi tạo tài khoản
-                    var vUser_id = new AccountHelper(this.UserId, this.MongoClient).AddUser(null, vUser, session);
-                    // Cập nhật kết nối tài khoản với gia phả
-                    this.Update(vInfo.Id, p => p.Set(a => a.User_id, vUser_id), session, null);
-                    session.CommitTransaction();
-                }
-                catch (Exception ex)
-                {
-                    session.AbortTransaction();
-                    throw ex;
-                }
-            }
-            return vUser.Password;
-        }
-        /// <summary>
+        ///// <summary>
+        ///// Xác định lại level của dòng họ
+        ///// </summary>
+        ///// <returns></returns>
+        //public string CheckLevel(int iDongho_id)
+        //{
+        //    var vHo = new DonghoHelper(1).Find(p => p.Id == iDongho_id).ToList();
+        //    foreach (var Item in vHo)
+        //    {
+        //        //1. Update tất cả level của dòng họ = 0
+        //        var filter = Builders<Gia_pha>.Filter.Eq(p => p.Dongho_id, Item.Id);
+        //        var update = Builders<Gia_pha>.Update.Set(p => p.Level, 0);
+        //        this.Collection.UpdateMany(filter, update, null);
+        //        //2. Kiểm tra cập nhật lại level cho từng đời
+        //        var vData = this.Find(p => p.Dongho_id == Item.Id && p.Level == 0 && p.Gender == Models.Enums.Gender.male && (p.Parent == null || (p.Parent.Father_id == null || p.Parent.Mother_id == null))).FirstOrDefault();
+        //        while (vData != null)
+        //        {
+        //            UpdateLevel(vData, -1);
+        //            vData = this.Find(p => p.Dongho_id == Item.Id && p.Level == 0 && p.Gender == Models.Enums.Gender.male && (p.Parent == null || (p.Parent.Father_id == null || p.Parent.Mother_id == null))).FirstOrDefault();
+        //        }
+        //    }
+        //    return "OK";
+        //}
+        //private bool UpdateLevel(Gia_pha iPerson, int iFather_Level)
+        //{
+        //    iPerson.Level = (byte)(iFather_Level + 1);
+        //    this.Update(iPerson.Id, p => p.Set(a => a.Level, iPerson.Level), null, null);
+        //    if (iPerson.Childs != null && iPerson.Childs.Count > 0)
+        //    {
+        //        for (int i = 0; i < iPerson.Childs.Count; i++)
+        //        {
+        //            var Item = iPerson.Childs[i];
+        //            var vInfo = this.FindById(Item.Id);
+        //            if (vInfo != null && vInfo.Dongho_id == iPerson.Dongho_id)
+        //            {
+        //                //this.Update(Item.Id, p => p.Set(a => a.Level, iPerson.Level + 1), null, null);
+        //                UpdateLevel(vInfo, iPerson.Level);
+        //            }
+        //            else
+        //            {
+        //                //iPerson.Childs.Remove(Item);
+        //                //this.Update(iPerson.Id, p => p.Set(a => a.Childs, iPerson.Childs), null, null);
+        //                //i--;
+        //            }
+        //        }
+        //    }
+        //    if (iPerson.Couple != null && iPerson.Couple.Count > 0)
+        //    {
+        //        foreach (var Item in iPerson.Couple)
+        //            this.Update(Item.Id, p => p.Set(a => a.Level, iPerson.Level), null, null);
+        //    }
+        //    return true;
+        //}
+        ///// <summary>
+        ///// Gửi thông tin tài khoản cho người này
+        ///// </summary>
+        ///// <param name="iInfo"></param>
+        //public string SendAccount(Gia_pha iInfo)
+        //{
+        //    var vInfo = this.FindById(iInfo.Id);
+        //    if (vInfo == null)
+        //        throw new Exception("Người này không có trong hệ thống, vui lòng kiểm tra lại hoặc liên hệ với hotline!");
+        //    if (string.IsNullOrEmpty(vInfo.Phone))
+        //        throw new Exception("Hệ thống đăng nhập bằng số điện thoại. Hãy cập nhật số điện thoại của " + vInfo.Name + " trước khi gửi!");
+        //    var vRandom = new Random();
+        //    var vUser = new User()
+        //    {
+        //        Images = vInfo.Avatar,
+        //        BirthDay = vInfo.Birthday,
+        //        CMND = vInfo.CCCD,
+        //        //Dongho_id = vInfo.Dongho_id,
+        //        Email = vInfo.Email,
+        //        FullName = vInfo.Name,
+        //        Phone = vInfo.Phone,
+        //        UserCreate = (uint)this.UserId,
+        //        Gender = vInfo.Gender,
+        //        UserName = vInfo.Phone,
+        //        Address = vInfo.Address,
+        //        GroupPermission_Id = 3,
+        //        Password = "VT" + vRandom.Next(100000, 999999),
+        //        Giapha_id = vInfo.Id
+        //    };
+        //    using (var session = this.MongoClient.StartSession())
+        //    {
+        //        try
+        //        {
+        //            session.StartTransaction();
+        //            // Khởi tạo tài khoản
+        //            var vUser_id = new AccountHelper(this.UserId, this.MongoClient).AddUser(null, vUser, session);
+        //            // Cập nhật kết nối tài khoản với gia phả
+        //            this.Update(vInfo.Id, p => p.Set(a => a.User_id, vUser_id), session, null);
+        //            session.CommitTransaction();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            session.AbortTransaction();
+        //            throw ex;
+        //        }
+        //    }
+        //    return vUser.Password;
+        //}
+        ///// <summary>
         /// Tìm tổ tiên chung của 2 người
         /// </summary>
         /// <param name="iperson1"></param>

@@ -16,9 +16,6 @@ namespace MongoDBAccess.Models
         /// Mô tả
         /// </summary>
         public string Description { get; set; }
-        /// <summary>
-        /// Các quyền được sử dụng
-        /// </summary>
-        public List<uint> Permission { get; set; } = new List<uint>();
+        
     }
 }

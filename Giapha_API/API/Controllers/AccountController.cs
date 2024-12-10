@@ -1,7 +1,7 @@
 ﻿using API.Models;
 using MongoDB.Driver;
 using MongoDBAccess;
-using MongoDBAccess.Google;
+//using MongoDBAccess.Google;
 using MongoDBAccess.Models;
 using System;
 using System.Collections.Generic;
@@ -67,7 +67,7 @@ namespace API.Controllers
                 AccountSerial = user.Id,
                 UserName = user.UserName,
                 FullName = user.FullName,
-                GroupPermission_Id = user.GroupPermission_Id,
+                //GroupPermission_Id = user.GroupPermission_Id,
                 //Menu = groupPermissions.Where(x => x.Id == user.userLevel).FirstOrDefault().Permission.ToList(),
                 userLevel = user.userLevel,
                 ImgUrl = user.Images,
@@ -170,13 +170,13 @@ namespace API.Controllers
         /// <param name="id">ID đơn vị cần sửa</param>
         /// <param name="value">Thông tin người dùng mới</param>
         /// <returns></returns>
-        [ResponseType(typeof(APIResult<string>))]
-        [Route("Account/SetPermission/{id}")]
-        [HttpPost]
-        public HttpResponseMessage SetPermission(uint id, [FromBody] GroupPermission value)
-        {
-            return Request.SuccessResult(helper.SetPermission(value, id));
-        }
+        //[ResponseType(typeof(APIResult<string>))]
+        //[Route("Account/SetPermission/{id}")]
+        //[HttpPost]
+        //public HttpResponseMessage SetPermission(uint id, [FromBody] GroupPermission value)
+        //{
+        //    return Request.SuccessResult(helper.SetPermission(value, id));
+        //}
         /// <summary>
         /// Xóa thông tin người dùng
         /// </summary>

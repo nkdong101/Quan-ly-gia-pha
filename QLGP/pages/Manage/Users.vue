@@ -15,19 +15,19 @@
           <el-button
             @click="form.ShowForm('Sửa tài khoản', row)"
             type="warning"  class="icon-btn"
-            v-if="pagePermission.edit && row.userLevel != 0"
+         
           >
             <i class="fa fa-edit"></i>
           </el-button>
-          <el-tooltip class="item" effect="dark" content="Cấp tài khoản" placement="top-end">
+      
             <el-button   class="icon-btn"
-            @click="CapTK(row)"
-            v-if="pagePermission.CreateAcc  && (row.userLevel == 1 || row.userLevel == 0)"
+               v-if="row.userLevel != 1"
             type="danger"
+            @click="form.Delete(row)"
           >
-          <i class="fa fa-user-plus" aria-hidden="true"></i>
+          <i class="fa fa-times" aria-hidden="true"></i>
           </el-button>
-    </el-tooltip>
+
           
         </div>
       </template>
@@ -97,27 +97,27 @@ export default {
           // }
         },
         Delete: (row) => {
-          // ShowConfirm({
-          //   message: "Xóa tỉnh [" + row.Name + "]",
-          //   title: "Cảnh báo",
-          //   type: MessageType.warning,
-          // })
-          //   .then((re) => {
-          //     // console.log(re);
-          //     GetDataAPI({
-          //       method: "Delete",
-          //       url: API.HoVietNam + "/" + row.Id,
-          //       // params: this.selectedRow,
-          //       action: function (re) {
-          //         this.LoadTable();
+          ShowConfirm({
+            message: "Xóa tài khoản [" + row.UserName + "]",
+            title: "Cảnh báo",
+            type: MessageType.warning,
+          })
+            .then((re) => {
+              // console.log(re);
+              GetDataAPI({
+                method: "Delete",
+                url: API.Account + "/" + row.Id,
+                // params: this.selectedRow,
+                action:  (re) =>{
+                  this.LoadTable();
 
-          //         ShowMessage("Xóa thành công");
-          //       },
-          //     });
-          //   })
-          //   .catch((err) => {
-          //     // An error occurred
-          //   });
+                  ShowMessage("Xóa thành công");
+                },
+              });
+            })
+            .catch((err) => {
+              // An error occurred
+            });
         },
       },
       tp: {

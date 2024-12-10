@@ -38,11 +38,6 @@ namespace MongoDBAccess.Objects
         [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         [CustomObjectAttr(IsEdit = false)]
         public DateTime? DateUpdate { get; set; }
-        /// <summary>
-        /// True: Còn sử dụng
-        /// False: Không sử dụng nữa
-        /// </summary>
-        [CustomObjectAttr(IsEdit = false)]
-        public bool Use { get; set; } = true;
+
     }
 }

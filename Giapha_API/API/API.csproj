@@ -228,8 +228,6 @@
     <Compile Include="Controllers\GroupPermissionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
-    <Compile Include="Controllers\MenuButtonController.cs" />
-    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

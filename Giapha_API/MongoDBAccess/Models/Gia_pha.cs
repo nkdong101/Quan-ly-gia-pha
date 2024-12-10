@@ -134,7 +134,7 @@ namespace MongoDBAccess.Models
         /// <summary>
         /// Tài khoản của người này trong hệ thống
         /// </summary>
-        [CustomObjectAttr(IsEdit = false)]
+  
         public uint User_id { get; set; }
 
 

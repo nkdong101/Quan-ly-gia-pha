@@ -43,7 +43,7 @@ namespace API.Models
         /// <summary>
         /// Menu đăng nhập
         /// </summary>
-        public List<MenuResult> Menu { get;  set; }
+        //public List<MenuResult> Menu { get;  set; }
         public uint GroupPermission_Id { get;  set; }
         public uint userLevel { get; set; }
     }

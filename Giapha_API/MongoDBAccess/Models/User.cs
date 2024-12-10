@@ -30,15 +30,7 @@ namespace MongoDBAccess.Models
         /// Tên đầy đủ
         /// </summary>
         public string FullName { get; set; }
-        /// <summary>
-        /// Danh sách quyền
-        /// </summary>
-        [CustomObjectAttr(IsEdit = false)]
-        public List<uint> Buttons { get; set; }
-        /// <summary>
-        /// Id nhóm quyền
-        /// </summary>
-        public uint GroupPermission_Id { get; set; }
+     
         /// <summary>
         /// Ảnh đại diện
         /// </summary>
@@ -100,56 +92,56 @@ namespace MongoDBAccess.Models
             return "OK";
         }
 
-        public List<MenuResult> GetMenu(bool isGetAll)
-        {
-            if (this.Buttons == null)
-                this.Buttons = new List<uint>();
-            List<MenuResult> vResult = new List<MenuResult>();
-            try
-            {
-                List<MenuButton> vButton = new MenuButtonHelper(this.Id).Find().ToList();
-                List<Menu> vData = new MenuHelper(this.Id).Find().ToList();
-                List<Menu> vParentMenu = vData.Where(p => p.Parent_id == 0).OrderBy(p => p.Stt).ToList();
-                foreach (Menu Item in vParentMenu)
-                {
+        //public List<MenuResult> GetMenu(bool isGetAll)
+        //{
+        //    if (this.Buttons == null)
+        //        this.Buttons = new List<uint>();
+        //    List<MenuResult> vResult = new List<MenuResult>();
+        //    try
+        //    {
+        //        List<MenuButton> vButton = new MenuButtonHelper(this.Id).Find().ToList();
+        //        List<Menu> vData = new MenuHelper(this.Id).Find().ToList();
+        //        List<Menu> vParentMenu = vData.Where(p => p.Parent_id == 0).OrderBy(p => p.Stt).ToList();
+        //        foreach (Menu Item in vParentMenu)
+        //        {
 
-                    List<MenuResult> vListChild = Item.GetChild(this.UserName, this.Buttons, isGetAll, vData, vButton);
-                    if (vListChild.Count > 0)
-                    {
-                        MenuResult ItemResult = Item.ToResult();
-                        ItemResult.Child = vListChild;
-                        ItemResult.ListButton = vButton.Where(p => this.Buttons.Contains(p.Id) && p.Menu_id == Item.Id).Select(p => p.ToMenuResult()).ToList();
-                        vResult.Add(ItemResult);
-                    }
-                    else
-                    {
+        //            List<MenuResult> vListChild = Item.GetChild(this.UserName, this.Buttons, isGetAll, vData, vButton);
+        //            if (vListChild.Count > 0)
+        //            {
+        //                MenuResult ItemResult = Item.ToResult();
+        //                ItemResult.Child = vListChild;
+        //                ItemResult.ListButton = vButton.Where(p => this.Buttons.Contains(p.Id) && p.Menu_id == Item.Id).Select(p => p.ToMenuResult()).ToList();
+        //                vResult.Add(ItemResult);
+        //            }
+        //            else
+        //            {
 
-                        List<MenuResult> vListButton = vButton.Where(p => this.Buttons.Contains(p.Id) && p.Menu_id == Item.Id).Select(p => p.ToMenuResult()).ToList();
-                        if (vListButton.Count > 0)
-                        {
-                            MenuResult ItemResult = Item.ToResult();
-                            ItemResult.ListButton = vListButton;
-                            vResult.Add(ItemResult);
-                        }
-                        else if ((Item.Viewall && isGetAll) || this.UserName.ToUpper() == ConfigInfo.UserAdmin.ToUpper())
-                        {
-                            MenuResult ItemResult = Item.ToResult();
-                            ItemResult.ListButton = vButton.Where(p => p.Menu_id == Item.Id).Select(p => p.ToMenuResult()).ToList();
-                            vResult.Add(ItemResult);
-                        }
-                        else
-                        {
-                            MenuResult ItemResult = Item.ToResult();
-                        }
-                    }
-                }
-            }
-            catch (Exception Ex)
-            {
-                Console.WriteLine(Ex.Message);
-            }
-            return vResult.OrderBy(p => p.Stt).ToList();
-        }
+        //                List<MenuResult> vListButton = vButton.Where(p => this.Buttons.Contains(p.Id) && p.Menu_id == Item.Id).Select(p => p.ToMenuResult()).ToList();
+        //                if (vListButton.Count > 0)
+        //                {
+        //                    MenuResult ItemResult = Item.ToResult();
+        //                    ItemResult.ListButton = vListButton;
+        //                    vResult.Add(ItemResult);
+        //                }
+        //                else if ((Item.Viewall && isGetAll) || this.UserName.ToUpper() == ConfigInfo.UserAdmin.ToUpper())
+        //                {
+        //                    MenuResult ItemResult = Item.ToResult();
+        //                    ItemResult.ListButton = vButton.Where(p => p.Menu_id == Item.Id).Select(p => p.ToMenuResult()).ToList();
+        //                    vResult.Add(ItemResult);
+        //                }
+        //                else
+        //                {
+        //                    MenuResult ItemResult = Item.ToResult();
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception Ex)
+        //    {
+        //        Console.WriteLine(Ex.Message);
+        //    }
+        //    return vResult.OrderBy(p => p.Stt).ToList();
+        //}
     }
 
 

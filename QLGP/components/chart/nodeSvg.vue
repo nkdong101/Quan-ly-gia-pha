@@ -109,7 +109,7 @@
     <!-- <use cursor="pointer" class="colored-use"  @click="abc" v-if="data.Hongoai_id > 0" x="200" y="10" xlink:href="#base_up"></use> -->
 
     <foreignObject
-    
+      v-if="user.AccountSerial == data.User_id"
       cursor="pointer"
       :style="{
         fontSize: '14px',
