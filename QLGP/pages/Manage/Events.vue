@@ -6,7 +6,7 @@
           @click="form.ShowForm('Thêm sự kiện', {})"
           type="primary"
                class="icon-btn"
-          v-if="pagePermission.add"
+         
         >
           <i class="fa fa-plus"></i>
         </el-button>
@@ -17,13 +17,13 @@
             @click="form.ShowForm('Sửa sự kiện', row)"
             type="warning"
             class="icon-btn"
-            v-if="pagePermission.edit"
+           
           >
             <i class="fa fa-edit"></i>
           </el-button>
           <el-button
             @click="form.Delete(row)"
-            v-if="pagePermission.delete"
+           
             class="icon-btn"
             type="danger"
           >

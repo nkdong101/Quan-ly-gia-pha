@@ -1,0 +1,50 @@
+13/12/2024 16:56:14.570|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Account/Login
+Exception
+ Tên đăng nhập hoặc mật khẩu không đúng.
+ --------------------------------------
+
+13/12/2024 17:01:45.469|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:01:48.921|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:01:53.703|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:01:56.261|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:01:58.769|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:02:05.073|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:02:09.265|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:02:14.016|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:02:18.205|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:02:24.951|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:02:56.563|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:03:01.218|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:03:06.110|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:03:11.407|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+
+13/12/2024 17:03:18.686|API.Controllers.ControllerExtensionRequestMethods|AuthResult|http://localhost:2002/GroupPermission
+
+

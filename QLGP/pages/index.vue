@@ -437,6 +437,7 @@ export default {
                   ShowMessage(
                     `Đã cấp tài khoản cho <b>${this.formCrAcc.objUser.Name}</b>`
                   );
+                  this.GetNodeData()
                   this.formCrAcc.visible = false;
                 },
               });

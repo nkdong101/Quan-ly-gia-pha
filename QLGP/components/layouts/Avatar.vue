@@ -34,12 +34,12 @@
             <div>{{ user.Email }}</div>
             <div class="pop-main-action"
                  style="">
-              <el-button type="text"
+              <!-- <el-button type="text"
                          size="small"
                          style="padding: 0"
                          @click="profile()">
                 Thông tin
-              </el-button>
+              </el-button> -->
               <el-button type="text"
                          size="small"
                          style="padding: 0"

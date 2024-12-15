@@ -72,9 +72,10 @@
         ></el-pagination>
         <el-link
           class="btn-export"
+
           :underline="false"
           icon="fa fa-download"
-          style="padding: 10px"
+          style="padding: 10px;display: none"
           @click.native="ExportExcel()"
         >
         </el-link>
@@ -737,7 +738,7 @@ export default {
   }
   ::v-deep  .table-header {
     th {
-      padding: 10px 0px;
+      padding: 5px 0px;
       color: #2a4b69;
       background: #efefef;
       div.cell {

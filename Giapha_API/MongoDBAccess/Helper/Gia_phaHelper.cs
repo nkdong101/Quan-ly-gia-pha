@@ -141,7 +141,7 @@ namespace MongoDBAccess
             + Nếu bố mẹ thuộc đời trước "đời làm mốc" thì bố mẹ căn vào chính giữa của con cái
               (tuy nhiên phải để ý đến người đứng trước, nếu vị trí sau khi căn khiến người đứng trước cùng hàng đẩy về sau thì phải 
               điều chỉnh lại vị trí của họ)
-            + Nếu bố mẹ thuộc đời sau "đời làm mốc" thì con cái phải điều chỉnh sang ph
+            + Nếu bố mẹ thuộc đời sau "đời làm mốc" thì con cái phải điều chỉnh sang phải
          */
         /// <summary>
         /// Lấy dữ liệu liên quan đến 1 người
