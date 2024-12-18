@@ -14,7 +14,7 @@ label-width="120px"
 class="cm-form"
 label-position="top"
 >
-<el-form-item label="Người góp ý" prop="Name" required>
+<el-form-item label="Họ và tên" prop="Name" required>
   <el-input   size="medium"  v-model="cmOb.Name"></el-input>
 </el-form-item>
 <el-form-item label="Số liên hệ" prop="Phone" required>

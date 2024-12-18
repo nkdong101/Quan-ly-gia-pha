@@ -96,7 +96,7 @@
             <i class="fa fa-edit"></i>
           </el-button>
           <el-button
-            @click="AddChild(data)"
+            @click="AddChild(data, node)"
             type="primary"
             v-if="node.level === 1 && user.userLevel == 1"
             style="padding: 4px; margin-left: 5px; margin-right: 10px"
@@ -108,7 +108,13 @@
             type="warning"
             v-if="node.level === 2"
             @click="
-              form.ShowForm(`Sửa thông tin ${data.Name}`, data, false, false,node)
+              form.ShowForm(
+                `Sửa thông tin ${data.Name}`,
+                data,
+                false,
+                false,
+                node
+              )
             "
             style="padding: 4px; margin-right: 7px"
           >
@@ -141,10 +147,10 @@
     </div>
     <DefaultForm :model="form" @actionOK="form.Save.call(this)">
       <div slot="content">
-        <div v-if="isAdd">
+        <!-- <div v-if="isAdd">
           <el-radio v-model="conrieng" :label="true">Con riêng</el-radio>
           <el-radio v-model="conrieng" :label="false">Con chung</el-radio>
-        </div>
+        </div> -->
 
         <FormInfo ref="form" :model="form.obj.form2()" />
       </div>
@@ -196,7 +202,7 @@ export default {
         width: "450px",
         // noSave: true,
         // fullscreen: true,
-        ShowForm: (title, obj, isAdd, isEditWife,node) => {
+        ShowForm: (title, obj, isAdd, isEditWife, node) => {
           // var _app = this
           if (this.user.userLevel !== 1) {
             this.form.type = "dialog";
@@ -204,14 +210,17 @@ export default {
             this.form.type = "";
           }
 
-          console.log(node)
+          console.log(node);
           this.isAdd = isAdd;
           var _app = this;
           this.form.title = title;
           // console.log(obj);
           this.isEditWife = isEditWife;
-          if(!isEditWife){
+          if (!isEditWife && isEditWife != undefined) {
             this.mother = node.parent.data;
+            if (Array.isArray(node.parent.data)) {
+              this.mother = node.parent.data[0];
+            }
           }
           if (!isAdd) {
             APIHelper.Giapha.getInfor(obj.Id).then((re) => {
@@ -268,9 +277,9 @@ export default {
                   } else {
                     console.log(_app);
                     const meInfo =
-                      this.obj.Curent.Gender == 1
-                        ? this.mother
-                        : new Giapha(this.obj.Curent).toJSON();
+                      _app.obj.Curent.Gender == 1
+                        ? _app.mother
+                        : new Giapha(_app.obj.Curent).toJSON();
                     // return;
                     GetDataAPI({
                       method: "post",
@@ -282,7 +291,7 @@ export default {
                           this.obj.Curent.Gender == 1
                             ? this.obj.Curent.Id
                             : this.mother.Id,
-                        Conrieng: this.conrieng,
+                        Conrieng: false,
                       },
                       action: (re) => {
                         //   this.LoadData();
@@ -343,8 +352,8 @@ export default {
       this.conrieng = true;
       this.form.Save();
     },
-    AddChild(mother) {
-      this.form.ShowForm("Thêm con", mother, true);
+    AddChild(mother, node) {
+      this.form.ShowForm("Thêm con", mother, true, false, node);
       // this;
     },
     clickRow(node, data) {

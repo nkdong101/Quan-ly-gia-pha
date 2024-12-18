@@ -1,0 +1,30 @@
+18/12/2024 23:05:07.207|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+18/12/2024 23:06:22.273|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+18/12/2024 23:09:43.532|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+18/12/2024 23:10:10.840|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+18/12/2024 23:11:15.419|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
+18/12/2024 23:13:13.457|API.Controllers.NotImplExceptionFilterAttribute|OnException|http://localhost:2002/Giapha/Add_Con
+NullReferenceException
+ Object reference not set to an instance of an object.
+ --------------------------------------
+
