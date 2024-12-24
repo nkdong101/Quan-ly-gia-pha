@@ -61,13 +61,13 @@
           <Avatar />
         </el-menu-item>
 
-        <el-menu-item
+        <!-- <el-menu-item
           style="display: flex; align-items: center"
           v-if="user"
           index="#"
         >
           <bell_notify />
-        </el-menu-item>
+        </el-menu-item> -->
       </el-menu>
     </div>
   </div>
